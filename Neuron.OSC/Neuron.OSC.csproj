@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{83B11D5E-8A19-4566-B23A-6C87CBFCA094}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Neuron.OSC</RootNamespace>
+    <AssemblyName>Lysis.OSC</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Lysis.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <UICulture>es-CO</UICulture>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Atpc.Bricks.Base">
+      <HintPath>..\..\Libs\Atpc.Bricks.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Atpc.Controls.Charting.WPF">
+      <HintPath>..\..\Libs\Atpc.Controls.Charting.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Atpc.Controls.Common">
+      <HintPath>..\..\Libs\Atpc.Controls.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Atpc.Controls.WPF">
+      <HintPath>..\..\Libs\Atpc.Controls.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="ctrlCapturaFirma, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\..\..\Users\JULIO\Source\Repos\WpfApp1\bin\Debug\ctrlCapturaFirma.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="DPFPCtlXTypeLibNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=c0c98f712d5392a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPCtlXTypeLibNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPCtlXWrapperNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=c0c98f712d5392a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPCtlXWrapperNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPDevNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=696774c42ee28c57, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPDevNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPEngNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=7fe76e7adf19964b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPEngNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPGuiNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d4f4a0bd9c559145, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPGuiNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPShrNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d902fe275a8d6cf2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPShrNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPShrXTypeLibNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=c0c98f712d5392a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPShrXTypeLibNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPVerNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4de0a9c4dcc83984, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPVerNET.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.wgssSTU">
+      <HintPath>..\..\..\Users\JULIO\Source\Repos\WpfApp1\bin\Debug\Interop.wgssSTU.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\..\Libs\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WebCam_Capture">
+      <HintPath>D:\WebCam\WebCam_Capture.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\AlertDetailWindow.xaml.cs">
+      <DependentUpon>AlertDetailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AlertDetailWindowViewModel.cs" />
+    <Compile Include="Controls\AutoCompleteBoxAux.cs" />
+    <Compile Include="Controls\BooleanToSolidColorBrushConverter.cs" />
+    <Compile Include="Controls\LiquidacionPagoViewModel.cs" />
+    <Compile Include="Controls\LiquidacionPagoWindow.xaml.cs">
+      <DependentUpon>LiquidacionPagoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SaveOscResult.xaml.cs">
+      <DependentUpon>SaveOscResult.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SaveOscResultViewModel.cs" />
+    <Compile Include="Controls\SearchServiceWindow.xaml.cs">
+      <DependentUpon>SearchServiceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SearchServiceWindowViewModel.cs" />
+    <Compile Include="Controls\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDEntityWrapper.cs" />
+    <Compile Include="FingerSearch.xaml.cs">
+      <DependentUpon>FingerSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="MainWindowControler.cs" />
+    <Compile Include="NeuronDataSet.cs">
+      <DependentUpon>NeuronDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NeuronDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NeuronDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="WebCam.cs" />
+    <Page Include="Controls\AlertDetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LiquidacionPagoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SaveOscResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SearchServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FingerSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Reporte\Rp_Factura.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Reporte\Rp_OSC.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NeuronDataSet.xsc">
+      <DependentUpon>NeuronDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="NeuronDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NeuronDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="NeuronDataSet.xss">
+      <DependentUpon>NeuronDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Zebra GC420t.epl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atpc.Common.Settings\Atpc.Common.Settings.csproj">
+      <Project>{f6092d4c-aa34-4cc6-b8e3-60faa01c8243}</Project>
+      <Name>Atpc.Common.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atpc.Common\Atpc.Common.csproj">
+      <Project>{D99F689B-137D-4131-AA2B-9B9BFB9499F9}</Project>
+      <Name>Atpc.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atpc.UI.Controls\Atpc.UI.Controls.csproj">
+      <Project>{6a5b7a47-fe5b-47f0-99f4-4c859de785ae}</Project>
+      <Name>Atpc.UI.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lysis.Commom.BarCode\Lysis.Commom.BarCode.csproj">
+      <Project>{fe7afdad-7bd9-4f73-9db4-020eb58d5185}</Project>
+      <Name>Lysis.Commom.BarCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Neuron.CommonResources\Neuron.CommonResources.csproj">
+      <Project>{3482d99b-08e5-4bac-bfe3-091a91a12e1d}</Project>
+      <Name>Neuron.CommonResources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Neuron.OSC.Ws\Neuron.OSC.Ws.csproj">
+      <Project>{b579fbb1-cc50-4fa3-848d-d34f4287c6e6}</Project>
+      <Name>Neuron.OSC.Ws</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.Modelos.Data\NeuronCloud.Atpc.Co.Modelos.Data.csproj">
+      <Project>{78a4b803-f8f1-409c-8e71-2ebb02992bef}</Project>
+      <Name>NeuronCloud.Atpc.Co.Modelos.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.Modelos.Helpers\NeuronCloud.Atpc.Co.Modelos.Helpers.csproj">
+      <Project>{74E220E4-D1E9-4E93-B5DC-CB4404FDBFCB}</Project>
+      <Name>NeuronCloud.Atpc.Co.Modelos.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.Modelos\NeuronCloud.Atpc.Co.Modelos.csproj">
+      <Project>{ED095928-C3FF-4676-9077-66434C3FDAF9}</Project>
+      <Name>NeuronCloud.Atpc.Co.Modelos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.Providers\NeuronCloud.Atpc.Co.Providers.csproj">
+      <Project>{ea318d53-6cf1-4d86-9f7b-bf637bd95a78}</Project>
+      <Name>NeuronCloud.Atpc.Co.Providers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.WPF.RecursosComunes\NeuronCloud.Atpc.Co.WPF.RecursosComunes.csproj">
+      <Project>{7E8CCA1D-DF1E-4DE0-938B-43DA8F1375B3}</Project>
+      <Name>NeuronCloud.Atpc.Co.WPF.RecursosComunes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Neuron.UI.Controls\Neuron.UI.Controls.csproj">
+      <Project>{F9FE2876-6EB3-4059-BB95-CAAEFAAE1C9D}</Project>
+      <Name>Neuron.UI.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Neuron.HIS.Models.Common\Neuron.HIS.Models.Common.csproj">
+      <Project>{BBC35358-DB5E-453A-9AC1-CCDB2A553A21}</Project>
+      <Name>Neuron.HIS.Models.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Neuron.OSC.Data\Neuron.OSC.Data.csproj">
+      <Project>{5ACECC8E-7768-453F-92CD-90E060A0DF2B}</Project>
+      <Name>Neuron.OSC.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.WPF\NeuronCloud.Atpc.Co.WPF.csproj">
+      <Project>{fceb3a23-a895-4f07-9aac-92931d43bbfe}</Project>
+      <Name>NeuronCloud.Atpc.Co.WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <DesignData Include="SampleData\CRUDCommandsSampleData.xaml" />
+    <DesignData Include="SampleData\MainWindowViewModelSampleData.xaml">
+      <SubType>Designer</SubType>
+    </DesignData>
+    <DesignData Include="SampleData\MainWindowViewModelSampleData1.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="NC.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lysis.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

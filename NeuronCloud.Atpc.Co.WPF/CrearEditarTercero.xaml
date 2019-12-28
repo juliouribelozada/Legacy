@@ -1,0 +1,200 @@
+﻿<WPF:NeuronMainWindow
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ViewModels="clr-namespace:NeuronCloud.Atpc.Co.WPF.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:WPF="clr-namespace:NeuronCloud.Atpc.Co.WPF" xmlns:Helper="clr-namespace:NeuronCloud.Atpc.Co.WPF.Helper"
+    xmlns:Controls="clr-namespace:Atpc.UI.Controls;assembly=Atpc.UI.Controls" mc:Ignorable="d" 
+    x:Class="NeuronCloud.Atpc.Co.WPF.CrearEditarTercero"
+    Title="{Binding TituloVentana}" d:DataContext="{d:DesignData /SampleData/CrearEditarTerceroViewModelSampleData.xaml}" 
+    Topmost="True" WindowStartupLocation="CenterOwner"
+    Icon="pack://application:,,,/NeuronCloud.Atpc.Co.WPF.RecursosComunes;component/Imagenes/Usuarios.png" TamanoIconoTitulo="40" 
+    TextoTituloStyle="{DynamicResource ToolbarTitleStyle}" ColorBarraTitulo="#FF0B9300"
+    d:DesignHeight="200" d:DesignWidth="350" Width="650" Height="500"
+    Helper:ViewActionsHelper.CerrarVentana="{Binding CloseView}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Templates/NeuronMainWindowTemplate.xaml"/>
+               <ResourceDictionary Source="Themes/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Controls:BusyIndicator IsBusy="{Binding TerceroAEditar.IsBusy}" BusyContent="Espere...">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid x:Name="formularioGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Width="60" HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock TextWrapping="Wrap" Text="Tipo Doc." d:LayoutOverrides="Height" Style="{DynamicResource LabelTextBlockStyle}"/>
+                            <ComboBox TextSearch.TextPath="TipoIdentificacionId" d:LayoutOverrides="Height" Grid.RowSpan="2" Grid.Row="1" ItemsSource="{Binding ListaTipoIdentificacion}" SelectedItem="{Binding TerceroAEditar.TipoDocumento}" IsEditable="True" IsReadOnly="True"/>
+                        </Grid>
+                        <WPF:LabeledTextBox TextWrapping="Wrap" Text="{Binding TerceroAEditar.NumeroDocumento}" d:LayoutOverrides="Width, Height" Grid.Column="1"/>
+                    </Grid>
+                    <GroupBox Header="Información Personal" d:LayoutOverrides="Height" Grid.Row="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.634*"/>
+                                <RowDefinition Height="0.366*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <WPF:LabeledTextBox x:Name="PrimerNombreCtrl" Text="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Path=TerceroAEditar.PrimerApellido, ValidatesOnDataErrors=True}" d:LayoutOverrides="Width, Height"/>
+                            <WPF:LabeledTextBox Text="{Binding TerceroAEditar.SegundoApellido}" d:LayoutOverrides="Width, Height" Grid.Column="1"/>
+                            <WPF:LabeledTextBox Text="{Binding TerceroAEditar.PrimerNombre, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" d:LayoutOverrides="Width, Height" Grid.Column="2"/>
+                            <WPF:LabeledTextBox Text="{Binding TerceroAEditar.SegundoNombre}" d:LayoutOverrides="Width, Height" Grid.Column="3"/>
+                            <Grid MinWidth="100" Grid.Column="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock TextWrapping="Wrap" Text="Genero:" d:LayoutOverrides="Height" Style="{DynamicResource LabelTextBlockStyle}"/>
+                                <AdornerDecorator Grid.Row="1">
+                                    <ComboBox SelectedItem="{Binding TerceroAEditar.Genero, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" ItemsSource="{Binding Generos}"/>
+                                </AdornerDecorator>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Fecha de Nacimiento"  Style="{DynamicResource LabelTextBlockStyle}"/>
+                                <DatePicker d:LayoutOverrides="Width" Grid.Row="1" SelectedDate="{Binding TerceroAEditar.FechaNacimiento}"/>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="3" Header="Dirección">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.ColumnSpan="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid MinWidth="100">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock TextWrapping="Wrap" Text="Pais:" d:LayoutOverrides="Height" Style="{DynamicResource LabelTextBlockStyle}"/>
+                                    <ComboBox TextSearch.TextPath="Nombre" d:LayoutOverrides="Height" Grid.RowSpan="2" Grid.Row="1" ItemsSource="{Binding ListaPaises}" SelectedItem="{Binding PaisSeleccionado}" IsEditable="True"/>
+                                </Grid>
+                                <Grid Grid.Column="1" MinWidth="100">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock TextWrapping="Wrap" Text="Departamento:" d:LayoutOverrides="Height" Style="{DynamicResource LabelTextBlockStyle}"/>
+                                    <ComboBox TextSearch.TextPath="Nombre" d:LayoutOverrides="Height" Grid.RowSpan="2" Grid.Row="1" ItemsSource="{Binding ListaDepartamentos}" SelectedItem="{Binding DepartamentoSeleccionado}" IsEditable="True"/>
+                                </Grid>
+                                <Grid Grid.Column="2" MinWidth="100">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock TextWrapping="Wrap" Text="Municipio" d:LayoutOverrides="Height" Style="{DynamicResource LabelTextBlockStyle}"/>
+                                    <AdornerDecorator Grid.RowSpan="2" Grid.Row="1">
+                                        <ComboBox TextSearch.TextPath="Nombre" d:LayoutOverrides="Height" Grid.RowSpan="2" Grid.Row="1" ItemsSource="{Binding ListaMunicipios}" SelectedItem="{Binding NotifyOnValidationError=True, Path=TerceroAEditar.Municipio, ValidatesOnDataErrors=True}" IsEditable="True"/>
+                                    </AdornerDecorator>
+                                </Grid>
+                            </Grid>
+                            <WPF:LabeledTextBox TextWrapping="Wrap" Text="{Binding TerceroAEditar.Direccion, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" d:LayoutOverrides="Width, Height" Grid.Row="1" Grid.ColumnSpan="2"/>
+                            <Grid MinWidth="100" Grid.Row="1" Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock TextWrapping="Wrap" Text="Zona:" d:LayoutOverrides="Height" Style="{DynamicResource LabelTextBlockStyle}"/>
+                                <ComboBox Grid.RowSpan="2" Grid.Row="1" SelectedItem="{Binding TerceroAEditar.Zona}" ItemsSource="{Binding Zonas}"/>
+                            </Grid>
+                            <WPF:LabeledTextBox TextWrapping="Wrap" Text="{Binding TerceroAEditar.Barrio}" d:LayoutOverrides="Width, Height" Grid.Row="2"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="4" Header="Información de Contacto">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <WPF:LabeledTextBox Text="{Binding TerceroAEditar.TelefonoResidencia}" d:LayoutOverrides="Width, Height"/>
+                            <WPF:LabeledTextBox Text="{Binding TerceroAEditar.TelefonoMovil}" d:LayoutOverrides="Width, Height" Grid.Column="1"/>
+                            <WPF:LabeledTextBox Text="{Binding TerceroAEditar.TelefonoAlterno}" d:LayoutOverrides="Width, Height" Grid.Column="2"/>
+                            <WPF:LabeledTextBox Text="{Binding TerceroAEditar.Fax}" d:LayoutOverrides="Width, Height" Grid.Column="3"/>
+                            <Grid Grid.ColumnSpan="4" Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <WPF:LabeledTextBox Text="{Binding TerceroAEditar.CorreoPersonal, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" />
+                                <WPF:LabeledTextBox Text="{Binding TerceroAEditar.CorreoCorporativo, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Grid.Column="1"/>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1" HorizontalAlignment="Right">
+                    <Button Content="Guardar y Continuar..." Margin="5" IsEnabled="{Binding TerceroAEditar.IsValid}" Command="{Binding GaurdarTercero}"/>
+                    <Button Content="Cancelar" IsCancel="True" Margin="5"/>
+                </StackPanel>
+            </Grid>
+        </Controls:BusyIndicator>
+    </Grid>
+    <WPF:NeuronMainWindow.DataContext>
+        <ViewModels:CrearEditarTerceroViewModel x:Name="ViewModel" x:FieldModifier="public" />
+    </WPF:NeuronMainWindow.DataContext>
+</WPF:NeuronMainWindow>

@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Neuron.Satellite.CapturaManual.Controls.ValidacionDoble"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Controls="clr-namespace:Neuron.Satellite.CapturaManual.Controls" mc:Ignorable="d" 
+            HorizontalAlignment="Left" VerticalAlignment="Top">
+    <Grid Name="root" d:DataContext="{d:DesignInstance Controls:DummyContext}">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="Auto"/>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
+        <StackPanel x:Name="PrimerPanel" Margin="5" Orientation="Vertical" d:LayoutOverrides="Height">
+    		<TextBlock TextWrapping="Wrap" Text="Introduzca un Valor:" FontSize="9"/>
+    		<TextBox x:Name="FirstText" Width="120" Text="{Binding Texto1}" KeyDown="FirstText_KeyDown" HorizontalAlignment="Left" VerticalAlignment="Center" LostFocus="FirstText_LostFocus" />
+    	</StackPanel>
+        <StackPanel x:Name="SegundoPanel" Margin="5" Orientation="Vertical" VerticalAlignment="Top" Visibility="Collapsed">
+    		<TextBlock TextWrapping="Wrap" Text="Introduzca de nuevo el Valor:" FontSize="9" FontWeight="Bold"/>
+        	<TextBox x:Name="SecondText" Width="120" Text="{Binding Texto2}" KeyDown="SecondText_KeyDown" HorizontalAlignment="Left" VerticalAlignment="Center" LostFocus="SecondText_LostFocus" />
+        </StackPanel>
+        <TextBlock x:Name="Mensaje" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Text="{Binding Mensaje}"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,58 @@
+﻿<Neuron_Satelite_CapturaManual_Data:PRO_CargaCapturaCuatroCampos_Result xmlns:Neuron_Satelite_CapturaManual_Data="clr-namespace:Neuron.Satelite.CapturaManual.Data;assembly=Neuron.CapturaManual.Data" xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Neuron_Satelite_CapturaManual_Data_Model="clr-namespace:Neuron.Satelite.CapturaManual.Data.Model;assembly=Neuron.CapturaManual.Data" xmlns:System_Data="clr-namespace:System.Data;assembly=System.Data.Entity" xmlns:ATPC_Controls="clr-namespace:ATPC.Controls;assembly=Neuron.CapturaManual.Data" Analito="Aenean vestibulum maecenas" CodigoFuente="Cras curabitur class aliquam phasellus" Dato="Praesent accumsan adipiscing curae" DobleValida="False" DatoLargo="Integer bibendum" Flag="Normal" IdentificadorMuestra="Duis parturient mauris dictumst quisque" PosicionReporte="1" Restrictivo="False" Rotulo="Nullam consequat eleifend xd dgdr dfdf fg" RotuloTipo="DATO" TomaEvento="Unica" UnidadMedida="ml" ValorNormalTexto="d" EsColumna="True">
+	<Neuron_Satelite_CapturaManual_Data:PRO_CargaCapturaCuatroCampos_Result.Suggestions>
+		<System:String>Nam etiam fusce lorem facilisi</System:String>
+		<System:String>Vestibulum amet auctor sed</System:String>
+		<System:String>Dignissim dis elementum ante</System:String>
+		<System:String>Morbi est facilisis vivamus arcu</System:String>
+		<System:String>Vestibulum diam congue</System:String>
+		<System:String>Cursus eget hac elit</System:String>
+		<System:String>Leo faucibus habitant dictum</System:String>
+		<System:String>Fermentum inceptos</System:String>
+		<System:String>Enim lectus aliquam erat nulla</System:String>
+		<System:String>Aliquet libero adipiscing</System:String>
+	</Neuron_Satelite_CapturaManual_Data:PRO_CargaCapturaCuatroCampos_Result.Suggestions>
+	<Neuron_Satelite_CapturaManual_Data:PRO_CargaCapturaCuatroCampos_Result.SuggestionsDatoLargo>
+		<Neuron_Satelite_CapturaManual_Data_Model:SugerenciasAutoTexto Etiqueta="Mus nec eros blandit" Texto="Proin fringilla interdum commodo"/>
+		<Neuron_Satelite_CapturaManual_Data_Model:SugerenciasAutoTexto Etiqueta="Augue ligula parturient" Texto="Non per conubia cubilia lobortis"/>
+		<Neuron_Satelite_CapturaManual_Data_Model:SugerenciasAutoTexto Etiqueta="Dapibus nibh nisi sed" Texto="Egestas nisl euismod"/>
+		<Neuron_Satelite_CapturaManual_Data_Model:SugerenciasAutoTexto Etiqueta="Vestibulum nunc odio" Texto="Habitasse litora feugiat sem nascetur"/>
+		<Neuron_Satelite_CapturaManual_Data_Model:SugerenciasAutoTexto Etiqueta="Orci pede" Texto="Dolor hendrerit"/>
+		<Neuron_Satelite_CapturaManual_Data_Model:SugerenciasAutoTexto Etiqueta="Quam quis himenaeos" Texto="Imperdiet urna gravida"/>
+		<Neuron_Satelite_CapturaManual_Data_Model:SugerenciasAutoTexto Etiqueta="Iaculis luctus cras" Texto="Magnis pharetra placerat pulvinar"/>
+		<Neuron_Satelite_CapturaManual_Data_Model:SugerenciasAutoTexto Etiqueta="Malesuada penatibus sagittis duis mattis" Texto="Fames mauris"/>
+		<Neuron_Satelite_CapturaManual_Data_Model:SugerenciasAutoTexto Etiqueta="Porttitor mollis felis" Texto="Montes nunc"/>
+		<Neuron_Satelite_CapturaManual_Data_Model:SugerenciasAutoTexto Etiqueta="Vestibulum amet adipiscing ante senectus" Texto="Tincidunt tristique"/>
+	</Neuron_Satelite_CapturaManual_Data:PRO_CargaCapturaCuatroCampos_Result.SuggestionsDatoLargo>
+	<Neuron_Satelite_CapturaManual_Data:PRO_CargaCapturaCuatroCampos_Result.ValorNormal>
+		<Neuron_Satelite_CapturaManual_Data:EstudioValorNormal Analito="Laoreet sit ultricies" CodigoFuente="Justo ornare" EntityState="Modified" EdadDesde="94" Genero="Platea natoque arcu posuere ultrices" IdVrNormal="84" NomAnalizador="Primis potenti venenatis vestibulum" Tipo="Partial" TomaEvento="Vestibulum vel" ValorNormalTexto="Vehicula adipiscing rutrum volutpat lacus">
+			<Neuron_Satelite_CapturaManual_Data:EstudioValorNormal.EntityKey>
+				<System_Data:EntityKey EntitySetName="Integer dictumst morbi sociis" EntityContainerName="Lorem pretium" IsTemporary="True">
+					<System_Data:EntityKey.EntityKeyValues>
+						<System_Data:EntityKeyMember Key="Diam rhoncus maecenas"/>
+						<System_Data:EntityKeyMember Key="Vulputate parturient vestibulum"/>
+						<System_Data:EntityKeyMember Key="Sapien magna"/>
+						<System_Data:EntityKeyMember Key="Vestibulum curabitur"/>
+						<System_Data:EntityKeyMember Key="Semper praesent"/>
+						<System_Data:EntityKeyMember Key="Massa adipiscing"/>
+						<System_Data:EntityKeyMember Key="Eget phasellus parturient sodales"/>
+						<System_Data:EntityKeyMember Key="Consequat viverra elit convallis"/>
+						<System_Data:EntityKeyMember Key="Nam vestibulum vestibulum"/>
+						<System_Data:EntityKeyMember Key="Dignissim accumsan bibendum aliquam metus"/>
+					</System_Data:EntityKey.EntityKeyValues>
+				</System_Data:EntityKey>
+			</Neuron_Satelite_CapturaManual_Data:EstudioValorNormal.EntityKey>
+			<Neuron_Satelite_CapturaManual_Data:EstudioValorNormal.VrAlarmaHasta>
+				<System:Decimal/>
+			</Neuron_Satelite_CapturaManual_Data:EstudioValorNormal.VrAlarmaHasta>
+			<Neuron_Satelite_CapturaManual_Data:EstudioValorNormal.VrNormalHasta>
+				<System:Decimal/>
+			</Neuron_Satelite_CapturaManual_Data:EstudioValorNormal.VrNormalHasta>
+			<Neuron_Satelite_CapturaManual_Data:EstudioValorNormal.VrNormalDesde>
+				<System:Decimal/>
+			</Neuron_Satelite_CapturaManual_Data:EstudioValorNormal.VrNormalDesde>
+			<Neuron_Satelite_CapturaManual_Data:EstudioValorNormal.VrAlarmaDesde>
+				<System:Decimal/>
+			</Neuron_Satelite_CapturaManual_Data:EstudioValorNormal.VrAlarmaDesde>
+		</Neuron_Satelite_CapturaManual_Data:EstudioValorNormal>
+	</Neuron_Satelite_CapturaManual_Data:PRO_CargaCapturaCuatroCampos_Result.ValorNormal>
+	</Neuron_Satelite_CapturaManual_Data:PRO_CargaCapturaCuatroCampos_Result>

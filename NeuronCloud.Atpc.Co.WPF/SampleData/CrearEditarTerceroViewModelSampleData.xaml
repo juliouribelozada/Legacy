@@ -1,0 +1,5 @@
+﻿<ViewModels:CrearEditarTerceroViewModel
+    xmlns:ViewModels="clr-namespace:NeuronCloud.Atpc.Co.WPF.ViewModels"
+    xmlns:Modelos="clr-namespace:NeuronCloud.Atpc.Co.Modelos;assembly=NeuronCloud.Atpc.Co.Modelos" Modo="Nuevo" TituloVentana="4567 Main St., Buffalo, NY 98052">
+    
+</ViewModels:CrearEditarTerceroViewModel>

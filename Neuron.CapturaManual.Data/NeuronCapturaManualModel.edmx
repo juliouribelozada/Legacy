@@ -1,0 +1,727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NeuronCargaManualModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="CentroTomaMuestra">
+          <Key>
+            <PropertyRef Name="CodPrestador" />
+            <PropertyRef Name="PrefijoCentroToma" />
+          </Key>
+          <Property Name="CodPrestador" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PrefijoCentroToma" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CodCentroProceso" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="AbrevCentroToma" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="NomCentroToma" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EstadoCentroToma" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstudioAnalitoDato">
+          <Key>
+            <PropertyRef Name="CodigoFuente" />
+            <PropertyRef Name="Analito" />
+            <PropertyRef Name="Dato" />
+          </Key>
+          <Property Name="CodigoFuente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Analito" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Dato" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstudioAnalitoPlantilla">
+          <Key>
+            <PropertyRef Name="CodigoFuente" />
+            <PropertyRef Name="Analito" />
+            <PropertyRef Name="Plantilla" />
+          </Key>
+          <Property Name="CodigoFuente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Analito" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Plantilla" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PlantillaTexto" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstudioValorNormal">
+          <Key>
+            <PropertyRef Name="IdVrNormal" />
+          </Key>
+          <Property Name="NomAnalizador" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CodigoFuente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EdadDesde" Type="int" Nullable="false" />
+          <Property Name="EdadHasta" Type="int" />
+          <Property Name="Genero" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TipoVrNormal" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="VrAlarmaDesde" Type="decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="VrNormalDesde" Type="decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="VrNormalHasta" Type="decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="VrAlarmaHasta" Type="decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="VrNormalCualitativo" Type="varchar" MaxLength="50" />
+          <Property Name="Analito" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="TomaEvento" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ValorNormalTexto" Type="varchar" MaxLength="900" />
+          <Property Name="IdVrNormal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Function Name="PRO_UsuarioRolFuncion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="NumeroUnicoDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="Aplicacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_AutorizaPersonalAsistencial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="INTER">
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
+          <Parameter Name="CodEspecialidad" Type="varchar" Mode="In" />
+          <Parameter Name="EstadoPersoAsisten" Type="varchar" Mode="In" />
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CapturaManualAnalito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+          <Parameter Name="Analito" Type="varchar" Mode="In" />
+          <Parameter Name="Dato" Type="varchar" Mode="In" />
+          <Parameter Name="DatoLargo" Type="varchar" Mode="In" />
+          <Parameter Name="Observacion" Type="varchar" Mode="In" />
+          <Parameter Name="Formato" Type="varchar" Mode="In" />
+          <Parameter Name="UsuarioSistema" Type="varchar" Mode="In" />
+          <Parameter Name="CodPersoAsisten" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CapturaManualHistorico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+          <Parameter Name="Analito" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CapturaManualResultadoAnula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="NoResultado" Type="varchar" Mode="In" />
+          <Parameter Name="CodPersoAsisten" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CapturaManualValida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="Tipo" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="UsuarioSistema" Type="varchar" Mode="In" />
+          <Parameter Name="CodPersoAsisten" Type="varchar" Mode="In" />
+          <Parameter Name="Error" Type="varchar" Mode="InOut" />
+          <Parameter Name="NoRegProc" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="PRO_CargaCapturaCampoLargo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CargaCapturaCampoLargoSelecMulti" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+          <Parameter Name="Analito" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CargaCapturaCuatroCampos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CargaCapturaCuatroCamposDosBloques" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CargaCapturaFormula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CargaCapturaPanelOpcional" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CargaCapturaSeccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_CargaDatosPersoMuestra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConsultaEstudioIdenMuestra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConsultaResultadoEstudio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="NoResultado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_EstudioObservacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_EstudioObservacionInserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+          <Parameter Name="UsuarioRegistro" Type="varchar" Mode="In" />
+          <Parameter Name="Observacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_EstudioTrazabilidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdentificadorMuestra" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+          <Parameter Name="Analito" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="NeuronCargaManualModelStoreContainer">
+          <EntitySet Name="CentroTomaMuestra" EntityType="Self.CentroTomaMuestra" Schema="LAB" store:Type="Tables" />
+          <EntitySet Name="EstudioAnalitoDato" EntityType="Self.EstudioAnalitoDato" Schema="LAB" store:Type="Tables" />
+          <EntitySet Name="EstudioAnalitoPlantilla" EntityType="Self.EstudioAnalitoPlantilla" Schema="LAB" store:Type="Tables" />
+          <EntitySet Name="EstudioValorNormal" EntityType="Self.EstudioValorNormal" Schema="LAB" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NeuronCargaManualModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="NeuronCapturaManualEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="CentroTomaMuestra" EntityType="NeuronCargaManualModel.CentroTomaMuestra" />
+          <FunctionImport Name="PRO_CargaDatosPersoMuestra" ReturnType="Collection(NeuronCargaManualModel.PRO_CargaDatosPersoMuestra_Result)">
+          <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_CargaCapturaSeccion" ReturnType="Collection(NeuronCargaManualModel.PRO_CargaCapturaSeccion_Result)">
+          <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_AutorizaPersonalAsistencial" ReturnType="Collection(NeuronCargaManualModel.PRO_AutorizaPersonalAsistencial_Result)">
+            <Parameter Name="Clave" Mode="In" Type="String" />
+            <Parameter Name="CodEspecialidad" Mode="In" Type="String" />
+            <Parameter Name="EstadoPersoAsisten" Mode="In" Type="String" />
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_CapturaManualAnalito">
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+            <Parameter Name="Analito" Mode="In" Type="String" />
+            <Parameter Name="Dato" Mode="In" Type="String" />
+            <Parameter Name="DatoLargo" Mode="In" Type="String" />
+            <Parameter Name="Observacion" Mode="In" Type="String" />
+            <Parameter Name="Formato" Mode="In" Type="String" />
+            <Parameter Name="UsuarioSistema" Mode="In" Type="String" />
+            <Parameter Name="CodPersoAsisten" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_CargaCapturaCampoLargo" ReturnType="Collection(NeuronCargaManualModel.PRO_CargaCapturaCampoLargo_Result)">
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_CapturaManualValida">
+            <Parameter Name="Tipo" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="UsuarioSistema" Mode="In" Type="String" />
+            <Parameter Name="CodPersoAsisten" Mode="In" Type="String" />
+            <Parameter Name="Error" Mode="InOut" Type="String" />
+            <Parameter Name="NoRegProc" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_ConsultaEstudioIdenMuestra" ReturnType="Collection(NeuronCargaManualModel.PRO_ConsultaEstudioIdenMuestra_Result)">
+          <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_CapturaManualHistorico" ReturnType="Collection(NeuronCargaManualModel.PRO_CapturaManualHistorico_Result)">
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+            <Parameter Name="Analito" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_CargaCapturaCuatroCampos" ReturnType="Collection(NeuronCargaManualModel.PRO_CargaCapturaCuatroCampos_Result)">
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="EstudioAnalitoDato" EntityType="NeuronCargaManualModel.EstudioAnalitoDato" />
+          <EntitySet Name="EstudioValorNormal" EntityType="NeuronCargaManualModel.EstudioValorNormal" />
+          <FunctionImport Name="PRO_ConsultaResultadoEstudio" ReturnType="Collection(NeuronCargaManualModel.PRO_ConsultaResultadoEstudio_Result)">
+          <Parameter Name="NoResultado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_CargaCapturaCuatroCamposDosBloques" ReturnType="Collection(NeuronCargaManualModel.PRO_CargaCapturaCuatroCamposDosBloques_Result)">
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_CapturaManualResultadoAnula">
+            <Parameter Name="NoResultado" Mode="In" Type="String" />
+            <Parameter Name="CodPersoAsisten" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="EstudioAnalitoPlantilla" EntityType="NeuronCargaManualModel.EstudioAnalitoPlantilla" />
+          <FunctionImport Name="PRO_CargaCapturaFormula" ReturnType="Collection(NeuronCargaManualModel.PRO_CargaCapturaFormula_Result)">
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_CargaCapturaCampoLargoSelecMulti" ReturnType="Collection(NeuronCargaManualModel.PRO_CargaCapturaCampoLargoSelecMulti_Result)">
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+            <Parameter Name="Analito" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_CargaCapturaPanelOpcional" ReturnType="Collection(NeuronCargaManualModel.PRO_CargaCapturaPanelOpcional_Result)">
+          <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_UsuarioRolFuncion" ReturnType="Collection(NeuronCargaManualModel.PRO_UsuarioRolFuncion_Result)">
+            <Parameter Name="NumeroUnicoDocumento" Mode="In" Type="String" />
+            <Parameter Name="Aplicacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_EstudioObservacion" ReturnType="Collection(NeuronCargaManualModel.PRO_EstudioObservacion_Result)">
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_EstudioTrazabilidad" ReturnType="Collection(NeuronCargaManualModel.PRO_EstudioTrazabilidad_Result)">
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+            <Parameter Name="Analito" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_EstudioObservacionInserta">
+            <Parameter Name="IdentificadorMuestra" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+            <Parameter Name="UsuarioRegistro" Mode="In" Type="String" />
+            <Parameter Name="Observacion" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="CentroTomaMuestra">
+          <Key>
+            <PropertyRef Name="CodPrestador" />
+            <PropertyRef Name="PrefijoCentroToma" />
+          </Key>
+          <Property Type="String" Name="CodPrestador" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrefijoCentroToma" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomCentroToma" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AbrevCentroToma" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoCentroToma" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CodCentroProceso" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="PRO_CargaDatosPersoMuestra_Result">
+          <Property Type="String" Name="ServicioRemitente" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tipoidentificacion" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Documentoidentidad" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="83" />
+          <Property Type="String" Name="Genero" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="Edad" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="IdNumMuestra" Nullable="false" />
+          <Property Type="String" Name="CodDiag" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="NomDiagnostico" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ObservacionToma" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="NoOrdenMedica" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="NumeroUnicoDoc" Nullable="false" MaxLength="18" />
+          <Property Type="Int32" Name="EdadDias" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PRO_CargaCapturaSeccion_Result">
+          <Property Type="String" Name="NomSeccion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CodigoFuente" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NombreEstudio" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Observacion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Formato" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Opcional" Nullable="true" />
+          <Property Type="Boolean" Name="ObservaTecno" Nullable="true" />
+          <Property Type="Boolean" Name="Historico" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PRO_AutorizaPersonalAsistencial_Result">
+          <Property Type="String" Name="CodPersoAsisten" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="CargoPersoAsisten" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="CLAVE" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="CodEspecialidad" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="CodEspeHistoriaClinica" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="TipoIdentificacion" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="DocumentoIdentidad" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Profesion" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="GrupoCita" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="RegistroProfesional" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NomEspecialidad" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NumeroUnicoDocumento" Nullable="true" MaxLength="18" />
+          <Property Type="String" Name="NombrePersoAsisten" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EstadoPersoAsisten" Nullable="false" MaxLength="10" />
+          <Property Type="Int16" Name="DiasCitaAutoma" Nullable="true" />
+          <Property Type="String" Name="NomTurno" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="ProgramaCitaCE" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PRO_CargaCapturaCampoLargo_Result">
+          <Property Type="String" Name="IdentificadorMuestra" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Rotulo" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="DatoLargo" Nullable="true" MaxLength="2000" />
+          <Property Type="Int32" Name="PosicionReporte" Nullable="false" />
+          <Property Type="String" Name="TomaEvento" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Analito" Nullable="false" MaxLength="25" />
+          <Property Type="Boolean" Name="Requerido" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PRO_CapturaManualValida_Result">
+          <Property Type="String" Name="Error" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="NoRegProc" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PRO_ConsultaEstudioIdenMuestra_Result">
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="NomEstudio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NoResultado" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="PRO_CapturaManualHistorico_Result">
+          <Property Type="DateTime" Name="FechaHoraValidacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Dato" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Abreviatura" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="PRO_CargaCapturaCuatroCampos_Result">
+          <Property Type="String" Name="IdentificadorMuestra" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Rotulo" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="DatoLargo" Nullable="true" MaxLength="2000" />
+          <Property Type="Int32" Name="PosicionReporte" Nullable="false" />
+          <Property Type="String" Name="TomaEvento" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Analito" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="UnidadMedida" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ValorNormalTexto" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="RotuloTipo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Dato" Nullable="true" MaxLength="64" />
+          <Property Type="Boolean" Name="Restrictivo" Nullable="false" />
+          <Property Type="Boolean" Name="DobleValida" Nullable="false" />
+          <Property Type="Boolean" Name="Requerido" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="EstudioAnalitoDato">
+          <Key>
+            <PropertyRef Name="CodigoFuente" />
+            <PropertyRef Name="Analito" />
+            <PropertyRef Name="Dato" />
+          </Key>
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Analito" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Dato" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EstudioValorNormal">
+          <Key>
+            <PropertyRef Name="IdVrNormal" />
+          </Key>
+          <Property Type="String" Name="NomAnalizador" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="EdadDesde" Nullable="false" />
+          <Property Type="Int32" Name="EdadHasta" />
+          <Property Type="String" Name="Genero" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="VrAlarmaDesde" Nullable="false" Precision="12" Scale="4" />
+          <Property Type="Decimal" Name="VrNormalDesde" Nullable="false" Precision="12" Scale="4" />
+          <Property Type="Decimal" Name="VrNormalHasta" Nullable="false" Precision="12" Scale="4" />
+          <Property Type="Decimal" Name="VrAlarmaHasta" Nullable="false" Precision="12" Scale="4" />
+          <Property Type="String" Name="Analito" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TomaEvento" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ValorNormalTexto" MaxLength="900" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IdVrNormal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TipoVrNormal" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="VrNormalCualitativo" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="PRO_ConsultaResultadoEstudio_Result">
+          <Property Type="String" Name="Rotulo" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="Dato" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Medida" Nullable="true" MaxLength="24" />
+          <Property Type="String" Name="TomaEvento" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="PRO_CargaCapturaCuatroCamposDosBloques_Result">
+          <Property Type="String" Name="IdentificadorMuestra" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Rotulo" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="UnidadMedida" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ValorNormalTexto" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="RotuloTipo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Dato" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="DatoLargo" Nullable="true" MaxLength="2000" />
+          <Property Type="Int32" Name="PosicionReporte" Nullable="false" />
+          <Property Type="String" Name="TomaEvento" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Analito" Nullable="false" MaxLength="25" />
+          <Property Type="Boolean" Name="Restrictivo" Nullable="false" />
+          <Property Type="Boolean" Name="DobleValida" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="EstudioAnalitoPlantilla">
+          <Key>
+            <PropertyRef Name="CodigoFuente" />
+            <PropertyRef Name="Analito" />
+            <PropertyRef Name="Plantilla" />
+          </Key>
+          <Property Name="CodigoFuente" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Analito" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Plantilla" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PlantillaTexto" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="PRO_CargaCapturaFormula_Result">
+          <Property Type="String" Name="CodigoFuente" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Analito" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Dato" Nullable="true" MaxLength="64" />
+        </ComplexType>
+        <ComplexType Name="PRO_CargaCapturaCampoLargoSelecMulti_Result">
+          <Property Type="String" Name="Rotulo" Nullable="true" MaxLength="45" />
+          </ComplexType>
+        <ComplexType Name="PRO_CargaCapturaPanelOpcional_Result">
+          <Property Type="String" Name="NomPanel" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Analito" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="PRO_UsuarioRolFuncion_Result">
+          <Property Type="String" Name="NumeroUnicoDocUsuario" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="Funcion" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Aplicacion" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="PRO_EstudioObservacion_Result">
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usuario" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Decripcion" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PRO_EstudioTrazabilidad_Result">
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Evento" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Usuario" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Decripcion" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NeuronCargaManualModelStoreContainer" CdmEntityContainer="NeuronCapturaManualEntities" >
+          <EntitySetMapping Name="CentroTomaMuestra">
+            <EntityTypeMapping TypeName="NeuronCargaManualModel.CentroTomaMuestra">
+              <MappingFragment StoreEntitySet="CentroTomaMuestra">
+                <ScalarProperty Name="CodCentroProceso" ColumnName="CodCentroProceso" />
+                <ScalarProperty Name="EstadoCentroToma" ColumnName="EstadoCentroToma" />
+                <ScalarProperty Name="AbrevCentroToma" ColumnName="AbrevCentroToma" />
+                <ScalarProperty Name="NomCentroToma" ColumnName="NomCentroToma" />
+                <ScalarProperty Name="PrefijoCentroToma" ColumnName="PrefijoCentroToma" />
+                <ScalarProperty Name="CodPrestador" ColumnName="CodPrestador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CargaDatosPersoMuestra" FunctionName="NeuronCargaManualModel.Store.PRO_CargaDatosPersoMuestra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_CargaDatosPersoMuestra_Result">
+                <ScalarProperty Name="ServicioRemitente" ColumnName="ServicioRemitente" />
+                <ScalarProperty Name="Tipoidentificacion" ColumnName="Tipoidentificacion" />
+                <ScalarProperty Name="Documentoidentidad" ColumnName="Documentoidentidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="IdNumMuestra" ColumnName="IdNumMuestra" />
+                <ScalarProperty Name="CodDiag" ColumnName="CodDiag" />
+                <ScalarProperty Name="NomDiagnostico" ColumnName="NomDiagnostico" />
+                <ScalarProperty Name="ObservacionToma" ColumnName="ObservacionToma" />
+                <ScalarProperty Name="NoOrdenMedica" ColumnName="NoOrdenMedica" />
+                <ScalarProperty Name="NumeroUnicoDoc" ColumnName="NumeroUnicoDoc" />
+                <ScalarProperty Name="EdadDias" ColumnName="EdadDias" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CargaCapturaSeccion" FunctionName="NeuronCargaManualModel.Store.PRO_CargaCapturaSeccion">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_CargaCapturaSeccion_Result">
+                <ScalarProperty Name="NomSeccion" ColumnName="NomSeccion" />
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="NombreEstudio" ColumnName="NombreEstudio" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="Formato" ColumnName="Formato" />
+                <ScalarProperty Name="Opcional" ColumnName="Opcional" />
+                <ScalarProperty Name="ObservaTecno" ColumnName="ObservaTecno" />
+                <ScalarProperty Name="Historico" ColumnName="Historico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_AutorizaPersonalAsistencial" FunctionName="NeuronCargaManualModel.Store.PRO_AutorizaPersonalAsistencial">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_AutorizaPersonalAsistencial_Result">
+                <ScalarProperty Name="CodPersoAsisten" ColumnName="CodPersoAsisten" />
+                <ScalarProperty Name="CargoPersoAsisten" ColumnName="CargoPersoAsisten" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="CodEspecialidad" ColumnName="CodEspecialidad" />
+                <ScalarProperty Name="CodEspeHistoriaClinica" ColumnName="CodEspeHistoriaClinica" />
+                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+                <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+                <ScalarProperty Name="Profesion" ColumnName="Profesion" />
+                <ScalarProperty Name="GrupoCita" ColumnName="GrupoCita" />
+                <ScalarProperty Name="RegistroProfesional" ColumnName="RegistroProfesional" />
+                <ScalarProperty Name="NomEspecialidad" ColumnName="NomEspecialidad" />
+                <ScalarProperty Name="NumeroUnicoDocumento" ColumnName="NumeroUnicoDocumento" />
+                <ScalarProperty Name="NombrePersoAsisten" ColumnName="NombrePersoAsisten" />
+                <ScalarProperty Name="EstadoPersoAsisten" ColumnName="EstadoPersoAsisten" />
+                <ScalarProperty Name="DiasCitaAutoma" ColumnName="DiasCitaAutoma" />
+                <ScalarProperty Name="NomTurno" ColumnName="NomTurno" />
+                <ScalarProperty Name="ProgramaCitaCE" ColumnName="ProgramaCitaCE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CapturaManualAnalito" FunctionName="NeuronCargaManualModel.Store.PRO_CapturaManualAnalito" />
+          <FunctionImportMapping FunctionImportName="PRO_CapturaManualValida" FunctionName="NeuronCargaManualModel.Store.PRO_CapturaManualValida" >
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConsultaEstudioIdenMuestra" FunctionName="NeuronCargaManualModel.Store.PRO_ConsultaEstudioIdenMuestra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_ConsultaEstudioIdenMuestra_Result">
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="NomEstudio" ColumnName="NomEstudio" />
+                <ScalarProperty Name="NoResultado" ColumnName="NoResultado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CapturaManualHistorico" FunctionName="NeuronCargaManualModel.Store.PRO_CapturaManualHistorico">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_CapturaManualHistorico_Result">
+                <ScalarProperty Name="FechaHoraValidacion" ColumnName="FechaHoraValidacion" />
+                <ScalarProperty Name="Dato" ColumnName="Dato" />
+                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CargaCapturaCuatroCampos" FunctionName="NeuronCargaManualModel.Store.PRO_CargaCapturaCuatroCampos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_CargaCapturaCuatroCampos_Result">
+                <ScalarProperty Name="IdentificadorMuestra" ColumnName="IdentificadorMuestra" />
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="Rotulo" ColumnName="Rotulo" />
+                <ScalarProperty Name="DatoLargo" ColumnName="DatoLargo" />
+                <ScalarProperty Name="PosicionReporte" ColumnName="PosicionReporte" />
+                <ScalarProperty Name="TomaEvento" ColumnName="TomaEvento" />
+                <ScalarProperty Name="Analito" ColumnName="Analito" />
+                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="ValorNormalTexto" ColumnName="ValorNormalTexto" />
+                <ScalarProperty Name="RotuloTipo" ColumnName="RotuloTipo" />
+                <ScalarProperty Name="Dato" ColumnName="Dato" />
+                <ScalarProperty Name="Restrictivo" ColumnName="Restrictivo" />
+                <ScalarProperty Name="DobleValida" ColumnName="DobleValida" />
+                <ScalarProperty Name="Requerido" ColumnName="Requerido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="EstudioAnalitoDato">
+            <EntityTypeMapping TypeName="NeuronCargaManualModel.EstudioAnalitoDato">
+              <MappingFragment StoreEntitySet="EstudioAnalitoDato">
+                <ScalarProperty Name="Dato" ColumnName="Dato" />
+                <ScalarProperty Name="Analito" ColumnName="Analito" />
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstudioValorNormal">
+            <EntityTypeMapping TypeName="NeuronCargaManualModel.EstudioValorNormal">
+              <MappingFragment StoreEntitySet="EstudioValorNormal">
+                <ScalarProperty Name="VrNormalCualitativo" ColumnName="VrNormalCualitativo" />
+                <ScalarProperty Name="TipoVrNormal" ColumnName="TipoVrNormal" />
+                <ScalarProperty Name="IdVrNormal" ColumnName="IdVrNormal" />
+                <ScalarProperty Name="ValorNormalTexto" ColumnName="ValorNormalTexto" />
+                <ScalarProperty Name="TomaEvento" ColumnName="TomaEvento" />
+                <ScalarProperty Name="Analito" ColumnName="Analito" />
+                <ScalarProperty Name="VrAlarmaHasta" ColumnName="VrAlarmaHasta" />
+                <ScalarProperty Name="VrNormalHasta" ColumnName="VrNormalHasta" />
+                <ScalarProperty Name="VrNormalDesde" ColumnName="VrNormalDesde" />
+                <ScalarProperty Name="VrAlarmaDesde" ColumnName="VrAlarmaDesde" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="EdadHasta" ColumnName="EdadHasta" />
+                <ScalarProperty Name="EdadDesde" ColumnName="EdadDesde" />
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="NomAnalizador" ColumnName="NomAnalizador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConsultaResultadoEstudio" FunctionName="NeuronCargaManualModel.Store.PRO_ConsultaResultadoEstudio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_ConsultaResultadoEstudio_Result">
+                <ScalarProperty Name="Rotulo" ColumnName="Rotulo" />
+                <ScalarProperty Name="Dato" ColumnName="Dato" />
+                <ScalarProperty Name="Medida" ColumnName="Medida" />
+                <ScalarProperty Name="TomaEvento" ColumnName="TomaEvento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CargaCapturaCuatroCamposDosBloques" FunctionName="NeuronCargaManualModel.Store.PRO_CargaCapturaCuatroCamposDosBloques">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_CargaCapturaCuatroCamposDosBloques_Result">
+                <ScalarProperty Name="IdentificadorMuestra" ColumnName="IdentificadorMuestra" />
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="Rotulo" ColumnName="Rotulo" />
+                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="ValorNormalTexto" ColumnName="ValorNormalTexto" />
+                <ScalarProperty Name="RotuloTipo" ColumnName="RotuloTipo" />
+                <ScalarProperty Name="Dato" ColumnName="Dato" />
+                <ScalarProperty Name="DatoLargo" ColumnName="DatoLargo" />
+                <ScalarProperty Name="PosicionReporte" ColumnName="PosicionReporte" />
+                <ScalarProperty Name="TomaEvento" ColumnName="TomaEvento" />
+                <ScalarProperty Name="Analito" ColumnName="Analito" />
+                <ScalarProperty Name="Restrictivo" ColumnName="Restrictivo" />
+                <ScalarProperty Name="DobleValida" ColumnName="DobleValida" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CargaCapturaCampoLargo" FunctionName="NeuronCargaManualModel.Store.PRO_CargaCapturaCampoLargo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_CargaCapturaCampoLargo_Result">
+                <ScalarProperty Name="IdentificadorMuestra" ColumnName="IdentificadorMuestra" />
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="Rotulo" ColumnName="Rotulo" />
+                <ScalarProperty Name="DatoLargo" ColumnName="DatoLargo" />
+                <ScalarProperty Name="PosicionReporte" ColumnName="PosicionReporte" />
+                <ScalarProperty Name="TomaEvento" ColumnName="TomaEvento" />
+                <ScalarProperty Name="Analito" ColumnName="Analito" />
+                <ScalarProperty Name="Requerido" ColumnName="Requerido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CapturaManualResultadoAnula" FunctionName="NeuronCargaManualModel.Store.PRO_CapturaManualResultadoAnula" />
+          <EntitySetMapping Name="EstudioAnalitoPlantilla">
+            <EntityTypeMapping TypeName="NeuronCargaManualModel.EstudioAnalitoPlantilla">
+              <MappingFragment StoreEntitySet="EstudioAnalitoPlantilla">
+                <ScalarProperty Name="PlantillaTexto" ColumnName="PlantillaTexto" />
+                <ScalarProperty Name="Plantilla" ColumnName="Plantilla" />
+                <ScalarProperty Name="Analito" ColumnName="Analito" />
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CargaCapturaFormula" FunctionName="NeuronCargaManualModel.Store.PRO_CargaCapturaFormula">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_CargaCapturaFormula_Result">
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="Analito" ColumnName="Analito" />
+                <ScalarProperty Name="Dato" ColumnName="Dato" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CargaCapturaCampoLargoSelecMulti" FunctionName="NeuronCargaManualModel.Store.PRO_CargaCapturaCampoLargoSelecMulti">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_CargaCapturaCampoLargoSelecMulti_Result">
+                <ScalarProperty Name="Rotulo" ColumnName="Rotulo" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_CargaCapturaPanelOpcional" FunctionName="NeuronCargaManualModel.Store.PRO_CargaCapturaPanelOpcional">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_CargaCapturaPanelOpcional_Result">
+                <ScalarProperty Name="NomPanel" ColumnName="NomPanel" />
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="Analito" ColumnName="Analito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_UsuarioRolFuncion" FunctionName="NeuronCargaManualModel.Store.PRO_UsuarioRolFuncion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_UsuarioRolFuncion_Result">
+                <ScalarProperty Name="NumeroUnicoDocUsuario" ColumnName="NumeroUnicoDocUsuario" />
+                <ScalarProperty Name="Funcion" ColumnName="Funcion" />
+                <ScalarProperty Name="Aplicacion" ColumnName="Aplicacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_EstudioObservacion" FunctionName="NeuronCargaManualModel.Store.PRO_EstudioObservacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_EstudioObservacion_Result">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Decripcion" ColumnName="Decripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_EstudioTrazabilidad" FunctionName="NeuronCargaManualModel.Store.PRO_EstudioTrazabilidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCargaManualModel.PRO_EstudioTrazabilidad_Result">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Evento" ColumnName="Evento" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Decripcion" ColumnName="Decripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_EstudioObservacionInserta" FunctionName="NeuronCargaManualModel.Store.PRO_EstudioObservacionInserta" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="NeuronCapturaManualModel" >
+        <EntityTypeShape EntityType="NeuronCargaManualModel.CentroTomaMuestra" Width="1.5" PointX="0.75" PointY="0.75" Height="1.59568359375" />
+        <EntityTypeShape EntityType="NeuronCargaManualModel.EstudioAnalitoDato" Width="2.375" PointX="2.75" PointY="0.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="NeuronCargaManualModel.EstudioValorNormal" Width="3.5" PointX="0.75" PointY="3.75" Height="3.5186979166666656" />
+        <EntityTypeShape EntityType="NeuronCargaManualModel.EstudioAnalitoPlantilla" Width="1.5" PointX="5.375" PointY="3.75" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,40 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModels="clr-namespace:Neuron.Satelite.CapturaManual.Data.ViewModels;assembly=Neuron.CapturaManual.Data"
+        xmlns:Custom="http://www.atpc.co/xmlns/controls/charts" xmlns:Custom1="http://www.atpc.co/xmlns/controls/charting/common"
+        mc:Ignorable="d" x:Class="Neuron.Satellite.CapturaManual.Controls.HistoricosW"
+        Title="Historico" Height="325" d:DataContext="{d:DesignInstance {x:Type ViewModels:HistoricoViewModel}}" Icon="/Lysis.CapturaManual;component/Resources/magnify.ico" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" SizeToContent="Width">
+    <Grid>
+    	<Grid.RowDefinitions>
+    		<RowDefinition/>
+    		<RowDefinition Height="Auto"/>
+    	</Grid.RowDefinitions>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="300"/>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
+        <DataGrid AutoGenerateColumns="False" Margin="10" x:Name="dataGrid1" ItemsSource="{Binding Historicos}" >
+        	<DataGrid.Columns>
+        		<DataGridTextColumn Binding="{Binding FechaHoraValidacion}" Header="Fecha y Hora de Validación"/>
+        		<DataGridTextColumn Binding="{Binding Abreviatura}" Header="Analito"/>
+        		<DataGridTextColumn Binding="{Binding Dato}" Header="Valor"/>
+        	</DataGrid.Columns>
+        </DataGrid>
+    	<Custom:Chart x:Name="Grafico" Grid.Column="1" Grid.RowSpan="2" MinWidth="300" Visibility="Collapsed">
+    		<Custom:Chart.Titles>
+    			<Custom:Title Text="{Binding Parametros.Analito}"/>
+    		</Custom:Chart.Titles>
+    		<Custom:Chart.Series>
+    			<Custom1:DataSeries AutoFitToPlotArea="True" DataSource="{Binding ListaValores}" MarkerEnabled="True" RenderAs="Line">
+    				<Custom1:DataSeries.DataMappings>
+    					<Custom1:DataMapping MemberName="YValue" Path="Valor"/>
+    					<Custom1:DataMapping MemberName="XValue" Path="Fecha"/>
+    				</Custom1:DataSeries.DataMappings>
+    			</Custom1:DataSeries>
+    		</Custom:Chart.Series>
+    	</Custom:Chart>
+    	<Button Content="Ver Gráfico" HorizontalAlignment="Center" VerticalAlignment="Center" Width="82" Grid.Row="2" Margin="0,0,0,5" Click="Button_Click"/>
+    </Grid>
+</Window>

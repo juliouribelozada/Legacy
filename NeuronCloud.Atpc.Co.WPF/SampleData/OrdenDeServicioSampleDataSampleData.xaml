@@ -1,0 +1,92 @@
+<NeuronCloud_Atpc_Co_WPF_SampleData:OrdenDeServicioSampleData xmlns:NeuronCloud_Atpc_Co_WPF_SampleData="clr-namespace:NeuronCloud.Atpc.Co.WPF.SampleData" xmlns:NeuronCloud_Atpc_Co_Modelos_Data_SqlServer="clr-namespace:NeuronCloud.Atpc.Co.Modelos.Data.SqlServer;assembly=NeuronCloud.Atpc.Co.Modelos.Data" xmlns:NeuronCloud_Atpc_Co_Modelos="clr-namespace:NeuronCloud.Atpc.Co.Modelos;assembly=NeuronCloud.Atpc.Co.Modelos">
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio DocUnicoOsc="Consequat leo">
+		<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Curabitur aenean vestibulum nam adipiscing"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Sed mauris aliquam"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Dis nullam phasellus class maecenas"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Aptent est"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Auctor praesent hac accumsan cras"/>
+		</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio DocUnicoOsc="Convallis dignissim etiam">
+		<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Bibendum congue mus"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Parturient vestibulum curae integer"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Dictumst eleifend"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Nec quisque duis"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Vestibulum cursus facilisi faucibus donec"/>
+		</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio DocUnicoOsc="Sed sem">
+		<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Non fusce habitant elementum"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Adipiscing vivamus nunc"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Aliquam lorem"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Inceptos dictum interdum"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Per lobortis nascetur lectus"/>
+		</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio DocUnicoOsc="Litora fringilla ante">
+		<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Amet sit vel libero"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Pharetra placerat"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Facilisis aliquet blandit commodo pulvinar"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Nam fermentum"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Parturient ligula conubia sed"/>
+		</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio DocUnicoOsc="Adipiscing hac luctus parturient">
+		<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Vestibulum morbi"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Arcu dis nulla vestibulum sagittis"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Habitasse est diam hendrerit proin"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Senectus eget cubilia"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Himenaeos elit dapibus egestas"/>
+		</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio DocUnicoOsc="Mus parturient mattis">
+		<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Sociosqu imperdiet augue vestibulum"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Magnis dolor"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Euismod suscipit enim feugiat"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Malesuada erat"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Vestibulum penatibus adipiscing leo torquent"/>
+		</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio DocUnicoOsc="Primis vehicula volutpat">
+		<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Mauris ultrices mollis fames"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Gravida montes iaculis felis"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Nostra vestibulum porttitor"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Eros ornare ipsum platea justo"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Nec non nibh lacinia laoreet"/>
+		</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio DocUnicoOsc="Nunc ultricies accumsan bibendum">
+		<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Tincidunt per"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Maecenas vestibulum lacus"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Rutrum tristique adipiscing nisi"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Sed natoque parturient lorem vestibulum"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Magna sem praesent nisl massa"/>
+		</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio DocUnicoOsc="Vestibulum nam phasellus vestibulum">
+		<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Posuere sapien"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Dictumst sit eleifend vestibulum"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Metus venenatis adipiscing"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Parturient vulputate potenti pretium"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Curabitur facilisi vel"/>
+		</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio DocUnicoOsc="Sodales viverra">
+		<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Semper consequat"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Rhoncus adipiscing odio faucibus"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Sed parturient sociis orci"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Taciti convallis pede"/>
+			<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Tellus dis"/>
+		</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
+</NeuronCloud_Atpc_Co_WPF_SampleData:OrdenDeServicioSampleData>

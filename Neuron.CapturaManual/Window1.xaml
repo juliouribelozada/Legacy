@@ -1,0 +1,41 @@
+﻿<Window x:Class="Neuron.Satellite.CapturaManual.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="300" Width="300"
+        xmlns:controls="clr-namespace:Neuron.Satellite.CapturaManual.Controls" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Model="clr-namespace:Neuron.Satelite.CapturaManual.Data.Model;assembly=Neuron.CapturaManual.Data"
+        xmlns:ViewModels="clr-namespace:Neuron.Satelite.CapturaManual.Data.ViewModels;assembly=Neuron.CapturaManual.Data"
+        mc:Ignorable="d"
+        Icon="/Lysis.CapturaManual;component/Resources/Lysis.ico"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Normal" 
+        AllowsTransparency="True" 
+        ResizeMode="CanResizeWithGrip" 
+        Background="transparent">
+    <Window.Resources>
+        <controls:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <DataTemplate x:Key="BusyAutorizacion">
+            <StackPanel>
+                <TextBlock Margin="0" TextWrapping="Wrap" Text="Primero, Debe Identificarse:"/>
+                <PasswordBox x:Name="Pass" KeyDown="Pass_KeyDown" Loaded="Pass_Loaded" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static controls:Commands.PasteCommand}"
+                    Executed="ExecutedCustomCommand"
+                    CanExecute="CanExecuteCustomCommand" />
+        <CommandBinding Command="{x:Static controls:Commands.UpNavCommand}"
+                    Executed="ExecutedUpNavCommand"
+                    CanExecute="CanExecuteUpNavCommand" />
+        <CommandBinding Command="{x:Static controls:Commands.DownNavCommand}"
+                    Executed="ExecutedDownNavCommand"
+                    CanExecute="CanExecuteDownNavCommand" />
+    </Window.CommandBindings>
+    <Grid>
+        <controls:GeneralUI InterfazName="Captura Manual." MainWindow="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+        <controls:BusyIndicator></controls:BusyIndicator>
+    </Grid>
+</Window>

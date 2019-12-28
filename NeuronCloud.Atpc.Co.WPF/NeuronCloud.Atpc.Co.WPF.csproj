@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FCEB3A23-A895-4F07-9AAC-92931D43BBFE}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NeuronCloud.Atpc.Co.WPF</RootNamespace>
+    <AssemblyName>NeuronCloud.Atpc.Co.WPF</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.30816.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <UICulture>es-CO</UICulture>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\..\Libs\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutorizacionWindow.xaml.cs">
+      <DependentUpon>AutorizacionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\ControlsSettings.cs" />
+    <Compile Include="ControlDeCitas.xaml.cs">
+      <DependentUpon>ControlDeCitas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Calendario.cs" />
+    <Compile Include="Controls\CalendarioDiaView.xaml.cs">
+      <DependentUpon>CalendarioDiaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CitaView.xaml.cs">
+      <DependentUpon>CitaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Commands.cs" />
+    <Compile Include="Converters\AsigNoMuestraToVisibilityConverter.cs" />
+    <Compile Include="Converters\MultiplierConverter.cs" />
+    <Compile Include="Converters\InvertBoolConverter.cs" />
+    <Compile Include="Converters\InvertBooleanToVisibilityConverter.cs" />
+    <Compile Include="CrearEditarTercero.xaml.cs">
+      <DependentUpon>CrearEditarTercero.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\GeneralHelper.cs" />
+    <Compile Include="Helper\MetadatosHelper.cs" />
+    <Compile Include="Helper\ViewActionsHelper.cs" />
+    <Compile Include="LabeledTextBox.cs" />
+    <Compile Include="ListadoOSC.xaml.cs">
+      <DependentUpon>ListadoOSC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NeuronMainWindow.cs" />
+    <Compile Include="NeuronMainWindowVisualStates.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SampleData\OrdenDeServicioSampleData.cs" />
+    <Compile Include="VerReportes.xaml.cs">
+      <DependentUpon>VerReportes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AutorizacionWindowViewModel.cs" />
+    <Compile Include="ViewModels\ControlDeCitasViewModel.cs" />
+    <Compile Include="ViewModels\CrearEditarTerceroViewModel.cs" />
+    <Compile Include="ViewModels\ListadoOscViewModel.cs" />
+    <Compile Include="ViewModels\NeuronWindowViewModelBase.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atpc.Common.Settings\Atpc.Common.Settings.csproj">
+      <Project>{f6092d4c-aa34-4cc6-b8e3-60faa01c8243}</Project>
+      <Name>Atpc.Common.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atpc.Common\Atpc.Common.csproj">
+      <Project>{D99F689B-137D-4131-AA2B-9B9BFB9499F9}</Project>
+      <Name>Atpc.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atpc.UI.Controls\Atpc.UI.Controls.csproj">
+      <Project>{6a5b7a47-fe5b-47f0-99f4-4c859de785ae}</Project>
+      <Name>Atpc.UI.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.Modelos.Data\NeuronCloud.Atpc.Co.Modelos.Data.csproj">
+      <Project>{78a4b803-f8f1-409c-8e71-2ebb02992bef}</Project>
+      <Name>NeuronCloud.Atpc.Co.Modelos.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.Modelos.Helpers\NeuronCloud.Atpc.Co.Modelos.Helpers.csproj">
+      <Project>{74E220E4-D1E9-4E93-B5DC-CB4404FDBFCB}</Project>
+      <Name>NeuronCloud.Atpc.Co.Modelos.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.Modelos\NeuronCloud.Atpc.Co.Modelos.csproj">
+      <Project>{ED095928-C3FF-4676-9077-66434C3FDAF9}</Project>
+      <Name>NeuronCloud.Atpc.Co.Modelos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.WPF.RecursosComunes\NeuronCloud.Atpc.Co.WPF.RecursosComunes.csproj">
+      <Project>{7E8CCA1D-DF1E-4DE0-938B-43DA8F1375B3}</Project>
+      <Name>NeuronCloud.Atpc.Co.WPF.RecursosComunes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AutorizacionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BaseDataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlDeCitas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CalendarioDiaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CitaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CrearEditarTercero.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListadoOSC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <DesignData Include="SampleData\ControlDeCitasViewModelSampleData.xaml">
+      <SubType>Designer</SubType>
+    </DesignData>
+    <Page Include="Templates\LabeledTextBoxTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\NeuronMainWindowTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\TemplatesControles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VerReportes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <DesignData Include="SampleData\CrearEditarTerceroViewModelSampleData.xaml" />
+    <DesignData Include="SampleData\OrdenDeServicioSampleData.xaml" />
+    <DesignData Include="SampleData\OrdenDeServicioSampleDataSampleData.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\background.png" />
+    <BlendEmbeddedFont Include="Fonts\webdings.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\Hero.otf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+      <Characters>
+      </Characters>
+      <Uppercase>True</Uppercase>
+      <Lowercase>True</Lowercase>
+      <Numbers>True</Numbers>
+      <Punctuation>True</Punctuation>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\Hero Light.otf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+      <Characters>
+      </Characters>
+      <Uppercase>True</Uppercase>
+      <Lowercase>True</Lowercase>
+      <Numbers>True</Numbers>
+      <Punctuation>True</Punctuation>
+    </BlendEmbeddedFont>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\NC.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\metal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\printer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Lysis.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

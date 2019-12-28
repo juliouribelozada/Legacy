@@ -1,0 +1,219 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:Neuron.Satellite.CapturaManual.Controls" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Model="clr-namespace:Neuron.Satelite.CapturaManual.Data.Model;assembly=Neuron.CapturaManual.Data"
+        xmlns:ViewModels="clr-namespace:Neuron.Satelite.CapturaManual.Data.ViewModels;assembly=Neuron.CapturaManual.Data"
+        mc:Ignorable="d" x:Class="Neuron.Satellite.CapturaManual.MainWindow" 
+        Title="Lysis: Captura Manual" 
+        Height="600" Width="750" 
+        Icon="/Lysis.CapturaManual;component/Resources/Lysis.ico"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Normal" 
+        AllowsTransparency="True" 
+        ResizeMode="CanResizeWithGrip" 
+        Background="transparent">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <controls:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <DataTemplate x:Key="BusyAutorizacion">
+            <StackPanel>
+                <TextBlock Margin="0" TextWrapping="Wrap" Text="Primero, Debe Identificarse:" FontWeight="Bold"/>
+                <Label Content="Usuario" Margin="0,3,0,0"/>
+                <TextBox x:Name="User" KeyDown="User_OnKeyDown" Loaded="Pass_OnLoaded" Initialized="User_Initialized" LostFocus="User_LostFocus" />
+                <Label Content="Contraseña" Margin="0,3,0,0"/>
+                <PasswordBox x:Name="Pass" KeyDown="Pass_KeyDown" Loaded="Pass_OnLoaded"   />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static controls:Commands.PasteCommand}"
+                    Executed="ExecutedCustomCommand"
+                    CanExecute="CanExecuteCustomCommand" />
+        <CommandBinding Command="{x:Static controls:Commands.CloseMenuCommand}"
+                    Executed="CloseMenuActionCommand"
+                    CanExecute="CanCloseMenuCommand" />
+        <CommandBinding Command="{x:Static controls:Commands.UpNavCommand}"
+                    Executed="ExecutedUpNavCommand"
+                    CanExecute="CanExecuteUpNavCommand" />
+        <CommandBinding Command="{x:Static controls:Commands.DownNavCommand}"
+                    Executed="ExecutedDownNavCommand"
+                    CanExecute="CanExecuteDownNavCommand" />
+    </Window.CommandBindings>
+    <Grid>
+        <controls:GeneralUI InterfazName="Captura Manual." MainWindow="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+        <controls:BusyIndicator x:Name="AutorizacionBusyIndicator" Margin="10,60,10,10" ProgressBarVisibility="Hidden" BusyContentTemplate="{DynamicResource BusyAutorizacion}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border CornerRadius="10" Opacity="0.4" Margin="10" BorderThickness="1" BorderBrush="Black" d:IsLocked="True">
+                    <Border.Effect>
+                        <DropShadowEffect/>
+                    </Border.Effect>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="LightGray" Offset="0"/>
+                            <GradientStop Color="DarkGray" Offset="1"/>
+                            <GradientStop Color="LightGray" Offset="0.5"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Grid x:Name="InfoProfesionalGrid" HorizontalAlignment="Right" d:DataContext="{d:DesignInstance {x:Type ViewModels:ProfesionalViewModel}}" Grid.ColumnSpan="2" Height="21.96" VerticalAlignment="Top" d:LayoutOverrides="GridBox" Margin="0,-27,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox TextWrapping="Wrap" Text="{Binding Codigo}" d:LayoutOverrides="Width, Height" IsReadOnly="True" MinWidth="20" />
+                    <TextBox TextWrapping="Wrap" Text="{Binding Nombre}" d:LayoutOverrides="Width, Height" Grid.Column="2" IsReadOnly="True" MinWidth="80"/>
+                    <TextBox TextWrapping="Wrap" Text="{Binding Especialidad}" d:LayoutOverrides="Width, Height" Grid.Column="4" IsReadOnly="True" MinWidth="100"/>
+                    <Button Content="Cerrar Sesión" d:LayoutOverrides="Height" Grid.Column="6" x:Name="CerrarSesionButton" Click="CerrarSesionButton_Click" />
+                </Grid>
+                <Grid Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="5" Background="White" Padding="5" Name="BrandingPanel" d:DataContext="{d:DesignInstance ViewModels:BrandingViewModel}" MaxHeight="75" MinWidth="20" MaxWidth="250" CornerRadius="5" BorderThickness="1">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="DarkGray" Offset="0"/>
+                                <GradientStop Color="LightGray" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <Image Source="{Binding Path=Logo}" HorizontalAlignment="Center"/>
+                    </Border>
+                    <Grid x:Name="IdentificadorMuestraGrid" HorizontalAlignment="Left" d:DataContext="{d:DesignInstance {x:Type Model:IdentificadorMuestra}}" d:LayoutOverrides="Height" Margin="0" Grid.Column="1" VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Fecha Toma" HorizontalAlignment="Left" d:LayoutOverrides="Height" VerticalAlignment="Bottom"/>
+                        <Label Content="Centro de Toma" HorizontalAlignment="Left" d:LayoutOverrides="Height" Grid.Column="2" VerticalAlignment="Bottom"/>
+                        <Label Content="Número &#xd;&#xa;de Muestra" HorizontalAlignment="Left" d:LayoutOverrides="Height" Grid.Column="4" VerticalAlignment="Bottom"/>
+                        <DatePicker d:LayoutOverrides="Width, Height" Grid.Row="1" SelectedDate="{Binding FechaToma}" FontSize="18"/>
+                        <ComboBox x:Name="centrosDeTomaComboBox" d:LayoutOverrides="Height" Grid.Column="2" MinWidth="100" Grid.Row="1" SelectedValue="{Binding CentroToma}" ItemsSource="{Binding CentrosDeTomaList}" FontSize="18"/>
+                        <TextBox d:LayoutOverrides="Width, Height" Grid.Column="4" Grid.Row="1" MaxLength="3" x:Name="NumeroTomaTextBox" KeyDown="NumeroTomaTextBox_KeyDown" FontSize="18" LostFocus="NumeroTomaTextBox_LostFocus" />
+                        <DockPanel x:Name="ObservacionMuestraPanel" Grid.ColumnSpan="9" Grid.Row="2" Visibility="{Binding Result.ObservacionToma, Converter={StaticResource NullToVisibilityConverter}}" d:LayoutOverrides="Width"  Margin="0,5,0,0" d:DataContext="{d:DesignInstance {x:Type ViewModels:InfoPersonaViewModel}}">
+                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Observacion Muestra:" Margin="0,0,5,0"/>
+                            <TextBox MaxLength="3" x:Name="ObservacionTextBox" IsReadOnly="True" Text="{Binding Result.ObservacionToma}" HorizontalContentAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Bottom" />
+                        </DockPanel>
+                        <Button x:Name="BuscarPendienteButton" d:LayoutOverrides="Height" Grid.Column="8" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="BuscarPendienteButton_Click">
+                            <StackPanel>
+                                <Image Source="Resources/magnify.ico" Width="30"/>
+                                <TextBlock TextWrapping="Wrap" Text="Pendientes..."/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="TrackBySampleButton" d:LayoutOverrides="Height" Grid.Column="6" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="DoTrackingBySample">
+                            <Grid>
+                                <Grid Width="25" Height="25" Margin="5">
+                                    <Image Source="Resources/Pencil.png"/>
+                                    <Image Source="Resources/magnify.ico"/>
+                                </Grid>
+                            </Grid>
+                        </Button>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Servicio:" VerticalAlignment="Bottom" Grid.Column="10" Margin="3"/>
+                        <TextBox Grid.Column="10" Grid.Row="1" MaxLength="3" x:Name="ServicioTextBox" FontSize="18"  d:LayoutOverrides="Width, Height" d:DataContext="{d:DesignInstance {x:Type ViewModels:InfoPersonaViewModel}}" IsReadOnly="True" Text="{Binding Result.ServicioRemitente}" />
+                    </Grid>
+                    <Grid x:Name="InfoPersonaDataGrid" HorizontalAlignment="Center" Grid.Row="1" d:DataContext="{d:DesignInstance {x:Type ViewModels:InfoPersonaViewModel}}" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Documento" Grid.ColumnSpan="3" Padding="5,1,5,2"/>
+                        <Label Content="Nombre" Grid.Column="4" Padding="5,1,5,2"/>
+                        <Label Content="Edad" Grid.Column="6" Padding="5,1,5,2"/>
+                        <Label Content="Género" Grid.Column="8" Padding="5,1,5,2"/>
+                        <TextBox TextWrapping="Wrap" Text="{Binding Result.Tipoidentificacion}" d:LayoutOverrides="Width, Height" Grid.Row="1" IsReadOnly="True" MinWidth="20" />
+                        <TextBox TextWrapping="Wrap" Text="{Binding Result.Documentoidentidad}" d:LayoutOverrides="Width, Height" Grid.Column="2" Grid.Row="1" IsReadOnly="True" MinWidth="80"/>
+                        <TextBox TextWrapping="Wrap" Text="{Binding Result.Nombre}" d:LayoutOverrides="Width, Height" Grid.Column="4" Grid.Row="1" IsReadOnly="True" MinWidth="100"/>
+                        <TextBox TextWrapping="Wrap" Text="{Binding Result.Edad}" d:LayoutOverrides="Width, Height" Grid.Column="6" Grid.Row="1" IsReadOnly="True" MinWidth="100"/>
+                        <TextBox TextWrapping="Wrap" Text="{Binding Result.Genero}" d:LayoutOverrides="Width, Height" Grid.Column="8" Grid.Row="1" IsReadOnly="True" MinWidth="50"/>
+                        <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,5,0,0" Grid.Column="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox TextWrapping="Wrap" Text="{Binding Result.CodDiag}" IsReadOnly="True" MinWidth="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox TextWrapping="Wrap" Text="{Binding Result.NomDiagnostico}" Grid.Column="2" IsReadOnly="True" MinWidth="70" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Button x:Name="ValidaTodoButton" Content="Validar Todo" d:LayoutOverrides="Height" Grid.Column="12" Grid.Row="1" Style="{DynamicResource ValidationButtonStyle}" Click="ValidaTodoButton_Click" d:DataContext="{d:DesignInstance ViewModels:CapturaManualFunctionsViewModel}" Visibility="{Binding Validar, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    </Grid>
+                </Grid>
+                <Border CornerRadius="10" Opacity="0.4" Margin="10,0,10,10" BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                    <Border.Effect>
+                        <DropShadowEffect/>
+                    </Border.Effect>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="LightGray" Offset="0"/>
+                            <GradientStop Color="DarkGray" Offset="1"/>
+                            <GradientStop Color="LightGray" Offset="0.5"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Grid Grid.Row="1" Margin="15,5,15,15" Name="ExamenesContainer" d:DataContext="{d:DesignData Source=/SampleData/ExamenesSampleData.xaml}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Vertical" d:LayoutOverrides="Height">
+                        <TextBlock TextWrapping="Wrap" FontSize="14.667" FontWeight="Bold" Visibility="Collapsed"><Run Language="es-co" Text="Secciones:"/></TextBlock>
+                        <ListBox x:Name="SeccionesList" ItemsSource="{Binding SeccionesView}" ItemTemplate="{DynamicResource ExamenesButtonTemplate}" ItemsPanel="{DynamicResource WrapPanelTemplate}" SelectionChanged="SeccionesList_SelectionChanged" IsSynchronizedWithCurrentItem="True" Margin="0,0,12,0" Background="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle2}" MinHeight="43.5" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                    </StackPanel>
+                    <ContentControl Content="{Binding SeccionesView/}" ContentTemplate="{DynamicResource ExamenesContentTemplate}" Grid.Row="1" ScrollViewer.CanContentScroll="True"/>
+                    <!--<TabControl x:Name="ExamenesTabContainer" ItemsSource="{Binding Path=Secciones}" ItemTemplate="{DynamicResource ExamenesTabTemplate}" ContentTemplate="{DynamicResource ExamenesContentTemplate}" Background="{x:Null}" IsSynchronizedWithCurrentItem="True" />-->
+                </Grid>
+            </Grid>
+        </controls:BusyIndicator>
+    </Grid>
+</Window>

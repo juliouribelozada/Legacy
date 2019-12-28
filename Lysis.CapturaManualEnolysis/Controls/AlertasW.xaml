@@ -1,0 +1,17 @@
+﻿<Window x:Class="Neuron.Satellite.CapturaManual.Controls.AlertasW"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:viewModels="clr-namespace:Neuron.Satelite.CapturaManual.Data.ViewModels;assembly=Neuron.CapturaManual.Data"
+        mc:Ignorable="d"
+        Title="Seleccione un Texto:" Height="300" Width="360" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
+    <Grid d:DataContext="{d:DesignInstance viewModels:AlertasViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ListBox Name="listBox1" Grid.Row="1" ItemsSource="{Binding Path=ListaAlertas}" SelectedItem="{Binding Path=SelectedAlert, Mode=TwoWay}" />
+        <TextBlock Text="Seleccione una de las siguientes opciones: "  HorizontalAlignment="Left" Name="TituloVentana" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="16" />
+    </Grid>
+</Window>

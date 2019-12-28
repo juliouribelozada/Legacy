@@ -1,0 +1,73 @@
+﻿<Window x:Class="Atpc.UI.Controls.Configurators.SerialPortConfiguratorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:SerialPortConfiguration="clr-namespace:Atpc.UI.Controls.Configurators.SerialPortConfiguration"
+        mc:Ignorable="d"
+        Title="SerialPortConfiguratorWindow"
+         d:DataContext="{d:DesignInstance SerialPortConfiguration:SerialPortConfigurationViewModel}"
+        Icon="/Atpc.UI.Controls;component/Resources/SerialPortFront.png" 
+        WindowStyle="ToolWindow" 
+        WindowStartupLocation="CenterOwner" 
+        Topmost="True"
+        ResizeMode="NoResize"
+        Height="300" Width="370">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    <Grid x:Name="Raiz" Margin="0,15,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.RowSpan="6" VerticalAlignment="Top" Padding="5" BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Background="White" HorizontalAlignment="Left" Margin="5" Width="95">
+            <Border.Effect>
+                <DropShadowEffect Color="Gray"/>
+            </Border.Effect>
+            <Image x:Name="image1" Stretch="Uniform"  HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Atpc.UI.Controls;component/Resources/SerialPortFront.png" />
+        </Border>
+        <Grid Grid.Row="6" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Aceptar" x:Name="AceptarButton" d:LayoutOverrides="GridBox" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsDefault="True" Margin="0,0,0,20" Grid.Column="3" Padding="3,1" Command="{Binding AcceptChangesCommand}" />
+            <Button x:Name="CancelarButton" Content="Cancelar" Grid.Column="4" d:LayoutOverrides="Height" IsCancel="True" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" Padding="3,1"  />
+            <Button x:Name="DefaultButton" Content="Valores &#xd;&#xa;Por Defecto" d:LayoutOverrides="GridBox" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="1" FontSize="10" Margin="0,20" Command="{Binding ResetToDefaultCommand}" />
+            <Button Content="Cancelar &#xd;&#xa;Cambios" x:Name="ResetButton"  d:LayoutOverrides="GridBox" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" FontSize="10" Command="{Binding ResetChangesCommand}"/>
+        </Grid>
+        <Label x:Name="PuertoLabel" HorizontalAlignment="Left" Content="_Puerto:" VerticalAlignment="Center" Grid.Column="1" Target="{Binding ElementName=PuertosDisponibleComboBox}" />
+        <ComboBox HorizontalAlignment="Left" x:Name="PuertosDisponibleComboBox" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=Parameters.AvailablePorts}"  DisplayMemberPath="Name" SelectedValue="{Binding NombrePuerto}" SelectedValuePath="Name" Grid.Column="2" Margin="5,2,0,2" Height="23"  />
+        <Label x:Name="VelocidadLabel" HorizontalAlignment="Left" Content="_Velocidad:" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Target="{Binding ElementName=VelocidadComboBox}" />
+        <ComboBox HorizontalAlignment="Left" x:Name="VelocidadComboBox" Width="120" ItemsSource="{Binding Path=Parameters.BaudRatesAvailables}"  DisplayMemberPath="Value" SelectedValue="{Binding Velocidad}" SelectedValuePath="Value" Grid.Column="2" Margin="5,2,0,2" Height="23" Grid.Row="1"  />
+        <Label x:Name="BitDeDatosLabel" HorizontalAlignment="Left" Content="Bits De _Datos:" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Target="{Binding ElementName=BitDeDatosComboBox}" />
+        <ComboBox HorizontalAlignment="Left" x:Name="BitDeDatosComboBox" Width="120" ItemsSource="{Binding Path=Parameters.DataBitsLengths}"  DisplayMemberPath="Value" SelectedValue="{Binding BitsDeDatos}" SelectedValuePath="Value" Grid.Column="2" Grid.Row="2" Margin="5,2,0,2" Height="23"  />
+        <Label x:Name="ParidadLabel" HorizontalAlignment="Left" Content="_Paridad:" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" Target="{Binding ElementName=ParidadComboBox}" />
+        <ComboBox HorizontalAlignment="Left" x:Name="ParidadComboBox" VerticalAlignment="Bottom" Width="120" ItemsSource="{Binding Path=Parameters.ParityValues}"  DisplayMemberPath="Name" SelectedValue="{Binding Paridad}" SelectedValuePath="Value" Grid.Column="2" Margin="5,2,0,2" Height="23" Grid.Row="3"  />
+        <Label x:Name="BitsDeParadaLabel" HorizontalAlignment="Left" Content="Bit_s deParada:" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Target="{Binding ElementName=BitsDeParadaComboBox}" />
+        <ComboBox HorizontalAlignment="Left" x:Name="BitsDeParadaComboBox" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=Parameters.StopBitsValues}"  DisplayMemberPath="Name" SelectedValue="{Binding BitsDeParada}" SelectedValuePath="Value" Grid.Column="2" Grid.Row="4" Margin="5,2,0,2" Height="23"  />
+        <Label x:Name="HandShakeLabel" HorizontalAlignment="Left" Content="Control de _Flujo:" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" Target="{Binding ElementName=HandShakeCombobox}" />
+        <ComboBox HorizontalAlignment="Left" x:Name="HandShakeCombobox" Width="120" ItemsSource="{Binding Path=Parameters.HandShakeProtocols}"  DisplayMemberPath="Name" SelectedValue="{Binding ControlDeFlujo}" SelectedValuePath="Value" Grid.Column="2" Grid.Row="5" VerticalAlignment="Top" Margin="5,2,0,2" Height="23"  />
+        <TextBlock x:Name="AlertaPuerto" HorizontalAlignment="Left" TextWrapping="Wrap" Text="*" VerticalAlignment="Center" Grid.Column="3" Margin="5,0" Foreground="Red" Visibility="{Binding NombrePuertoHasChanges, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <TextBlock x:Name="AlertaVelocidad" HorizontalAlignment="Left" TextWrapping="Wrap" Text="*" VerticalAlignment="Center" Grid.Column="3" Margin="5,0" Foreground="Red" Grid.Row="1" Visibility="{Binding VelocidadHasChanges, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <TextBlock x:Name="AlertaBitsDeDatos" HorizontalAlignment="Left" TextWrapping="Wrap" Text="*" VerticalAlignment="Center" Grid.Column="3" Margin="5,0" Foreground="Red" Grid.Row="2" Visibility="{Binding BitsDeDatosHasChanges, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <TextBlock x:Name="AlertaParidad" HorizontalAlignment="Left" TextWrapping="Wrap" Text="*" VerticalAlignment="Center" Grid.Column="3" Margin="5,0" Foreground="Red" Grid.Row="3" Visibility="{Binding ParidadHasChanges, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <TextBlock x:Name="AlertaBitsDeParada" HorizontalAlignment="Left" TextWrapping="Wrap" Text="*" VerticalAlignment="Center" Grid.Column="3" Margin="5,0" Foreground="Red" Grid.Row="4" Visibility="{Binding BitsDeParadaHasChanges, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <TextBlock x:Name="AlertaHandShake" HorizontalAlignment="Left" TextWrapping="Wrap" Text="*" VerticalAlignment="Center" Grid.Column="3" Margin="5,0" Foreground="Red" Grid.Row="5" Visibility="{Binding ControlDeFlujoHasChanges, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+    </Grid>
+</Window>

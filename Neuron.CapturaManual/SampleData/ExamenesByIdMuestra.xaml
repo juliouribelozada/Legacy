@@ -1,0 +1,23 @@
+﻿<ViewModels:ExamenesPendientesViewModel xmlns:ViewModels="clr-namespace:Neuron.Satelite.CapturaManual.Data.ViewModels;assembly=Neuron.CapturaManual.Data"                              
+                              xmlns:Data="clr-namespace:Neuron.Satelite.CapturaManual.Data;assembly=Neuron.CapturaManual.Data"
+                                    IdMuestra="TestID">
+    <ViewModels:ExamenesPendientesViewModel.Pendientes>
+        <Data:PRO_ConsultaEstudioIdenMuestra_Result CodigoFuente="001" NomEstudio="Estudasio nombre " NoResultado="cd1" >
+            <Data:PRO_ConsultaEstudioIdenMuestra_Result.Resultados>
+                <Data:PRO_ConsultaResultadoEstudio_Result Rotulo="jumm"  Dato="rrr" Medida="55"/>
+                <Data:PRO_ConsultaResultadoEstudio_Result Rotulo="jumm"  Dato="rrr" Medida="43"/>
+                <Data:PRO_ConsultaResultadoEstudio_Result Rotulo="jumm"  Dato="rrr" Medida="43"/>
+                <Data:PRO_ConsultaResultadoEstudio_Result Rotulo="jumm"  Dato="rrr" Medida="43"/>
+                <Data:PRO_ConsultaResultadoEstudio_Result Rotulo="jumm"  Dato="rrr" Medida="43"/>
+                <Data:PRO_ConsultaResultadoEstudio_Result Rotulo="jumm"  Dato="rrr" Medida="43"/>
+                <Data:PRO_ConsultaResultadoEstudio_Result Rotulo="jumm"  Dato="rrr" Medida="43"/>
+                <Data:PRO_ConsultaResultadoEstudio_Result Rotulo="jumm"  Dato="rsfd s d sd sdf  ds s d fsd fs df s dfs dfs ds df sdf sd  sd  sd sdfs dfs df sd sdf sd sd f  sddf  s rr" Medida=""/>
+                <Data:PRO_ConsultaResultadoEstudio_Result Rotulo="jumm"  Dato="rrr" Medida="43"/>
+            </Data:PRO_ConsultaEstudioIdenMuestra_Result.Resultados>
+        </Data:PRO_ConsultaEstudioIdenMuestra_Result>
+        <Data:PRO_ConsultaEstudioIdenMuestra_Result CodigoFuente="002" NomEstudio="aaa nombre " />
+        <Data:PRO_ConsultaEstudioIdenMuestra_Result CodigoFuente="101" NomEstudio="bbb nombre " NoResultado="cde" />
+        <Data:PRO_ConsultaEstudioIdenMuestra_Result CodigoFuente="201" NomEstudio="ccc nombre largoEstudio nombre largoEstudio nombre largoEstudio nombre largoEstudio nombre largoEstudio nombre largoEstudio nombre largoEstudio nombre largoEstudio nombre largoEstudio nombre largo " />
+        <Data:PRO_ConsultaEstudioIdenMuestra_Result CodigoFuente="s01" NomEstudio="Estudio nombre " />
+    </ViewModels:ExamenesPendientesViewModel.Pendientes>
+</ViewModels:ExamenesPendientesViewModel> 

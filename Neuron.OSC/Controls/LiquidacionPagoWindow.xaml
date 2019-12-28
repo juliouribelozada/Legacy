@@ -1,0 +1,150 @@
+﻿<wpf:NeuronMainWindow 
+    x:Class="Neuron.OSC.Controls.LiquidacionPagoWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:wpf="clr-namespace:NeuronCloud.Atpc.Co.WPF;assembly=NeuronCloud.Atpc.Co.WPF"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Neuron.OSC.Controls"
+    xmlns:helper="clr-namespace:NeuronCloud.Atpc.Co.WPF.Helper;assembly=NeuronCloud.Atpc.Co.WPF"
+    xmlns:model="clr-namespace:Neuron.OSC.Data.Model;assembly=Neuron.OSC.Data"
+    mc:Ignorable="d"
+    Title="Formas de Pago" Height="450" Width="700"
+    Topmost="True"
+    WindowStartupLocation="CenterOwner"
+    Icon="pack://application:,,,/NeuronCloud.Atpc.Co.WPF.RecursosComunes;component/Imagenes/Accounting-02.png" 
+    TamanoIconoTitulo="35" 
+    TextoTituloStyle="{DynamicResource ToolbarTitleStyle}"
+    ColorBarraTitulo="#FF0B9300"
+    helper:ViewActionsHelper.CerrarVentana="{Binding CloseView}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/NeuronCloud.Atpc.Co.WPF;component/Templates/NeuronMainWindowTemplate.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/NeuronCloud.Atpc.Co.WPF;component/Themes/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="dataGrid" ItemsSource="{Binding OriginalViewModel.LiquidationItems}" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False" HorizontalAlignment="Left" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding CodConvenio}" ClipboardContentBinding="{x:Null}" Header="Convenio"/>
+                    <DataGridTextColumn Binding="{Binding NombrePago}" ClipboardContentBinding="{x:Null}" Header="Tipo Pago"/>
+                    <DataGridTextColumn Binding="{Binding Valor}" ClipboardContentBinding="{x:Null}" Header="Valor"/>
+                    <DataGridTextColumn Binding="{Binding GrupoplanBene}" ClipboardContentBinding="{x:Null}" Header="Grupo"/>
+                    <DataGridTextColumn Binding="{Binding GeneraFactura}" ClipboardContentBinding="{x:Null}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid HorizontalAlignment="Left">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Etiquetas Inicio-->
+                    <Label Content="Convenio" HorizontalAlignment="Left" d:LayoutOverrides="Height" Style="{DynamicResource AutoLabelStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="Tipo Pago" HorizontalAlignment="Left" d:LayoutOverrides="Height" Style="{DynamicResource AutoLabelStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="4" Content="Medio Pago" HorizontalAlignment="Left" d:LayoutOverrides="Height" Style="{DynamicResource AutoLabelStyle}" Visibility="{Binding SelectedFormaDePago.MedioDePago, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    <Label Grid.Row="0" Grid.Column="6" Content="{Binding SelectedFormaDePago.TextoEtiquetaDocumentoDePago}" HorizontalAlignment="Left" d:LayoutOverrides="Height" Style="{DynamicResource AutoLabelStyle}" Visibility="{Binding SelectedFormaDePago.NumeroDeDocumentoDePago, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    <Label Grid.Row="0" Grid.Column="8" Content="Valor" HorizontalAlignment="Left" d:LayoutOverrides="Height" Style="{DynamicResource AutoLabelStyle}"/>
+                    <!--Etiquetas Fin-->
+                    <ComboBox IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding OriginalViewModel.LiquidationItems}" SelectedItem="{Binding OriginalViewModel.SelectedSelectedAgreementToPay}" VerticalAlignment="Top" Grid.Row="1" MinWidth="100">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="Auto" Width="Auto">
+                                    <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding CodConvenio}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <ComboBox Grid.Column="2" x:Name="SelectedTipoDePagoCb" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding FormasDePago}" SelectedItem="{Binding SelectedFormaDePago}" Grid.Row="1" MinWidth="100">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="Auto" Width="Auto">
+                                    <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding TipoPago}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox Grid.Column="4" x:Name="SelectedMedioPago" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding SelectedFormaDePago.MediosDePago}" SelectedItem="{Binding SelectedMedioPago}" Grid.Row="1" Visibility="{Binding SelectedFormaDePago.MedioDePago, Converter={StaticResource BooleanToVisibilityConverter}}" MinWidth="100">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="Auto" Width="Auto">
+                                    <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding MedioDePago}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBox x:Name="noDocPagoText" TextWrapping="Wrap" Text="{Binding CurrenNoDocPago}" Grid.Row="1" Grid.Column="6" Visibility="{Binding SelectedFormaDePago.NumeroDeDocumentoDePago}" Width="100"/>
+                    <TextBox x:Name="valorText" TextWrapping="Wrap" Text="{Binding CurrentValorParcial}" Grid.Row="1" Grid.Column="8" Visibility="{Binding SelectedFormaDePago.NumeroDeDocumentoDePago}" Width="100" GotFocus="ValorTextGotFocus" TextAlignment="Right"/>
+                    <Button x:Name="FullPagoBt" Content="Pagar Saldo" Grid.Column="8" Margin="0,5" Command="{Binding DoFullPaymentCommand, Mode=OneWay}" Grid.Row="2" MinWidth="75"/>
+
+                    <StackPanel Grid.Row="4" Grid.ColumnSpan="10" Orientation="Horizontal">
+                        <Label x:Name="label" Content="Saldo Pendiente por Convenio"/>
+                        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding CurrentValorPendientePorConvenio, Mode=OneWay, StringFormat=\{0:C\}}" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                </Grid>
+                <Button x:Name="AgregarPagoBt" Content="Agregar&#xD;&#xA;Pago" Width="75" Grid.Column="1" Margin="10.2,10,-0.4,37.4" Command="{Binding AddPaymentCommand, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            </Grid>
+            <DataGrid x:Name="DatosPagoDg" Grid.Row="4" ItemsSource="{Binding OriginalViewModel.Pagos}" GridLinesVisibility="Horizontal" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding VrTipoPago, StringFormat=\{0:C\}}" ClipboardContentBinding="{x:Null}" Header="Valor"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate >
+                                <Grid>
+                                    <Button d:LayoutOverrides="Height" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,1" Command="{x:Static local:LiquidacionPagoViewModel.RemovePaymentCommand}"   SnapsToDevicePixels="False" >
+                                        <Image Source="/Neuron.CommonResources;component/Images/delete.png" Width="18" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <!--<Button Content="{Binding OriginalViewModel.LiquidationValues/CodConvenio}" Margin="5" Padding="10,1" IsCancel="True" Grid.Row="1" />-->
+
+        </Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1" HorizontalAlignment="Right">
+            <Button Content="Cerrar" Margin="5" Padding="10,1" IsCancel="True" />
+        </StackPanel>
+    </Grid>
+
+    <wpf:NeuronMainWindow.DataContext>
+        <local:LiquidacionPagoViewModel x:Name="ViewModel" x:FieldModifier="public" />
+    </wpf:NeuronMainWindow.DataContext>
+</wpf:NeuronMainWindow>

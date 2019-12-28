@@ -1,0 +1,32 @@
+﻿<Window x:Class="Neuron.Satellite.CapturaManual.Controls.Windows.TechnicianObsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Neuron.Satellite.CapturaManual.Controls.Windows"
+        xmlns:viewModels="clr-namespace:Neuron.Satelite.CapturaManual.Data.ViewModels;assembly=Neuron.CapturaManual.Data"
+        mc:Ignorable="d"
+        Title="Observaciones" 
+        Height="350" MinWidth="300" Width="450" MinHeight="350"
+        Icon="/Lysis.CapturaManual;component/Resources/FolderOpen.png"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow" 
+        Topmost="True"
+        d:DataContext="{d:DesignInstance viewModels:TechnicianObsViewModel}" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="267*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="Observaciones" Margin="5" Grid.ColumnSpan="2" ItemsSource="{Binding Observations}"/>
+
+        <Button x:Name="SaveObsButton" Content="Guardar Observación..." HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Margin="20,0" Command="{Binding SaveNewObservationCommand}" Grid.Column="1" Grid.RowSpan="2"/>
+        <TextBox x:Name="NewObsTextBox" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Text="{Binding NewObservation, Mode=TwoWay}" Margin="5"/>
+
+    </Grid>
+</Window>

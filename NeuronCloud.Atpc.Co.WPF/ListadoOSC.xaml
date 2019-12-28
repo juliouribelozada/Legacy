@@ -1,0 +1,129 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ViewModels="clr-namespace:NeuronCloud.Atpc.Co.WPF.ViewModels"
+    xmlns:Controls="clr-namespace:Atpc.UI.Controls;assembly=Atpc.UI.Controls"
+    xmlns:WPF="clr-namespace:NeuronCloud.Atpc.Co.WPF" x:Class="NeuronCloud.Atpc.Co.WPF.ListadoOSC"
+	 xmlns:SqlServer="clr-namespace:NeuronCloud.Atpc.Co.Modelos.Data.SqlServer;assembly=NeuronCloud.Atpc.Co.Modelos.Data"
+                 
+    mc:Ignorable="d"
+    d:DesignHeight="400" d:DesignWidth="500" KeyboardNavigation.DirectionalNavigation="None" KeyDown="UserControlKeyDown">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="BaseDataTemplates.xaml"/>
+                <ResourceDictionary Source="Themes/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <ViewModels:ListadoOscViewModel x:Name="ViewModel"/>
+    </UserControl.DataContext>
+    <Grid>
+        <Controls:BusyIndicator BusyContent="Ejecutando Búsqueda..." IsBusy="{Binding IsBusy}">
+            <Grid KeyboardNavigation.DirectionalNavigation="None">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Padding="5" Margin="2" BorderThickness="1" CornerRadius="3" BorderBrush="#FF03034B">
+                    <Grid x:Name="PanelBúsqueda" KeyboardNavigation.DirectionalNavigation="None">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="5" />
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition MinWidth="15" />
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <WPF:LabeledTextBox Text="{Binding Parametros.DocUnicoOsc}" VerticalAlignment="Center"/>
+                            <WPF:LabeledTextBox Text="{Binding Parametros.NumeroUnicoDocumento}" VerticalAlignment="Center" Grid.Row="1"/>
+                            <WPF:LabeledTextBox Text="{Binding Parametros.NumeroDeResultados}" VerticalAlignment="Center" Grid.Row="2" HorizontalContentAlignment="Right"/>
+                        </Grid>
+                        <Grid Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <CheckBox Content="Cualquier Fecha" d:LayoutOverrides="Width, Height" IsChecked="{Binding Parametros.TodasLasFechas}"/>
+                            <Grid x:Name="PanelBusquedaFechas" IsEnabled="{Binding Parametros.TodasLasFechas, Converter={StaticResource InvertBoolConverter}}" Grid.Row="1" VerticalAlignment="Center" d:LayoutOverrides="GridBox">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Desde: "  Style="{DynamicResource LabelTextBlockStyle}"/>
+                                    <DatePicker d:LayoutOverrides="Width" Grid.Row="1" SelectedDate="{Binding Parametros.FechaInicio}"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Hasta"  Style="{DynamicResource LabelTextBlockStyle}"/>
+                                    <DatePicker d:LayoutOverrides="Width" Grid.Row="1" SelectedDate="{Binding Parametros.FechaFin}"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid x:Name="PanelBusquedaBotones" Grid.Column="4" Margin="0,20,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="15"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button Content="Buscar..." Command="{Binding Buscar, Mode=OneWay}" Margin="0" ContentTemplate="{DynamicResource ContenidoBotonBuscar}"/>
+                            <Button Content="Limpiar Búsqueda" Command="{Binding LimpiarBusqueda, Mode=OneWay}" Grid.Row="2"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Grid x:Name="Resultados" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="None">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid x:Name="NavigationBar" Grid.Column="1" KeyboardNavigation.DirectionalNavigation="None">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="nbMoveToFirst" Command="{Binding MoverAlPrimero, Mode=OneWay}" ContentTemplate="{StaticResource MoveFirstTemplate}"/>
+                        <Button x:Name="nbMoveToPrevious" Command="{Binding MoverAlAnterior, Mode=OneWay}" Grid.Column="1" ContentTemplate="{DynamicResource MovePreviousTemplate}"/>
+                        <Button x:Name="nbMoveToNext" Command="{Binding MoverAlSiguiente, Mode=OneWay}" Grid.Column="3" ContentTemplate="{DynamicResource MoveNextTemplate}"/>
+                        <Button x:Name="nbMoveToLast" Command="{Binding MoverAlUltimo, Mode=OneWay}" Grid.Column="4" ContentTemplate="{DynamicResource MoveLastTemplate}"/>
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" d:LayoutOverrides="Height" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBox TextWrapping="Wrap" Text="{Binding PosicionActual, Mode=TwoWay}" d:LayoutOverrides="Width" KeyUp="TextBoxKeyUp" />
+                            <TextBlock TextWrapping="Wrap" Text="{Binding ListaDeResultados.Count, StringFormat=de \{0:\}}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <ListBox ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True"  DataContext="{Binding ListaDeResultados}" d:DataContext="{d:DesignData /SampleData/OrdenDeServicioSampleDataSampleData.xaml}" Grid.Row="1" ItemTemplate="{StaticResource OrdenDeServicioListaTemplate}" MinWidth="150"/>
+					<ContentControl Content="{Binding /}" DataContext="{Binding ListaDeResultados}" Grid.Column="1" Grid.Row="1" Margin="10" d:DataContext="{d:DesignInstance Type=SqlServer:OrdenDeServicio}"/>
+                </Grid>
+
+            </Grid>
+        </Controls:BusyIndicator>
+    </Grid>
+</UserControl>

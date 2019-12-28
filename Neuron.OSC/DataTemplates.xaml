@@ -1,0 +1,227 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Models="clr-namespace:Neuron.UI.Controls.Models;assembly=Neuron.UI.Controls"
+    xmlns:Modelos="clr-namespace:NeuronCloud.Atpc.Co.Modelos;assembly=NeuronCloud.Atpc.Co.Modelos" mc:Ignorable="d">
+    <DataTemplate x:Key="AgreementComboItem">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} - {1}">
+                        <Binding Path="Code"/>
+                        <Binding Path="Name"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <!--<TextBlock Margin="0,0,0,4.04" TextWrapping="Wrap" Text="{Binding Code}" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="1"/>-->
+            <!--<TextBlock TextWrapping="Wrap" Text="{Binding Name}" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="1" Grid.Column="1"/>-->
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PrestadorComboItem">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} - {1}">
+                        <Binding Path="Code"/>
+                        <Binding Path="Name"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <!--<TextBlock Margin="0,0,0,4.04" TextWrapping="Wrap" Text="{Binding Code}" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="1"/>-->
+            <!--<TextBlock TextWrapping="Wrap" Text="{Binding Name}" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="1" Grid.Column="1"/>-->
+        </Grid>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="RemitenteComboItem">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} - {1}">
+                        <Binding Path="Code"/>
+                        <Binding Path="Name"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <!--<TextBlock Margin="0,0,0,4.04" TextWrapping="Wrap" Text="{Binding Code}" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="1"/>-->
+            <!--<TextBlock TextWrapping="Wrap" Text="{Binding Name}" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="1" Grid.Column="1"/>-->
+        </Grid>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type Modelos:TipoIdentificacion}">
+        <Grid d:DataContext="{d:DesignInstance Modelos:TipoIdentificacion}" AllowDrop="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} - {1}">
+                        <Binding Path="TipoIdentificacionId"/>
+                        <Binding Path="Nombre"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <!--<TextBlock Margin="0,0,0,4.04" TextWrapping="Wrap" Text="{Binding Code}" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="1"/>-->
+            <!--<TextBlock TextWrapping="Wrap" Text="{Binding Name}" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="1" Grid.Column="1"/>-->
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="ServiceDataTemplate">
+        <Grid Margin="0,3,5,3">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFC6E0F3" Offset="0"/>
+                    <GradientStop Color="#FF6BB6EF" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition SharedSizeGroup="Column0" Width="Auto"/>
+                <ColumnDefinition SharedSizeGroup="ColumnCC" Width="Auto"/>
+                <ColumnDefinition SharedSizeGroup="ColumnCP" Width="Auto"/>
+                <ColumnDefinition MinWidth="250" />
+                <ColumnDefinition SharedSizeGroup="Column2" Width="Auto"/>
+                <ColumnDefinition SharedSizeGroup="Column3" Width="Auto"/>
+                <ColumnDefinition SharedSizeGroup="Column4" Width="Auto" />
+                <ColumnDefinition SharedSizeGroup="Column5" Width="Auto" />
+                <ColumnDefinition Width="5" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" MinHeight="5"/>
+                <RowDefinition/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+            <TextBlock  Style="{DynamicResource LabelTextBlockStyle}" Text="Cód." Visibility="Collapsed"/>
+            <TextBlock  Style="{DynamicResource LabelTextBlockStyle}" Grid.Column="1" Text="C.Conv" Visibility="Collapsed"/>
+            <TextBlock  Style="{DynamicResource LabelTextBlockStyle}" Grid.Column="2" Text="C.Pres" Visibility="Collapsed"/>
+            <TextBlock  Style="{DynamicResource LabelTextBlockStyle}" Grid.Column="3" Text="Nombre" Visibility="Collapsed"/>
+            <TextBlock  Style="{DynamicResource LabelTextBlockStyle}" Grid.Column="4" Text="V/Unit" Visibility="Collapsed"/>
+            <TextBlock  Style="{DynamicResource LabelTextBlockStyle}" Grid.Column="5" Text="Cant." Visibility="Collapsed"/>
+            <TextBlock  Style="{DynamicResource LabelTextBlockStyle}" Grid.Column="6" Text="Valor" Visibility="Collapsed"/>
+            <TextBox Text="{Binding BaseEntity.Code}" Grid.Row="1" Style="{DynamicResource FormDisableTextBoxStyle}" Width="60" VerticalAlignment="Center" MinWidth="0"/>
+            <TextBox Text="{Binding BaseEntity.ServiceAgreementCode}" Grid.Row="1" Style="{DynamicResource FormDisableTextBoxStyle}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" MinWidth="0"/>
+            <TextBox Text="{Binding BaseEntity.ProviderCode}" Grid.Row="1" Style="{DynamicResource FormDisableTextBoxStyle}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" MinWidth="0"/>
+            <TextBox Text="{Binding BaseEntity.Name}" Grid.Row="1" Style="{DynamicResource FormDisableTextBoxStyle}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" Width="Auto" TextWrapping="Wrap" MaxLines="2" VerticalScrollBarVisibility="Auto"/>
+            <TextBox Text="{Binding BaseEntity.Price, StringFormat=\{0:c\}}" Grid.Row="1" Style="{DynamicResource FormDisableTextBoxStyle}" MinWidth="60" Grid.Column="4" VerticalAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Right"/>
+            <TextBox Text="{Binding BaseEntity.Quantity}" Grid.Row="1" Style="{DynamicResource FormDisableTextBoxStyle}" MinWidth="30" Grid.Column="5" VerticalAlignment="Center" HorizontalContentAlignment="Right"/>
+            <TextBox Text="{Binding BaseEntity.Total, StringFormat=\{0:c\}}" Grid.Row="1" Style="{DynamicResource FormDisableTextBoxStyle}" MinWidth="60" Grid.Column="6" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Right"/>
+            <Button d:LayoutOverrides="Height" Grid.Column="7" Grid.Row="1" Margin="5,0,0,0" Command="{x:Static Models:CRUDCommands.RemoveCommand}">
+                <Image Source="/Neuron.CommonResources;component/Images/delete.png" Width="18" />
+            </Button>
+        </Grid>
+    </DataTemplate>
+    <ItemsPanelTemplate x:Key="ItemsPanelTemplateNoVirt">
+        <StackPanel IsItemsHost="True"/>
+    </ItemsPanelTemplate>
+    <Style x:Key="ListBoxItemFocusableStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="Padding" Value="2,0,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="Selector.IsSelectionActive" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="IsSelected" Value="True"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
+    <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ListBorder}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
+                        <Grid IsItemsHost="False">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="Column0" Width="Auto"/>
+                                <ColumnDefinition SharedSizeGroup="ColumnCC" Width="Auto"/>
+                                <ColumnDefinition SharedSizeGroup="ColumnCP" Width="Auto"/>
+                                <ColumnDefinition MinWidth="250" />
+                                <ColumnDefinition SharedSizeGroup="Column2" Width="Auto"/>
+                                <ColumnDefinition SharedSizeGroup="Column3" Width="Auto"/>
+                                <ColumnDefinition SharedSizeGroup="Column4" Width="Auto" />
+                                <ColumnDefinition SharedSizeGroup="Column5" Width="Auto" />
+                                <ColumnDefinition Width="10" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="8"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Cód." FontWeight="Bold" FontSize="12"/>
+                            <TextBlock Grid.Column="1" Text="C.Conv" FontWeight="Bold" FontSize="12"/>
+                            <TextBlock Grid.Column="2" Text="C.Pres" FontWeight="Bold" FontSize="12"/>
+                            <TextBlock Grid.Column="3" Text="Nombre" FontWeight="Bold" FontSize="12"/>
+                            <TextBlock Grid.Column="4" Text="V/Unit" Margin="5,0,0,2" FontWeight="Bold" FontSize="12"/>
+                            <TextBlock Grid.Column="5" Text="Cant." Margin="5,0,0,2" FontWeight="Bold" FontSize="12"/>
+                            <TextBlock Grid.Column="6" Text="Valor" Margin="5,0,0,2" FontWeight="Bold" FontSize="12"/>
+<TextBlock Grid.Column="7" />
+<TextBlock Grid.Column="8" />
+
+
+                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}" Grid.Row="1" Grid.ColumnSpan="9" Grid.RowSpan="2" HorizontalScrollBarVisibility="Disabled">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                            <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="8" Margin="3,0,0,0">
+                                
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- Resource dictionary entries should be defined here. -->
+</ResourceDictionary>

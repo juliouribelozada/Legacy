@@ -1,0 +1,1299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NEURONModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="CodDepto" />
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="NomDepto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodDepto" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CodPais" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="CodMpio" />
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="CodMpio" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="NomMpio" Type="varchar" MaxLength="50" />
+          <Property Name="CodDepto" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CodPais" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="CodPais" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NomPais" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ISO3166Alpha2" Type="varchar" MaxLength="2" />
+          <Property Name="ISO3166Alpha3" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Tercero">
+          <Key>
+            <PropertyRef Name="NumeroUnicoDocumento" />
+          </Key>
+          <Property Name="TipoIdentificacion" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="DocumentoIdentidad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="NumeroUnicoDocumento" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="PrimerNombre" Type="varchar" MaxLength="20" />
+          <Property Name="SegundoNombre" Type="varchar" MaxLength="20" />
+          <Property Name="PrimerApellido" Type="varchar" MaxLength="20" />
+          <Property Name="SegundoApellido" Type="varchar" MaxLength="20" />
+          <Property Name="MaritalStatus" Type="varchar" MaxLength="50" />
+          <Property Name="CodOccupation" Type="varchar" MaxLength="4" />
+          <Property Name="CodMpioDomicilio" Type="varchar" MaxLength="15" />
+          <Property Name="BarrioDomicilio" Type="varchar" MaxLength="100" />
+          <Property Name="DireccionDomicilio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TelefonoDomicilio" Type="varchar" MaxLength="15" />
+          <Property Name="TelefonoAlterno" Type="varchar" MaxLength="15" />
+          <Property Name="Genero" Type="varchar" MaxLength="10" />
+          <Property Name="Fax" Type="varchar" MaxLength="15" />
+          <Property Name="Movil" Type="varchar" MaxLength="30" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CorreoPersonal" Type="varchar" MaxLength="50" />
+          <Property Name="CorreoCorporativo" Type="varchar" MaxLength="50" />
+          <Property Name="CodPaisDomicilio" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Foto" Type="image" />
+          <Property Name="Zona" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FechaRegistro" Type="smalldatetime" Nullable="false" />
+          <Property Name="UsuarioRegistro" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TipoDoc">
+          <Key>
+            <PropertyRef Name="PrefijoNoDoc" />
+            <PropertyRef Name="NomNoDoc" />
+          </Key>
+          <Property Name="NoDoc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrefijoNoDoc" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="FechaNoDoc" Type="date" Nullable="false" />
+          <Property Name="NomNoDoc" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DescripcionDoc" Type="varchar" MaxLength="100" />
+          <Property Name="DatoResolucion" Type="varchar" MaxLength="255" />
+          <Property Name="DatoResolNum" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoIdentificacion">
+          <Key>
+            <PropertyRef Name="TipoIdentificacion" />
+          </Key>
+          <Property Name="TipoIdentificacion" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="NomTipoIdentificacion" Type="varchar" MaxLength="50" />
+          <Property Name="RazonSocialCHK" Type="varchar" MaxLength="2" />
+          <Property Name="Mascara" Type="bit" Nullable="false" />
+          <Property Name="Orden" Type="smallint" />
+        </EntityType>
+        <EntityType Name="FingerPrintRegister">
+          <Key>
+            <PropertyRef Name="IdFingerRegister" />
+          </Key>
+          <Property Name="IdFingerRegister" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroUnicoDocumento" Type="varchar" MaxLength="18" />
+          <Property Name="FingerPrint" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Tercero_Municipio">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="CodPais" />
+              <PropertyRef Name="CodMpio" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="CodPaisDomicilio" />
+              <PropertyRef Name="CodMpioDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tercero_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="CodPaisDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tercero_Tercero">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="1" />
+          <End Role="Tercero1" Type="Self.Tercero" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="NumeroUnicoDocumento" />
+            </Principal>
+            <Dependent Role="Tercero1">
+              <PropertyRef Name="NumeroUnicoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tercero_TipoIdentificacion">
+          <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="1" />
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIdentificacion">
+              <PropertyRef Name="TipoIdentificacion" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="TipoIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GEN_Departamento_GEN_Municipio_FK1">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="CodDepto" />
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="CodDepto" />
+              <PropertyRef Name="CodPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GEN_Pais_GEN_Municipio_FK1">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="CodPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="PRO_PrinterCodeBar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CAJA">
+          <Parameter Name="DocUnicoOSC" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="REPO_OSCSelecciona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CAJA">
+          <Parameter Name="ListaOSC" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="PRO_SearchBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITA">
+          <Parameter Name="NumeroUnicoDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="NoBooking" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConvenioAfiliadoNivelSelecc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FACT">
+          <Parameter Name="CodConvenio" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConvenioPrestPortafoSelecc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FACT">
+          <Parameter Name="CodConvenio" Type="varchar" Mode="In" />
+          <Parameter Name="CodPrestador" Type="varchar" Mode="In" />
+          <Parameter Name="CodRemitente" Type="varchar" Mode="In" />
+          <Parameter Name="CodPersoAsisten" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoFuente" Type="varchar" Mode="In" />
+          <Parameter Name="NomCodigoFuente" Type="varchar" Mode="In" />
+          <Parameter Name="Genero" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConvenioPrestPortafoSeleccAutoComplete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FACT">
+          <Parameter Name="CodConvenio" Type="varchar" Mode="In" />
+          <Parameter Name="CodPrestador" Type="varchar" Mode="In" />
+          <Parameter Name="CodRemitente" Type="varchar" Mode="In" />
+          <Parameter Name="CodPersoAsisten" Type="varchar" Mode="In" />
+          <Parameter Name="NomCodigoFuente" Type="varchar" Mode="In" />
+          <Parameter Name="Genero" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConvenioPrestSelecc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FACT">
+          <Parameter Name="CodConvenio" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConvenioRemitenteSelecc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FACT">
+          <Parameter Name="CodConvenio" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConvenioRemiteServSelecc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FACT">
+          <Parameter Name="CodConvenio" Type="varchar" Mode="In" />
+          <Parameter Name="NomRemitente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConvenioSeleccPaciOSC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FACT">
+          <Parameter Name="DocIden" Type="varchar" Mode="In" />
+          <Parameter Name="Tipoident" Type="varchar" Mode="In" />
+          <Parameter Name="NomSede" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CRUD_FormaPagoSelecciona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN" />
+        <Function Name="CRUD_TerceroSeleccionaExacto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="NumeroUnicoDocumento" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_FormaPagoMedioPagoSelecciona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="TipoPago" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_SenderPersonSelecAutoComplete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="CodConvenio" Type="varchar" Mode="In" />
+          <Parameter Name="Parameter" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_UsuarioRolFuncion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="NumeroUnicoDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="Aplicacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CRUD_PersonalAsistencialSelecciona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIS">
+          <Parameter Name="CargoPersoAsisten" Type="varchar" Mode="In" />
+          <Parameter Name="CodEspecialidad" Type="varchar" Mode="In" />
+          <Parameter Name="CodEspeHistoriaClinica" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_DiagnosticoSeleccAutocomplete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIS">
+          <Parameter Name="NomDiag" Type="varchar" Mode="In" />
+          <Parameter Name="Genero" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_AutorizaPersonalAsistencial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="INTER">
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
+          <Parameter Name="CodEspecialidad" Type="varchar" Mode="In" />
+          <Parameter Name="EstadoPersoAsisten" Type="varchar" Mode="In" />
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConsultaResultadoPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="NumeroUnicoDoc" Type="varchar" Mode="In" />
+          <Parameter Name="CodRemitente" Type="varchar" Mode="In" />
+          <Parameter Name="NomServicio" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_TipoMuestraIdNum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LAB">
+          <Parameter Name="IdNumMuestra" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="NEURONModelStoreContainer">
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="Tercero" EntityType="Self.Tercero" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="TipoDoc" EntityType="Self.TipoDoc" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="TipoIdentificacion" EntityType="Self.TipoIdentificacion" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="FingerPrintRegister" EntityType="Self.FingerPrintRegister" Schema="INTER" store:Type="Tables" />
+          <AssociationSet Name="FK_Tercero_Municipio" Association="Self.FK_Tercero_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tercero_Pais" Association="Self.FK_Tercero_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tercero_Tercero" Association="Self.FK_Tercero_Tercero">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="Tercero1" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tercero_TipoIdentificacion" Association="Self.FK_Tercero_TipoIdentificacion">
+            <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="GEN_Departamento_GEN_Municipio_FK1" Association="Self.GEN_Departamento_GEN_Municipio_FK1">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="GEN_Pais_GEN_Municipio_FK1" Association="Self.GEN_Pais_GEN_Municipio_FK1">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NEURONModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="NeuronOscEntitites" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="CRUD_TerceroSeleccionaExacto" ReturnType="Collection(NEURONModel.CRUD_TerceroSeleccionaExacto_Result)">
+          <Parameter Name="NumeroUnicoDocumento" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="TipoDoc" EntityType="NEURONModel.TipoDoc" />
+          <FunctionImport Name="PRO_ConvenioPrestPortafoSelecc" ReturnType="Collection(NEURONModel.PRO_ConvenioPrestPortafoSelecc_Result)">
+            <Parameter Name="CodConvenio" Mode="In" Type="String" />
+            <Parameter Name="CodPrestador" Mode="In" Type="String" />
+            <Parameter Name="CodRemitente" Mode="In" Type="String" />
+            <Parameter Name="CodPersoAsisten" Mode="In" Type="String" />
+            <Parameter Name="CodigoFuente" Mode="In" Type="String" />
+            <Parameter Name="NomCodigoFuente" Mode="In" Type="String" />
+            <Parameter Name="Genero" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_ConvenioPrestSelecc" ReturnType="Collection(NEURONModel.PRO_ConvenioPrestSelecc_Result)">
+          <Parameter Name="CodConvenio" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_ConvenioRemitenteSelecc" ReturnType="Collection(NEURONModel.PRO_ConvenioRemitenteSelecc_Result)">
+          <Parameter Name="CodConvenio" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_ConvenioRemiteServSelecc" ReturnType="Collection(NEURONModel.PRO_ConvenioRemiteServSelecc_Result)">
+            <Parameter Name="CodConvenio" Mode="In" Type="String" />
+            <Parameter Name="NomRemitente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_DiagnosticoSeleccAutocomplete" ReturnType="Collection(NEURONModel.PRO_DiagnosticoSeleccAutocomplete_Result)">
+            <Parameter Name="NomDiag" Mode="In" Type="String" />
+            <Parameter Name="Genero" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CRUD_PersonalAsistencialSelecciona" ReturnType="Collection(NEURONModel.CRUD_PersonalAsistencialSelecciona_Result)">
+            <Parameter Name="CargoPersoAsisten" Mode="In" Type="String" />
+            <Parameter Name="CodEspecialidad" Mode="In" Type="String" />
+            <Parameter Name="CodEspeHistoriaClinica" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Municipio" EntityType="NEURONModel.Municipio" />
+          <EntitySet Name="Tercero" EntityType="NEURONModel.Tercero" />
+          <AssociationSet Name="FK_Tercero_Municipio" Association="NEURONModel.FK_Tercero_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <EntitySet Name="Departamento" EntityType="NEURONModel.Departamento" />
+          <AssociationSet Name="GEN_Departamento_GEN_Municipio_FK1" Association="NEURONModel.GEN_Departamento_GEN_Municipio_FK1">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <FunctionImport Name="PRO_ConvenioPrestPortafoSeleccAutoComplete" ReturnType="Collection(NEURONModel.PRO_ConvenioPrestPortafoSeleccAutoComplete_Result)">
+            <Parameter Name="CodConvenio" Mode="In" Type="String" />
+            <Parameter Name="CodPrestador" Mode="In" Type="String" />
+            <Parameter Name="CodRemitente" Mode="In" Type="String" />
+            <Parameter Name="CodPersoAsisten" Mode="In" Type="String" />
+            <Parameter Name="NomCodigoFuente" Mode="In" Type="String" />
+            <Parameter Name="Genero" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_ConsultaResultadoPaciente" ReturnType="Collection(NEURONModel.PRO_ConsultaResultadoPaciente_Result)">
+            <Parameter Name="NumeroUnicoDoc" Mode="In" Type="String" />
+            <Parameter Name="CodRemitente" Mode="In" Type="String" />
+            <Parameter Name="NomServicio" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_TipoMuestraIdNum" ReturnType="Collection(NEURONModel.PRO_TipoMuestraIdNum_Result)">
+          <Parameter Name="IdNumMuestra" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_OSCWEBInserta">
+            <Parameter Name="TipoIdentificacion" Mode="In" Type="String" />
+            <Parameter Name="DocumentoIdentidad" Mode="In" Type="String" />
+            <Parameter Name="DireccionResidencia" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="CodConvenio" Mode="In" Type="String" />
+            <Parameter Name="CodRemitente" Mode="In" Type="String" />
+            <Parameter Name="CodPersoAsisten" Mode="In" Type="String" />
+            <Parameter Name="NomPersoAsisten" Mode="In" Type="String" />
+            <Parameter Name="Observaciones" Mode="In" Type="String" />
+            <Parameter Name="VrDcto" Mode="In" Type="Decimal" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="PrefijoNoOSC" Mode="In" Type="String" />
+            <Parameter Name="NoOrdenMedica" Mode="In" Type="String" />
+            <Parameter Name="SedeAtencion" Mode="In" Type="String" />
+            <Parameter Name="CodDiag" Mode="In" Type="String" />
+            <Parameter Name="UsuarioRegistro" Mode="In" Type="String" />
+            <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+            <Parameter Name="EnviarPDF" Mode="In" Type="Boolean" />
+            <Parameter Name="MensajeOSC" Mode="InOut" Type="String" />
+            <Parameter Name="ListaFactura" Mode="InOut" Type="String" />
+            <Parameter Name="ListaOSC" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_ConvenioAfiliadoNivelSelecc" ReturnType="Collection(String)">
+          <Parameter Name="CodConvenio" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CRUD_FormaPagoSelecciona" ReturnType="Collection(NEURONModel.CRUD_FormaPagoSelecciona_Result)" />
+          <FunctionImport Name="PRO_FormaPagoMedioPagoSelecciona" ReturnType="Collection(NEURONModel.PRO_FormaPagoMedioPagoSelecciona_Result)">
+          <Parameter Name="TipoPago" Mode="In" Type="String" />
+          </FunctionImport>
+          <AssociationSet Name="FK_Tercero_Tercero" Association="NEURONModel.FK_Tercero_Tercero">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="Tercero1" EntitySet="Tercero" />
+          </AssociationSet>
+          <FunctionImport Name="PRO_SenderPersonSelecAutoComplete" ReturnType="Collection(NEURONModel.PRO_SenderPersonSelecAutoComplete_Result)">
+            <Parameter Name="CodConvenio" Mode="In" Type="String" />
+            <Parameter Name="Parameter" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Pais" EntityType="NEURONModel.Pais" />
+          <EntitySet Name="TipoIdentificacion" EntityType="NEURONModel.TipoIdentificacion" />
+          <AssociationSet Name="GEN_Pais_GEN_Municipio_FK1" Association="NEURONModel.GEN_Pais_GEN_Municipio_FK1">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tercero_Pais" Association="NEURONModel.FK_Tercero_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tercero_TipoIdentificacion" Association="NEURONModel.FK_Tercero_TipoIdentificacion">
+            <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <FunctionImport Name="PRO_PrinterCodeBar" ReturnType="Collection(NEURONModel.PRO_PrinterCodeBar_Result)">
+          <Parameter Name="DocUnicoOSC" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_AutorizaPersonalAsistencial" ReturnType="Collection(NEURONModel.PRO_AutorizaPersonalAsistencial_Result)">
+            <Parameter Name="Clave" Mode="In" Type="String" />
+            <Parameter Name="CodEspecialidad" Mode="In" Type="String" />
+            <Parameter Name="EstadoPersoAsisten" Mode="In" Type="String" />
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="REPO_OSCSelecciona" ReturnType="Collection(NEURONModel.REPO_OSCSelecciona_Result)">
+          <Parameter Name="ListaOSC" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_UsuarioRolFuncion" ReturnType="Collection(NEURONModel.PRO_UsuarioRolFuncion_Result)">
+            <Parameter Name="NumeroUnicoDocumento" Mode="In" Type="String" />
+            <Parameter Name="Aplicacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_ConvenioSeleccPaciOSC" ReturnType="Collection(NEURONModel.PRO_ConvenioSeleccPaciOSC_Result)">
+            <Parameter Name="DocIden" Mode="In" Type="String" />
+            <Parameter Name="Tipoident" Mode="In" Type="String" />
+            <Parameter Name="NomSede" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_SearchBooking" ReturnType="Collection(NEURONModel.PRO_SearchBooking_Result)">
+            <Parameter Name="NumeroUnicoDocumento" Mode="In" Type="String" />
+            <Parameter Name="NoBooking" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="FingerPrintRegister" EntityType="NEURONModel.FingerPrintRegister" />
+        </EntityContainer>
+        <ComplexType Name="CRUD_TerceroSelecciona_Result">
+          <Property Type="String" Name="TipoIdentificacion" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="DocumentoIdentidad" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="NumeroUnicoDocumento" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PrimerNombre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PrimerApellido" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CodDeptoResidencia" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="NomDeptoResidencia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CodMpioResidencia" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Zona" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="NomMpioResidencia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="BarrioResidencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DireccionResidencia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TelefonoResidencia" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TelefonoAlterno" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Fax" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Movil" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="CorreoPersonal" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CorreoCorporativo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CodPaisResidencia" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="NomPaisResidencia" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaRegistro" Nullable="false" Precision="16" />
+          <Property Type="String" Name="UsuarioRegistro" Nullable="false" MaxLength="15" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" Precision="23" />
+          <Property Type="String" Name="RazonSocialCHK" Nullable="true" MaxLength="2" />
+        </ComplexType>
+        <ComplexType Name="CRUD_TerceroSeleccionaExacto_Result">
+          <Property Type="String" Name="TipoIdentificacion" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="DocumentoIdentidad" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="NumeroUnicoDocumento" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="PrimerNombre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PrimerApellido" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CodDeptoResidencia" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="NomDeptoResidencia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CodMpioResidencia" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="NomMpioResidencia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="BarrioResidencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DireccionResidencia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TelefonoResidencia" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TelefonoAlterno" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Fax" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Movil" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="CorreoPersonal" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CorreoCorporativo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CodPaisResidencia" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="NomPaisResidencia" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaRegistro" Nullable="false" Precision="16" />
+          <Property Type="String" Name="UsuarioRegistro" Nullable="false" MaxLength="15" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Edad" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="EdadDias" Nullable="true" />
+          <Property Type="String" Name="Zona" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="PA_FACT_ConvenioSeleccPaciOSC_Result">
+          <Property Type="String" Name="NomConvenio" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CodConvenio" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NomPlanBeneficio" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="SedeExclusiva" Nullable="false" />
+          <Property Type="Boolean" Name="ConvenioDefecto" Nullable="true" />
+          <Property Type="String" Name="NombreSede" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="CodServicioEntrada" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TipoUsuario" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NumeroContrato" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Column1" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <EntityType Name="TipoDoc">
+          <Key>
+            <PropertyRef Name="PrefijoNoDoc" />
+            <PropertyRef Name="NomNoDoc" />
+          </Key>
+          <Property Type="String" Name="NoDoc" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrefijoNoDoc" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaNoDoc" Nullable="false" Precision="0" />
+          <Property Type="String" Name="NomNoDoc" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DescripcionDoc" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DatoResolucion" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DatoResolNum" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="PRO_ConvenioPrestPortafoSelecc_Result">
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="NombreCodigoFuente" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Valor" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="String" Name="NomTipoPagoComp" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="GrupoPlanBene" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Combo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PRO_ConvenioPrestSelecc_Result">
+          <Property Type="String" Name="NomPrestador" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="OrdenPrioridad" Nullable="false" />
+          <Property Type="String" Name="CodPrestador" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="PRO_ConvenioRemitenteSelecc_Result">
+          <Property Type="String" Name="NomRemitente" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CodRemitente" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="PRO_RemitentePersoAsisten_Result">
+          <Property Type="String" Name="NumeroUnicoDocPersoAsisRemi" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="NomPersoAsistenRemi" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PRO_PortafoPlanPrestaManualSelecc_Result">
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="NombreCodigoFuente" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Valor" Nullable="true" Precision="12" Scale="2" />
+          <Property Type="String" Name="NomTipoPagoComp" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="GrupoPlanBene" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="PRO_ConvenioRemiteServSelecc_Result">
+          <Property Type="String" Name="NomServicio" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PRO_DiagnosticoSeleccAutocomplete_Result">
+          <Property Type="String" Name="CodDiag" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="NomDiag" Nullable="false" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="CRUD_PersonalAsistencialSelecciona_Result">
+          <Property Type="String" Name="Profesion" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="NombrePersoAsisten" Nullable="true" MaxLength="100" />
+          <Property Type="Binary" Name="Firma" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="RegistroProfesional" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CodPersoAsisten" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="CodMpio" />
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Type="String" Name="CodMpio" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomMpio" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodDepto" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodPais" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tercero" Relationship="NEURONModel.FK_Tercero_Municipio" FromRole="Municipio" ToRole="Tercero" />
+          <NavigationProperty Name="Departamento" Relationship="NEURONModel.GEN_Departamento_GEN_Municipio_FK1" FromRole="Municipio" ToRole="Departamento" />
+          <NavigationProperty Name="Pais" Relationship="NEURONModel.GEN_Pais_GEN_Municipio_FK1" FromRole="Municipio" ToRole="Pais" />
+        </EntityType>
+        <EntityType Name="Tercero">
+          <Key>
+            <PropertyRef Name="NumeroUnicoDocumento" />
+          </Key>
+          <Property Type="String" Name="TipoIdentificacion" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocumentoIdentidad" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NumeroUnicoDocumento" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrimerNombre" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SegundoNombre" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrimerApellido" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SegundoApellido" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodMpioDomicilio" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BarrioDomicilio" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DireccionDomicilio" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TelefonoDomicilio" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TelefonoAlterno" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Genero" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Fax" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Movil" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CorreoPersonal" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CorreoCorporativo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodPaisDomicilio" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="Foto" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="Zona" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaRegistro" Nullable="false" Precision="0" />
+          <Property Type="String" Name="UsuarioRegistro" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaNacimiento" Precision="3" />
+          <NavigationProperty Name="Municipio" Relationship="NEURONModel.FK_Tercero_Municipio" FromRole="Tercero" ToRole="Municipio" />
+          <NavigationProperty Name="Tercero1" Relationship="NEURONModel.FK_Tercero_Tercero" FromRole="Tercero" ToRole="Tercero1" />
+          <NavigationProperty Name="Tercero2" Relationship="NEURONModel.FK_Tercero_Tercero" FromRole="Tercero1" ToRole="Tercero" />
+          <NavigationProperty Name="Pais" Relationship="NEURONModel.FK_Tercero_Pais" FromRole="Tercero" ToRole="Pais" />
+          <NavigationProperty Name="TipoIdentificacion1" Relationship="NEURONModel.FK_Tercero_TipoIdentificacion" FromRole="Tercero" ToRole="TipoIdentificacion" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodOccupation" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          </EntityType>
+        <Association Name="FK_Tercero_Municipio">
+          <End Type="NEURONModel.Municipio" Role="Municipio" Multiplicity="1" />
+          <End Type="NEURONModel.Tercero" Role="Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="CodPais" />
+              <PropertyRef Name="CodMpio" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="CodPaisDomicilio" />
+              <PropertyRef Name="CodMpioDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="CodDepto" />
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Type="String" Name="NomDepto" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodDepto" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodPais" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Municipio" Relationship="NEURONModel.GEN_Departamento_GEN_Municipio_FK1" FromRole="Departamento" ToRole="Municipio" />
+        </EntityType>
+        <Association Name="GEN_Departamento_GEN_Municipio_FK1">
+          <End Type="NEURONModel.Departamento" Role="Departamento" Multiplicity="1" />
+          <End Type="NEURONModel.Municipio" Role="Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="CodDepto" />
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="CodDepto" />
+              <PropertyRef Name="CodPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="PRO_ConvenioPrestPortafoSeleccAutoComplete_Result">
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Combo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PRO_ConsultaResultadoPaciente_Result">
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="FechaHoraValidacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="LapsoPertinenteDia" Nullable="true" />
+          <Property Type="Int32" Name="Alarma" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PRO_TipoMuestraIdNum_Result">
+          <Property Type="String" Name="TipoMuestra" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Abreviatura" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="FechaToma" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaRecep" Nullable="true" Precision="23" />
+          <Property Type="String" Name="IdentificadorMuestra" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Edad" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="CRUD_FormaPagoSelecciona_Result">
+          <Property Type="String" Name="TipoPago" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Credito" Nullable="true" MaxLength="2" />
+          <Property Type="Boolean" Name="MedioPago" Nullable="true" />
+          <Property Type="Boolean" Name="NoDocPago" Nullable="true" />
+          <Property Type="String" Name="NomLblDocPago" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="PRO_FormaPagoMedioPagoSelecciona_Result">
+          <Property Type="String" Name="TipoPago" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Credito" Nullable="true" MaxLength="2" />
+          <Property Type="Boolean" Name="MedioPago" Nullable="true" />
+          <Property Type="Boolean" Name="NoDocPago" Nullable="true" />
+          <Property Type="String" Name="NomLblDocPago" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <Association Name="FK_Tercero_Tercero">
+          <End Type="NEURONModel.Tercero" Role="Tercero" Multiplicity="1" />
+          <End Type="NEURONModel.Tercero" Role="Tercero1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="NumeroUnicoDocumento" />
+            </Principal>
+            <Dependent Role="Tercero1">
+              <PropertyRef Name="NumeroUnicoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="PRO_SenderPersonSelecAutoComplete_Result">
+          <Property Type="String" Name="CodPersoAsisten" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="NombrePersoAsisten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Profesion" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="CodPais" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="NomPais" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Municipio" Relationship="NEURONModel.GEN_Pais_GEN_Municipio_FK1" FromRole="Pais" ToRole="Municipio" />
+          <NavigationProperty Name="Tercero" Relationship="NEURONModel.FK_Tercero_Pais" FromRole="Pais" ToRole="Tercero" />
+          <Property Name="ISO3166Alpha2" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ISO3166Alpha3" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TipoIdentificacion">
+          <Key>
+            <PropertyRef Name="TipoIdentificacion1" />
+          </Key>
+          <Property Name="TipoIdentificacion1" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NomTipoIdentificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RazonSocialCHK" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tercero" Relationship="NEURONModel.FK_Tercero_TipoIdentificacion" FromRole="TipoIdentificacion" ToRole="Tercero" />
+          <Property Name="Mascara" Type="Boolean" Nullable="false" />
+          <Property Name="Orden" Type="Int16" />
+        </EntityType>
+        <Association Name="GEN_Pais_GEN_Municipio_FK1">
+          <End Type="NEURONModel.Pais" Role="Pais" Multiplicity="1" />
+          <End Type="NEURONModel.Municipio" Role="Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="CodPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tercero_Pais">
+          <End Type="NEURONModel.Pais" Role="Pais" Multiplicity="1" />
+          <End Type="NEURONModel.Tercero" Role="Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="CodPaisDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tercero_TipoIdentificacion">
+          <End Type="NEURONModel.TipoIdentificacion" Role="TipoIdentificacion" Multiplicity="1" />
+          <End Type="NEURONModel.Tercero" Role="Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIdentificacion">
+              <PropertyRef Name="TipoIdentificacion1" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="TipoIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="PRO_FormaPagoMedioPagoSelecciona1_Result">
+          <Property Type="String" Name="TipoPago" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Credito" Nullable="true" MaxLength="2" />
+          <Property Type="Boolean" Name="MedioPago" Nullable="true" />
+          <Property Type="Boolean" Name="NoDocPago" Nullable="true" />
+          <Property Type="String" Name="NomLblDocPago" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="PRO_PrinterCodeBar_Result">
+          <Property Type="String" Name="TipoMuestra" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Abreviatura" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="FechaToma" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaRecep" Nullable="true" Precision="23" />
+          <Property Type="String" Name="IdentificadorMuestra" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Edad" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Urgente" Nullable="false" />
+          <Property Type="String" Name="CentroToma" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Token" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="DocUnicoOSC" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NomRemitente" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NomConvenio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TipoIdent" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="DocIdent" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="PRO_AutorizaPersonalAsistencial_Result">
+          <Property Type="String" Name="CodPersoAsisten" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="CargoPersoAsisten" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="CLAVE" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="CodEspecialidad" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="CodEspeHistoriaClinica" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="TipoIdentificacion" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="DocumentoIdentidad" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Profesion" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="GrupoCita" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="RegistroProfesional" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NomEspecialidad" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NumeroUnicoDocumento" Nullable="true" MaxLength="18" />
+          <Property Type="String" Name="NombrePersoAsisten" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EstadoPersoAsisten" Nullable="false" MaxLength="10" />
+          <Property Type="Int16" Name="DiasCitaAutoma" Nullable="true" />
+          <Property Type="String" Name="NomTurno" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="ProgramaCitaCE" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="REPO_OSCSelecciona_Result">
+          <Property Type="String" Name="PrefijoNoOSC" Nullable="false" MaxLength="3" />
+          <Property Type="Int32" Name="NoOSC" Nullable="false" />
+          <Property Type="String" Name="NomConvenio" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="String" Name="TipoIdentificacion" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="DocumentoIdentidad" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PrimerNombre" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Edad" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="NomPrestador" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="NomPersoAsisten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="NomRemitente" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="VrPagar" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="NomCodigoFuente" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Cant" Nullable="false" Precision="6" Scale="2" />
+          <Property Type="Decimal" Name="VrItem" Nullable="false" Precision="8" Scale="0" />
+          <Property Type="String" Name="DocUnicoOSC" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="NomPaciente" Nullable="true" MaxLength="83" />
+          <Property Type="Decimal" Name="VrDcto" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="VrPagado" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="String" Name="NumeroAutorizacion" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="DocUnicoFact" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsuarioRegistro" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PRO_UsuarioRolFuncion_Result">
+          <Property Type="String" Name="NumeroUnicoDocUsuario" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="Funcion" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Aplicacion" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="PRO_ConvenioSeleccPaciOSC_Result">
+          <Property Type="String" Name="NomConvenio" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CodConvenio" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NomPlanBeneficio" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="SedeExclusiva" Nullable="false" />
+          <Property Type="Boolean" Name="ConvenioDefecto" Nullable="true" />
+          <Property Type="String" Name="NombreSede" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="CodServicioEntrada" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TipoUsuario" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NumeroContrato" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Nivel" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="EstadoAfiliacion" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Copago" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PRO_SearchBooking_Result1">
+          <Property Type="String" Name="TipoIdentificacion" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="DocumentoIdentidad" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="NumeroUnicoDocumento" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="PrimerNombre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PrimerApellido" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaRegistro" Nullable="false" Precision="16" />
+          <Property Type="String" Name="UsuarioRegistro" Nullable="false" MaxLength="15" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="NoCita" Nullable="false" />
+          <Property Type="DateTime" Name="FechaHoraDesde" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="PRO_SearchBooking_Result">
+          <Property Type="String" Name="TipoIdentificacion" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="DocumentoIdentidad" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="NumeroUnicoDocumento" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="PrimerNombre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PrimerApellido" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaRegistro" Nullable="false" Precision="16" />
+          <Property Type="String" Name="UsuarioRegistro" Nullable="false" MaxLength="15" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="NoCita" Nullable="false" />
+          <Property Type="DateTime" Name="FechaHoraDesde" Nullable="false" Precision="23" />
+        </ComplexType>
+        <EntityType Name="FingerPrintRegister">
+          <Key>
+            <PropertyRef Name="IdFingerRegister" />
+          </Key>
+          <Property Name="IdFingerRegister" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroUnicoDocumento" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="FingerPrint" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NEURONModelStoreContainer" CdmEntityContainer="NeuronOscEntitites">
+          <EntitySetMapping Name="TipoDoc">
+            <EntityTypeMapping TypeName="NEURONModel.TipoDoc">
+              <MappingFragment StoreEntitySet="TipoDoc">
+                <ScalarProperty Name="DatoResolNum" ColumnName="DatoResolNum" />
+                <ScalarProperty Name="DatoResolucion" ColumnName="DatoResolucion" />
+                <ScalarProperty Name="DescripcionDoc" ColumnName="DescripcionDoc" />
+                <ScalarProperty Name="NomNoDoc" ColumnName="NomNoDoc" />
+                <ScalarProperty Name="FechaNoDoc" ColumnName="FechaNoDoc" />
+                <ScalarProperty Name="PrefijoNoDoc" ColumnName="PrefijoNoDoc" />
+                <ScalarProperty Name="NoDoc" ColumnName="NoDoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConvenioPrestPortafoSelecc" FunctionName="NEURONModel.Store.PRO_ConvenioPrestPortafoSelecc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_ConvenioPrestPortafoSelecc_Result">
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="NombreCodigoFuente" ColumnName="NombreCodigoFuente" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="NomTipoPagoComp" ColumnName="NomTipoPagoComp" />
+                <ScalarProperty Name="GrupoPlanBene" ColumnName="GrupoPlanBene" />
+                <ScalarProperty Name="Combo" ColumnName="Combo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConvenioRemitenteSelecc" FunctionName="NEURONModel.Store.PRO_ConvenioRemitenteSelecc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_ConvenioRemitenteSelecc_Result">
+                <ScalarProperty Name="NomRemitente" ColumnName="NomRemitente" />
+                <ScalarProperty Name="CodRemitente" ColumnName="CodRemitente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CRUD_TerceroSeleccionaExacto" FunctionName="NEURONModel.Store.CRUD_TerceroSeleccionaExacto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.CRUD_TerceroSeleccionaExacto_Result">
+                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+                <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+                <ScalarProperty Name="NumeroUnicoDocumento" ColumnName="NumeroUnicoDocumento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="CodDeptoResidencia" ColumnName="CodDeptoResidencia" />
+                <ScalarProperty Name="NomDeptoResidencia" ColumnName="NomDeptoResidencia" />
+                <ScalarProperty Name="CodMpioResidencia" ColumnName="CodMpioResidencia" />
+                <ScalarProperty Name="NomMpioResidencia" ColumnName="NomMpioResidencia" />
+                <ScalarProperty Name="BarrioResidencia" ColumnName="BarrioResidencia" />
+                <ScalarProperty Name="DireccionResidencia" ColumnName="DireccionResidencia" />
+                <ScalarProperty Name="TelefonoResidencia" ColumnName="TelefonoResidencia" />
+                <ScalarProperty Name="TelefonoAlterno" ColumnName="TelefonoAlterno" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Movil" ColumnName="Movil" />
+                <ScalarProperty Name="CorreoPersonal" ColumnName="CorreoPersonal" />
+                <ScalarProperty Name="CorreoCorporativo" ColumnName="CorreoCorporativo" />
+                <ScalarProperty Name="CodPaisResidencia" ColumnName="CodPaisResidencia" />
+                <ScalarProperty Name="NomPaisResidencia" ColumnName="NomPaisResidencia" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="EdadDias" ColumnName="EdadDias" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_DiagnosticoSeleccAutocomplete" FunctionName="NEURONModel.Store.PRO_DiagnosticoSeleccAutocomplete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_DiagnosticoSeleccAutocomplete_Result">
+                <ScalarProperty Name="CodDiag" ColumnName="CodDiag" />
+                <ScalarProperty Name="NomDiag" ColumnName="NomDiag" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CRUD_PersonalAsistencialSelecciona" FunctionName="NEURONModel.Store.CRUD_PersonalAsistencialSelecciona">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.CRUD_PersonalAsistencialSelecciona_Result">
+                <ScalarProperty Name="Profesion" ColumnName="Profesion" />
+                <ScalarProperty Name="NombrePersoAsisten" ColumnName="NombrePersoAsisten" />
+                <ScalarProperty Name="Firma" ColumnName="Firma" />
+                <ScalarProperty Name="RegistroProfesional" ColumnName="RegistroProfesional" />
+                <ScalarProperty Name="CodPersoAsisten" ColumnName="CodPersoAsisten" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConvenioPrestSelecc" FunctionName="NEURONModel.Store.PRO_ConvenioPrestSelecc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_ConvenioPrestSelecc_Result">
+                <ScalarProperty Name="NomPrestador" ColumnName="NomPrestador" />
+                <ScalarProperty Name="OrdenPrioridad" ColumnName="OrdenPrioridad" />
+                <ScalarProperty Name="CodPrestador" ColumnName="CodPrestador" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConvenioRemiteServSelecc" FunctionName="NEURONModel.Store.PRO_ConvenioRemiteServSelecc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_ConvenioRemiteServSelecc_Result">
+                <ScalarProperty Name="NomServicio" ColumnName="NomServicio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Municipio">
+            <EntityTypeMapping TypeName="NEURONModel.Municipio">
+              <MappingFragment StoreEntitySet="Municipio">
+                <ScalarProperty Name="CodPais" ColumnName="CodPais" />
+                <ScalarProperty Name="CodDepto" ColumnName="CodDepto" />
+                <ScalarProperty Name="NomMpio" ColumnName="NomMpio" />
+                <ScalarProperty Name="CodMpio" ColumnName="CodMpio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tercero">
+            <EntityTypeMapping TypeName="NEURONModel.Tercero">
+              <MappingFragment StoreEntitySet="Tercero">
+                <ScalarProperty Name="CodOccupation" ColumnName="CodOccupation" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="CodPaisDomicilio" ColumnName="CodPaisDomicilio" />
+                <ScalarProperty Name="CorreoCorporativo" ColumnName="CorreoCorporativo" />
+                <ScalarProperty Name="CorreoPersonal" ColumnName="CorreoPersonal" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Movil" ColumnName="Movil" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="TelefonoAlterno" ColumnName="TelefonoAlterno" />
+                <ScalarProperty Name="TelefonoDomicilio" ColumnName="TelefonoDomicilio" />
+                <ScalarProperty Name="DireccionDomicilio" ColumnName="DireccionDomicilio" />
+                <ScalarProperty Name="BarrioDomicilio" ColumnName="BarrioDomicilio" />
+                <ScalarProperty Name="CodMpioDomicilio" ColumnName="CodMpioDomicilio" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="NumeroUnicoDocumento" ColumnName="NumeroUnicoDocumento" />
+                <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="NEURONModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="CodPais" ColumnName="CodPais" />
+                <ScalarProperty Name="CodDepto" ColumnName="CodDepto" />
+                <ScalarProperty Name="NomDepto" ColumnName="NomDepto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConvenioPrestPortafoSeleccAutoComplete" FunctionName="NEURONModel.Store.PRO_ConvenioPrestPortafoSeleccAutoComplete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_ConvenioPrestPortafoSeleccAutoComplete_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Combo" ColumnName="Combo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConsultaResultadoPaciente" FunctionName="NEURONModel.Store.PRO_ConsultaResultadoPaciente" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_ConsultaResultadoPaciente_Result">
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="FechaHoraValidacion" ColumnName="FechaHoraValidacion" />
+                <ScalarProperty Name="LapsoPertinenteDia" ColumnName="LapsoPertinenteDia" />
+                <ScalarProperty Name="Alarma" ColumnName="Alarma" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_TipoMuestraIdNum" FunctionName="NEURONModel.Store.PRO_TipoMuestraIdNum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_TipoMuestraIdNum_Result">
+                <ScalarProperty Name="TipoMuestra" ColumnName="TipoMuestra" />
+                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+                <ScalarProperty Name="FechaToma" ColumnName="FechaToma" />
+                <ScalarProperty Name="FechaRecep" ColumnName="FechaRecep" />
+                <ScalarProperty Name="IdentificadorMuestra" ColumnName="IdentificadorMuestra" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConvenioAfiliadoNivelSelecc" FunctionName="NEURONModel.Store.PRO_ConvenioAfiliadoNivelSelecc" />
+          <FunctionImportMapping FunctionImportName="PRO_SenderPersonSelecAutoComplete" FunctionName="NEURONModel.Store.PRO_SenderPersonSelecAutoComplete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_SenderPersonSelecAutoComplete_Result">
+                <ScalarProperty Name="CodPersoAsisten" ColumnName="CodPersoAsisten" />
+                <ScalarProperty Name="NombrePersoAsisten" ColumnName="NombrePersoAsisten" />
+                <ScalarProperty Name="Profesion" ColumnName="Profesion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="NEURONModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="ISO3166Alpha3" ColumnName="ISO3166Alpha3" />
+                <ScalarProperty Name="ISO3166Alpha2" ColumnName="ISO3166Alpha2" />
+                <ScalarProperty Name="NomPais" ColumnName="NomPais" />
+                <ScalarProperty Name="CodPais" ColumnName="CodPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoIdentificacion">
+            <EntityTypeMapping TypeName="NEURONModel.TipoIdentificacion">
+              <MappingFragment StoreEntitySet="TipoIdentificacion">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Mascara" ColumnName="Mascara" />
+                <ScalarProperty Name="RazonSocialCHK" ColumnName="RazonSocialCHK" />
+                <ScalarProperty Name="NomTipoIdentificacion" ColumnName="NomTipoIdentificacion" />
+                <ScalarProperty Name="TipoIdentificacion1" ColumnName="TipoIdentificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CRUD_FormaPagoSelecciona" FunctionName="NEURONModel.Store.CRUD_FormaPagoSelecciona" />
+          <FunctionImportMapping FunctionImportName="PRO_FormaPagoMedioPagoSelecciona" FunctionName="NEURONModel.Store.PRO_FormaPagoMedioPagoSelecciona">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_FormaPagoMedioPagoSelecciona_Result">
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="MedioPago" ColumnName="MedioPago" />
+                <ScalarProperty Name="NoDocPago" ColumnName="NoDocPago" />
+                <ScalarProperty Name="NomLblDocPago" ColumnName="NomLblDocPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_PrinterCodeBar" FunctionName="NEURONModel.Store.PRO_PrinterCodeBar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_PrinterCodeBar_Result">
+                <ScalarProperty Name="TipoMuestra" ColumnName="TipoMuestra" />
+                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+                <ScalarProperty Name="FechaToma" ColumnName="FechaToma" />
+                <ScalarProperty Name="FechaRecep" ColumnName="FechaRecep" />
+                <ScalarProperty Name="IdentificadorMuestra" ColumnName="IdentificadorMuestra" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Urgente" ColumnName="Urgente" />
+                <ScalarProperty Name="CentroToma" ColumnName="CentroToma" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="DocUnicoOSC" ColumnName="DocUnicoOSC" />
+                <ScalarProperty Name="NomRemitente" ColumnName="NomRemitente" />
+                <ScalarProperty Name="NomConvenio" ColumnName="NomConvenio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoIdent" ColumnName="TipoIdent" />
+                <ScalarProperty Name="DocIdent" ColumnName="DocIdent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_AutorizaPersonalAsistencial" FunctionName="NEURONModel.Store.PRO_AutorizaPersonalAsistencial">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_AutorizaPersonalAsistencial_Result">
+                <ScalarProperty Name="CodPersoAsisten" ColumnName="CodPersoAsisten" />
+                <ScalarProperty Name="CargoPersoAsisten" ColumnName="CargoPersoAsisten" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="CodEspecialidad" ColumnName="CodEspecialidad" />
+                <ScalarProperty Name="CodEspeHistoriaClinica" ColumnName="CodEspeHistoriaClinica" />
+                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+                <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+                <ScalarProperty Name="Profesion" ColumnName="Profesion" />
+                <ScalarProperty Name="GrupoCita" ColumnName="GrupoCita" />
+                <ScalarProperty Name="RegistroProfesional" ColumnName="RegistroProfesional" />
+                <ScalarProperty Name="NomEspecialidad" ColumnName="NomEspecialidad" />
+                <ScalarProperty Name="NumeroUnicoDocumento" ColumnName="NumeroUnicoDocumento" />
+                <ScalarProperty Name="NombrePersoAsisten" ColumnName="NombrePersoAsisten" />
+                <ScalarProperty Name="EstadoPersoAsisten" ColumnName="EstadoPersoAsisten" />
+                <ScalarProperty Name="DiasCitaAutoma" ColumnName="DiasCitaAutoma" />
+                <ScalarProperty Name="NomTurno" ColumnName="NomTurno" />
+                <ScalarProperty Name="ProgramaCitaCE" ColumnName="ProgramaCitaCE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REPO_OSCSelecciona" FunctionName="NEURONModel.Store.REPO_OSCSelecciona">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.REPO_OSCSelecciona_Result">
+                <ScalarProperty Name="PrefijoNoOSC" ColumnName="PrefijoNoOSC" />
+                <ScalarProperty Name="NoOSC" ColumnName="NoOSC" />
+                <ScalarProperty Name="NomConvenio" ColumnName="NomConvenio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+                <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="NomPrestador" ColumnName="NomPrestador" />
+                <ScalarProperty Name="NomPersoAsisten" ColumnName="NomPersoAsisten" />
+                <ScalarProperty Name="NomRemitente" ColumnName="NomRemitente" />
+                <ScalarProperty Name="VrPagar" ColumnName="VrPagar" />
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="NomCodigoFuente" ColumnName="NomCodigoFuente" />
+                <ScalarProperty Name="Cant" ColumnName="Cant" />
+                <ScalarProperty Name="VrItem" ColumnName="VrItem" />
+                <ScalarProperty Name="DocUnicoOSC" ColumnName="DocUnicoOSC" />
+                <ScalarProperty Name="NomPaciente" ColumnName="NomPaciente" />
+                <ScalarProperty Name="VrDcto" ColumnName="VrDcto" />
+                <ScalarProperty Name="VrPagado" ColumnName="VrPagado" />
+                <ScalarProperty Name="NumeroAutorizacion" ColumnName="NumeroAutorizacion" />
+                <ScalarProperty Name="DocUnicoFact" ColumnName="DocUnicoFact" />
+                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_UsuarioRolFuncion" FunctionName="NEURONModel.Store.PRO_UsuarioRolFuncion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_UsuarioRolFuncion_Result">
+                <ScalarProperty Name="NumeroUnicoDocUsuario" ColumnName="NumeroUnicoDocUsuario" />
+                <ScalarProperty Name="Funcion" ColumnName="Funcion" />
+                <ScalarProperty Name="Aplicacion" ColumnName="Aplicacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConvenioSeleccPaciOSC" FunctionName="NEURONModel.Store.PRO_ConvenioSeleccPaciOSC">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_ConvenioSeleccPaciOSC_Result">
+                <ScalarProperty Name="NomConvenio" ColumnName="NomConvenio" />
+                <ScalarProperty Name="CodConvenio" ColumnName="CodConvenio" />
+                <ScalarProperty Name="NomPlanBeneficio" ColumnName="NomPlanBeneficio" />
+                <ScalarProperty Name="SedeExclusiva" ColumnName="SedeExclusiva" />
+                <ScalarProperty Name="ConvenioDefecto" ColumnName="ConvenioDefecto" />
+                <ScalarProperty Name="NombreSede" ColumnName="NombreSede" />
+                <ScalarProperty Name="CodServicioEntrada" ColumnName="CodServicioEntrada" />
+                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+                <ScalarProperty Name="NumeroContrato" ColumnName="NumeroContrato" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+                <ScalarProperty Name="EstadoAfiliacion" ColumnName="EstadoAfiliacion" />
+                <ScalarProperty Name="Copago" ColumnName="Copago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_SearchBooking" FunctionName="NEURONModel.Store.PRO_SearchBooking">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NEURONModel.PRO_SearchBooking_Result">
+                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+                <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+                <ScalarProperty Name="NumeroUnicoDocumento" ColumnName="NumeroUnicoDocumento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="NoCita" ColumnName="NoCita" />
+                <ScalarProperty Name="FechaHoraDesde" ColumnName="FechaHoraDesde" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="FingerPrintRegister">
+            <EntityTypeMapping TypeName="NEURONModel.FingerPrintRegister">
+              <MappingFragment StoreEntitySet="FingerPrintRegister">
+                <ScalarProperty Name="FingerPrint" ColumnName="FingerPrint" />
+                <ScalarProperty Name="NumeroUnicoDocumento" ColumnName="NumeroUnicoDocumento" />
+                <ScalarProperty Name="IdFingerRegister" ColumnName="IdFingerRegister" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="NeuronOsc">
+        <EntityTypeShape EntityType="NEURONModel.TipoDoc" Width="1.5" PointX="0.75" PointY="5.75" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="NEURONModel.Municipio" Width="1.5" PointX="3" PointY="0.875" Height="2.3648893229166674" IsExpanded="false" />
+        <EntityTypeShape EntityType="NEURONModel.Tercero" Width="1.5" PointX="5.25" PointY="0.875" Height="6.5955208333333317" IsExpanded="false" />
+        <AssociationConnector Association="NEURONModel.FK_Tercero_Municipio" >
+          <ConnectorPoint PointX="4.5" PointY="4.6824446614583337" />
+          <ConnectorPoint PointX="5.25" PointY="4.6824446614583337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NEURONModel.Departamento" Width="1.5" PointX="0.75" PointY="3.875" Height="1.7879850260416674" IsExpanded="false" />
+        <AssociationConnector Association="NEURONModel.GEN_Departamento_GEN_Municipio_FK1" >
+          <ConnectorPoint PointX="2.25" PointY="2.5379850260416674" />
+          <ConnectorPoint PointX="2.625" PointY="2.9129850260416674" />
+          <ConnectorPoint PointX="2.625" PointY="5.2856929179687508" />
+          <ConnectorPoint PointX="3" PointY="5.2856929179687508" />
+        </AssociationConnector>
+        <AssociationConnector Association="NEURONModel.FK_Tercero_Tercero" />
+        <EntityTypeShape EntityType="NEURONModel.Pais" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="NEURONModel.TipoIdentificacion" Width="1.5" PointX="3" PointY="3.875" IsExpanded="false" />
+        <AssociationConnector Association="NEURONModel.GEN_Pais_GEN_Municipio_FK1" />
+        <AssociationConnector Association="NEURONModel.FK_Tercero_Pais" />
+        <AssociationConnector Association="NEURONModel.FK_Tercero_TipoIdentificacion" />
+        <EntityTypeShape EntityType="NEURONModel.FingerPrintRegister" Width="2.375" PointX="6.375" PointY="2.625" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

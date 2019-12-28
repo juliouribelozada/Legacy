@@ -1,0 +1,33 @@
+﻿<Window x:Class="Neuron.Satellite.CapturaManual.Controls.TrackingInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Neuron.Satellite.CapturaManual.Controls"
+        xmlns:viewModels="clr-namespace:Neuron.Satelite.CapturaManual.Data.ViewModels;assembly=Neuron.CapturaManual.Data"
+        mc:Ignorable="d"
+        Title="Trazabilidad de Muestra" Height="375" Width="650"
+        WindowStyle="ToolWindow" 
+        WindowStartupLocation="CenterOwner">
+    <Grid d:DataContext="{d:DesignInstance viewModels:TrackingInfoViewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Muestra" VerticalAlignment="Bottom" FontSize="16" FontWeight="Bold" Margin="5,0,0,5"/>
+        <TextBlock Text="Eventos:" Grid.Column="1" VerticalAlignment="Bottom" FontSize="16" FontWeight="Bold" Margin="5,0,0,5"/>
+        <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding TrackingItems}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding EventDateTime}" ClipboardContentBinding="{x:Null}" Header="Fecha"/>
+                <DataGridTextColumn Binding="{Binding EventName}" ClipboardContentBinding="{x:Null}" Header="Evento"/>
+                <DataGridTextColumn Binding="{Binding Description}" ClipboardContentBinding="{x:Null}" Header="Descripcion"/>
+                <DataGridTextColumn Binding="{Binding User}" ClipboardContentBinding="{x:Null}" Header="Usuario"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Text="{Binding SampleId}" FontSize="16" Margin="5,0,0,0" Grid.Row="1"/>
+    </Grid>
+</Window>

@@ -1,0 +1,98 @@
+﻿<Neuron_OSC_ViewModel:MainWindowViewModel xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Neuron_OSC_ViewModel="clr-namespace:Neuron.OSC.ViewModel" xmlns:Custom="http://www.atpc.co/neuron/HIS/Models/Common" xmlns:System="clr-namespace:System;assembly=mscorlib"
+                                          xmlns:Models="clr-namespace:Neuron.UI.Controls.Models;assembly=Neuron.UI.Controls"
+                                          xmlns:osc="clr-namespace:Neuron.OSC"
+                                          CodeToSearch="Per sed lectus sem" CurrentPatientIsBusy="False" DocIdSearch="Vehicula cubilia erat litora dapibus" SearchingServiceUnits="True" SearchingProviders="True" SearchingRequesters="False" SearchingAgreements="False" Total="666.09" Observaciones="Observaciones" OscPrefix="Prefijo" Imprimir="False" Guardar="True"
+                                          SolicitarEstadoEmbarazo="True" SolicitarFUR="True" CorreoElectronico="t@t.com" EnviarPDF="true" EstaLogeado="True" EnableEditTercero="True" MostrarServicios="True">
+    <Neuron_OSC_ViewModel:MainWindowViewModel.AgreementsByPatient>
+        <Custom:ServiceAgreement Code="Maecenas nam class cras" Name="Vestibulum praesent sed aliquam"/>
+        <Custom:ServiceAgreement Code="Curae adipiscing parturient dis est" Name="Accumsan aenean duis"/>
+        <Custom:ServiceAgreement Code="Bibendum dictumst eleifend" Name="Hac facilisi donec mauris"/>
+        <Custom:ServiceAgreement Code="Vestibulum curabitur phasellus" Name="Integer leo faucibus mus consequat"/>
+        <Custom:ServiceAgreement Code="Habitant etiam inceptos" Name="Interdum nullam aptent convallis quisque"/>
+        <Custom:ServiceAgreement Code="Lobortis nec vestibulum" Name="Fusce nunc"/>
+        <Custom:ServiceAgreement Code="Adipiscing nascetur auctor congue" Name="Lorem cursus vivamus pharetra placerat"/>
+        <Custom:ServiceAgreement Code="Aliquam dignissim morbi" Name="Pulvinar nulla dictum amet"/>
+        <Custom:ServiceAgreement Code="Ante non elementum arcu diam" Name="Proin sagittis augue"/>
+        <Custom:ServiceAgreement Code="Parturient vestibulum facilisis vestibulum eget" Name="Adipiscing parturient senectus vestibulum elit"/>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.AgreementsByPatient>
+    <Neuron_OSC_ViewModel:MainWindowViewModel.CurrentPatient>
+        <Custom:PatientInfo AdditionalLastName="Sociosqu dolor" Error="Libero sit vel" FullName="Nam ligula felis" FirstName="Fermentum vestibulum fames suscipit" Gender="Male" IdDocumentType="Enim dis" IdDocument="Aliquet sed" LastName="Est blandit" MiddleName="Hac leo commodo ipsum torquent" PoblationGroup="Adult" UniqueDocumentId="Ultrices conubia">
+            
+        </Custom:PatientInfo>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.CurrentPatient>
+	<Neuron_OSC_ViewModel:MainWindowViewModel.SelectedServices>
+        <osc:CrudEntityWrapper>
+            <osc:CrudEntityWrapper.BaseEntity>
+                <Custom:Service Code="902210" Price="100000" Name="Test Test Test testtesttestTest Test Test testtesttestTest Test Test testtesttestTest Test Test testtesttestTest Test Test testtesttest" Quantity="10" Total="10000000" ProviderCode="01" ServiceAgreementCode="02"></Custom:Service>
+            </osc:CrudEntityWrapper.BaseEntity>
+        </osc:CrudEntityWrapper>
+        <osc:CrudEntityWrapper>
+            <osc:CrudEntityWrapper.BaseEntity>
+                <Custom:Service Code="902210" Price="100" Name="Test Test Test tt" Quantity="10" Total="10000" ProviderCode="01" ServiceAgreementCode="02"></Custom:Service>
+            </osc:CrudEntityWrapper.BaseEntity>
+        </osc:CrudEntityWrapper>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.SelectedServices>
+    <Neuron_OSC_ViewModel:MainWindowViewModel.ProvidersByAgreement>
+        <Custom:ServiceProvider Code="Eros luctus fringilla" Name="Mus justo egestas volutpat"/>
+        <Custom:ServiceProvider Code="Nec nibh habitasse magnis" Name="Maecenas nisi"/>
+        <Custom:ServiceProvider Code="Praesent euismod" Name="Hendrerit mattis"/>
+        <Custom:ServiceProvider Code="Adipiscing feugiat himenaeos non mauris" Name="Parturient lacus"/>
+        <Custom:ServiceProvider Code="Gravida lorem accumsan imperdiet" Name="Iaculis magna massa malesuada"/>
+        <Custom:ServiceProvider Code="Vestibulum nisl vestibulum adipiscing" Name="Lacinia mollis"/>
+        <Custom:ServiceProvider Code="Bibendum laoreet montes per metus" Name="Morbi natoque"/>
+        <Custom:ServiceProvider Code="Penatibus nunc parturient sed" Name="Porttitor neque posuere"/>
+        <Custom:ServiceProvider Code="Potenti pretium rhoncus dictumst" Name="Nostra ornare sodales vestibulum"/>
+        <Custom:ServiceProvider Code="Vestibulum tincidunt viverra tristique aliquam" Name="Integer eleifend sem facilisi quisque"/>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.ProvidersByAgreement>
+    <Neuron_OSC_ViewModel:MainWindowViewModel.RequestersByAgreement>
+        <Custom:ServiceRequester Code="Odio adipiscing orci parturient platea" Name="Sit pede"/>
+        <Custom:ServiceRequester Code="Faucibus habitant ultricies quam inceptos" Name="Venenatis interdum vel lobortis"/>
+        <Custom:ServiceRequester Code="Quis primis vivamus" Name="Urna aliquam nam"/>
+        <Custom:ServiceRequester Code="Vestibulum vulputate nascetur" Name="Aliquet rutrum"/>
+        <Custom:ServiceRequester Code="Sapien pharetra sed" Name="Dis est cras"/>
+        <Custom:ServiceRequester Code="Blandit commodo netus" Name="Nulla placerat hac semper conubia"/>
+        <Custom:ServiceRequester Code="Curabitur pulvinar sagittis" Name="Senectus duis leo phasellus consequat"/>
+        <Custom:ServiceRequester Code="Vestibulum porta purus sociis cubilia" Name="Mus nunc nec"/>
+        <Custom:ServiceRequester Code="Taciti amet" Name="Convallis dapibus sociosqu adipiscing"/>
+        <Custom:ServiceRequester Code="Suscipit torquent ante" Name="Tellus risus arcu dignissim"/>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.RequestersByAgreement>
+    <Neuron_OSC_ViewModel:MainWindowViewModel.SelectedServiceUnit>
+        <Custom:ServiceUnit Code="Maecenas elementum praesent" Name="Accumsan feugiat bibendum tempus"/>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.SelectedServiceUnit>
+    <Neuron_OSC_ViewModel:MainWindowViewModel.SelectedAgreement>
+        <Custom:ServiceAgreement Code="Velit egestas" Name="Vitae non"/>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.SelectedAgreement>
+    <Neuron_OSC_ViewModel:MainWindowViewModel.ServicesByRequester>
+        <Custom:Service Code="Viverra interdum" Name="Ultricies pede" Plan="Lobortis venenatis quam" Price="641.5" Quantity="64" Total="723.7" TipoPago="Adipiscing quis urna nullam parturient"/>
+        <Custom:Service Code="Nascetur nulla cras" Name="Vestibulum aliquam duis" Plan="Nunc vulputate proin augue nec" Price="912.58" Quantity="72" Total="532.18" TipoPago="Integer aptent pharetra dolor"/>
+        <Custom:Service Code="Auctor non fames curabitur vestibulum" Name="Placerat pulvinar adipiscing sagittis" Plan="Senectus congue felis amet" Price="545.76" Quantity="91" Total="568.09" TipoPago="Phasellus sociosqu consequat"/>
+        <Custom:Service Code="Parturient cursus" Name="Ipsum justo dictum ante arcu" Plan="Per suscipit" Price="367.19" Quantity="53" Total="895.14" TipoPago="Sed lectus diam eget torquent"/>
+        <Custom:Service Code="Elit ultrices vestibulum quisque" Name="Vehicula convallis dignissim libero ligula" Plan="Enim vestibulum lacus vivamus erat" Price="452.19" Quantity="54" Total="897.84" TipoPago="Sem adipiscing"/>
+        <Custom:Service Code="Sit parturient volutpat litora vel" Name="Eros nibh lorem" Plan="Elementum magna vestibulum massa" Price="383.77" Quantity="56" Total="113.04" TipoPago="Nam vestibulum nisi"/>
+        <Custom:Service Code="Aliquam maecenas adipiscing luctus facilisis" Name="Metus aliquet nisl fermentum" Plan="Parturient magnis sed dis mattis" Price="770.35" Quantity="36" Total="798.75" TipoPago="Nunc blandit"/>
+        <Custom:Service Code="Vestibulum vestibulum fringilla" Name="Adipiscing mauris mollis habitasse" Plan="Commodo est montes praesent hendrerit" Price="437.3" Quantity="89" Total="689.35" TipoPago="Morbi parturient conubia nostra"/>
+        <Custom:Service Code="Ornare vestibulum platea" Name="Cubilia dapibus himenaeos" Plan="Odio accumsan egestas" Price="996.8" Quantity="45" Total="491.65" TipoPago="Imperdiet vestibulum euismod bibendum"/>
+        <Custom:Service Code="Orci pede malesuada" Name="Feugiat dictumst adipiscing primis" Plan="Neque parturient penatibus hac vestibulum" Price="792.66" Quantity="89" Total="786.04" TipoPago="Netus rutrum sapien gravida eleifend"/>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.ServicesByRequester>
+    <Neuron_OSC_ViewModel:MainWindowViewModel.SelectedProvider>
+        <Custom:ServiceProvider Code="Ultrices vehicula" Name="Class diam"/>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.SelectedProvider>
+    <Neuron_OSC_ViewModel:MainWindowViewModel.SelectedRequester>
+        <Custom:ServiceRequester Code="Per tempor" Name="Euismod volutpat"/>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.SelectedRequester>
+    <Neuron_OSC_ViewModel:MainWindowViewModel.ServiceUnitsByRequester>
+        <Custom:ServiceUnit Code="Curae eget parturient tortor elit" Name="Vestibulum vestibulum facilisis sed"/>
+        <Custom:ServiceUnit Code="Sem gravida fermentum fringilla" Name="Iaculis adipiscing lacinia"/>
+        <Custom:ServiceUnit Code="Habitasse sit" Name="Turpis parturient"/>
+        <Custom:ServiceUnit Code="Donec hendrerit" Name="Himenaeos etiam imperdiet"/>
+        <Custom:ServiceUnit Code="Fusce vestibulum vestibulum enim vel" Name="Adipiscing laoreet dictumst malesuada penatibus"/>
+        <Custom:ServiceUnit Code="Natoque varius erat nam" Name="Eros eleifend parturient lorem"/>
+        <Custom:ServiceUnit Code="Sed posuere facilisi faucibus" Name="Dis porttitor nibh vestibulum habitant"/>
+        <Custom:ServiceUnit Code="Nisi tincidunt nisl potenti aenean" Name="Pretium inceptos vestibulum"/>
+        <Custom:ServiceUnit Code="Est adipiscing rhoncus" Name="Parturient hac vestibulum nunc"/>
+        <Custom:ServiceUnit Code="Leo tristique morbi mus" Name="Sodales vestibulum odio orci mauris"/>
+    </Neuron_OSC_ViewModel:MainWindowViewModel.ServiceUnitsByRequester>
+    <Neuron_OSC_ViewModel:MainWindowViewModel.TipoIdentificacionList>
+        
+    </Neuron_OSC_ViewModel:MainWindowViewModel.TipoIdentificacionList>   
+</Neuron_OSC_ViewModel:MainWindowViewModel>

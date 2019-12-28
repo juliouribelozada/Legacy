@@ -1,0 +1,1091 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NeuronCloudModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="OSC">
+          <Key>
+            <PropertyRef Name="DocUnicoOSC" />
+          </Key>
+          <Property Name="DocUnicoOSC" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PrefijoNoOSC" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="NoOSC" Type="int" Nullable="false" />
+          <Property Name="Barrio" Type="varchar" MaxLength="20" />
+          <Property Name="CodDiag" Type="varchar" MaxLength="4" />
+          <Property Name="CodConvenio" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NomConvenio" Type="varchar" MaxLength="100" />
+          <Property Name="CodMPio" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CodPrestador" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomPrestador" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CodPersoAsisten" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomPersoAsisten" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CodRemitente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomRemitente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ServicioUbicacion" Type="varchar" MaxLength="50" />
+          <Property Name="Cama" Type="varchar" MaxLength="15" />
+          <Property Name="DireccionResidencia" Type="varchar" MaxLength="100" />
+          <Property Name="CorreoElectronico" Type="varchar" MaxLength="100" />
+          <Property Name="EnviarPDF" Type="bit" />
+          <Property Name="Edad" Type="varchar" MaxLength="50" />
+          <Property Name="EdadDias" Type="int" />
+          <Property Name="Genero" Type="varchar" MaxLength="10" />
+          <Property Name="EstadoAfiliacion" Type="varchar" MaxLength="40" />
+          <Property Name="Nivel" Type="varchar" MaxLength="2" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="FechaAnulacion" Type="datetime" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="IdSistema" Type="varchar" MaxLength="15" />
+          <Property Name="NomDiag" Type="varchar" MaxLength="100" />
+          <Property Name="NumeroAutorizacion" Type="varchar" MaxLength="15" />
+          <Property Name="NumeroUnicoDocumento" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="200" />
+          <Property Name="PrimerApellido" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrimerNombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SegundoApellido" Type="varchar" MaxLength="20" />
+          <Property Name="SegundoNombre" Type="varchar" MaxLength="20" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" />
+          <Property Name="TipoAutorizacion" Type="varchar" MaxLength="10" />
+          <Property Name="TipoUsuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UsuarioAnulacion" Type="varchar" MaxLength="15" />
+          <Property Name="UsuarioRegistro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VrDcto" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="VrPagar" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ZonaResidencia" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EstadoOSC" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NoOrdenMedica" Type="varchar" MaxLength="15" />
+          <Property Name="Token" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="OSCDet">
+          <Key>
+            <PropertyRef Name="IdOSCDet" />
+          </Key>
+          <Property Name="Cant" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CodCentroCosto" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="GrupoPlanBene" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CodigoManual" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomManual" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="NombrePortafoGrupo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodigoContable" Type="varchar" MaxLength="12" />
+          <Property Name="CodigoFuente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NombreCodigoFuente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="NomTipoPagoComp" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UsuarioRegistro" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="VrItem" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="DocUnicoOSC" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="IdOSCDet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMuestra" Type="int" />
+          <Property Name="Estado" Type="int" />
+          <Property Name="FechaHoraToma" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="CodDepto" />
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="NomDepto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodDepto" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CodPais" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="CodMpio" />
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="CodMpio" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="NomMpio" Type="varchar" MaxLength="50" />
+          <Property Name="CodDepto" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CodPais" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="CodPais" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NomPais" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tercero">
+          <Key>
+            <PropertyRef Name="NumeroUnicoDocumento" />
+          </Key>
+          <Property Name="TipoIdentificacion" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="DocumentoIdentidad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="NumeroUnicoDocumento" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="PrimerNombre" Type="varchar" MaxLength="20" />
+          <Property Name="SegundoNombre" Type="varchar" MaxLength="20" />
+          <Property Name="PrimerApellido" Type="varchar" MaxLength="20" />
+          <Property Name="SegundoApellido" Type="varchar" MaxLength="20" />
+          <Property Name="CodMpioDomicilio" Type="varchar" MaxLength="15" />
+          <Property Name="BarrioDomicilio" Type="varchar" MaxLength="100" />
+          <Property Name="DireccionDomicilio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TelefonoDomicilio" Type="varchar" MaxLength="15" />
+          <Property Name="TelefonoAlterno" Type="varchar" MaxLength="15" />
+          <Property Name="Genero" Type="varchar" MaxLength="10" />
+          <Property Name="Fax" Type="varchar" MaxLength="15" />
+          <Property Name="Movil" Type="varchar" MaxLength="30" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CorreoPersonal" Type="varchar" MaxLength="50" />
+          <Property Name="CorreoCorporativo" Type="varchar" MaxLength="50" />
+          <Property Name="CodPaisDomicilio" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Foto" Type="image" />
+          <Property Name="Zona" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FechaRegistro" Type="smalldatetime" Nullable="false" />
+          <Property Name="UsuarioRegistro" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CentroTomaMuestra">
+          <Key>
+            <PropertyRef Name="CodPrestador" />
+            <PropertyRef Name="PrefijoCentroToma" />
+          </Key>
+          <Property Name="CodPrestador" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrefijoCentroToma" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="NomCentroToma" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LYSIS1.GEN.V_Tercero' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Tercero">
+          <Key>
+            <PropertyRef Name="TipoIdentificacion" />
+            <PropertyRef Name="DocumentoIdentidad" />
+            <PropertyRef Name="NumeroUnicoDocumento" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="CodDeptoResidencia" />
+            <PropertyRef Name="NomDeptoResidencia" />
+            <PropertyRef Name="CodMpioResidencia" />
+            <PropertyRef Name="Zona" />
+            <PropertyRef Name="NomMpioResidencia" />
+            <PropertyRef Name="DireccionResidencia" />
+            <PropertyRef Name="CodPaisResidencia" />
+            <PropertyRef Name="NomPaisResidencia" />
+            <PropertyRef Name="FechaRegistro" />
+            <PropertyRef Name="UsuarioRegistro" />
+          </Key>
+          <Property Name="TipoIdentificacion" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="DocumentoIdentidad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="NumeroUnicoDocumento" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="PrimerNombre" Type="varchar" MaxLength="20" />
+          <Property Name="SegundoNombre" Type="varchar" MaxLength="20" />
+          <Property Name="PrimerApellido" Type="varchar" MaxLength="20" />
+          <Property Name="SegundoApellido" Type="varchar" MaxLength="20" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CodDeptoResidencia" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="NomDeptoResidencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodMpioResidencia" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Zona" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomMpioResidencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BarrioResidencia" Type="varchar" MaxLength="100" />
+          <Property Name="DireccionResidencia" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TelefonoResidencia" Type="varchar" MaxLength="15" />
+          <Property Name="TelefonoAlterno" Type="varchar" MaxLength="15" />
+          <Property Name="Genero" Type="varchar" MaxLength="10" />
+          <Property Name="Fax" Type="varchar" MaxLength="15" />
+          <Property Name="Movil" Type="varchar" MaxLength="30" />
+          <Property Name="CorreoPersonal" Type="varchar" MaxLength="50" />
+          <Property Name="CorreoCorporativo" Type="varchar" MaxLength="50" />
+          <Property Name="CodPaisResidencia" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NomPaisResidencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaRegistro" Type="smalldatetime" Nullable="false" />
+          <Property Name="UsuarioRegistro" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LYSIS1.HIS.V_PersonalAsistencial' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_PersonalAsistencial">
+          <Key>
+            <PropertyRef Name="CodPersoAsisten" />
+            <PropertyRef Name="CargoPersoAsisten" />
+            <PropertyRef Name="CLAVE" />
+            <PropertyRef Name="CodEspecialidad" />
+            <PropertyRef Name="EstadoPersoAsisten" />
+            <PropertyRef Name="ProgramaCitaCE" />
+          </Key>
+          <Property Name="CodPersoAsisten" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CargoPersoAsisten" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CodEspecialidad" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CodEspeHistoriaClinica" Type="varchar" MaxLength="3" />
+          <Property Name="TipoIdentificacion" Type="varchar" MaxLength="3" />
+          <Property Name="DocumentoIdentidad" Type="varchar" MaxLength="15" />
+          <Property Name="Firma" Type="image" />
+          <Property Name="Foto" Type="image" />
+          <Property Name="Profesion" Type="varchar" MaxLength="30" />
+          <Property Name="GrupoCita" Type="varchar" MaxLength="2" />
+          <Property Name="RegistroProfesional" Type="varchar" MaxLength="20" />
+          <Property Name="NomEspecialidad" Type="varchar" MaxLength="100" />
+          <Property Name="NumeroUnicoDocumento" Type="varchar" MaxLength="18" />
+          <Property Name="NombrePersoAsisten" Type="varchar" MaxLength="100" />
+          <Property Name="EstadoPersoAsisten" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DiasCitaAutoma" Type="smallint" />
+          <Property Name="NomTurno" Type="varchar" MaxLength="50" />
+          <Property Name="ProgramaCitaCE" Type="bit" Nullable="false" />
+          <Property Name="CodBarraPersoAsisten" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_OSC_Tercero">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="1" />
+          <End Role="OSC" Type="Self.OSC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="NumeroUnicoDocumento" />
+            </Principal>
+            <Dependent Role="OSC">
+              <PropertyRef Name="NumeroUnicoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OSCDet_OSC">
+          <End Role="OSC" Type="Self.OSC" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OSCDet" Type="Self.OSCDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OSC">
+              <PropertyRef Name="DocUnicoOSC" />
+            </Principal>
+            <Dependent Role="OSCDet">
+              <PropertyRef Name="DocUnicoOSC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tercero_Municipio">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="CodPais" />
+              <PropertyRef Name="CodMpio" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="CodPaisDomicilio" />
+              <PropertyRef Name="CodMpioDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tercero_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="CodPaisDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tercero_Tercero">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="1" />
+          <End Role="Tercero1" Type="Self.Tercero" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="NumeroUnicoDocumento" />
+            </Principal>
+            <Dependent Role="Tercero1">
+              <PropertyRef Name="NumeroUnicoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GEN_Departamento_GEN_Municipio_FK1">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="CodDepto" />
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="CodDepto" />
+              <PropertyRef Name="CodPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GEN_Pais_GEN_Municipio_FK1">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="CodPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="PRO_OSCAnula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CAJA">
+          <Parameter Name="DocUnicoOSC" Type="varchar" Mode="In" />
+          <Parameter Name="UsuarioAnulacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConsultaCitaServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITA">
+          <Parameter Name="NomDepartamento" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="PRO_ConsultaCitaServicioMes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITA">
+          <Parameter Name="NomDepartamento" Type="varchar" Mode="In" />
+          <Parameter Name="Mes" Type="smallint" Mode="In" />
+          <Parameter Name="Ano" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="PRO_TerceroInsertaActualiza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN">
+          <Parameter Name="TipoIdentificacion" Type="varchar" Mode="In" />
+          <Parameter Name="DocumentoIdentidad" Type="varchar" Mode="In" />
+          <Parameter Name="PrimerNombre" Type="varchar" Mode="In" />
+          <Parameter Name="SegundoNombre" Type="varchar" Mode="In" />
+          <Parameter Name="PrimerApellido" Type="varchar" Mode="In" />
+          <Parameter Name="SegundoApellido" Type="nvarchar" Mode="In" />
+          <Parameter Name="CodMpioDomicilio" Type="nvarchar" Mode="In" />
+          <Parameter Name="BarrioDomicilio" Type="varchar" Mode="In" />
+          <Parameter Name="DireccionDomicilio" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoDomicilio" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoAlterno" Type="varchar" Mode="In" />
+          <Parameter Name="Genero" Type="varchar" Mode="In" />
+          <Parameter Name="Fax" Type="varchar" Mode="In" />
+          <Parameter Name="Movil" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="CorreoPersonal" Type="varchar" Mode="In" />
+          <Parameter Name="CorreoCorporativo" Type="varchar" Mode="In" />
+          <Parameter Name="CodPaisDomicilio" Type="varchar" Mode="In" />
+          <Parameter Name="Zona" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="NeuronCloudModelStoreContainer">
+          <EntitySet Name="OSC" EntityType="Self.OSC" Schema="CAJA" store:Type="Tables" />
+          <EntitySet Name="OSCDet" EntityType="Self.OSCDet" Schema="CAJA" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="Tercero" EntityType="Self.Tercero" Schema="GEN" store:Type="Tables" />
+          <EntitySet Name="CentroTomaMuestra" EntityType="Self.CentroTomaMuestra" Schema="LAB" store:Type="Tables" />
+          <EntitySet Name="V_Tercero" EntityType="Self.V_Tercero" store:Type="Views" store:Schema="GEN">
+            <DefiningQuery>SELECT 
+[V_Tercero].[TipoIdentificacion] AS [TipoIdentificacion], 
+[V_Tercero].[DocumentoIdentidad] AS [DocumentoIdentidad], 
+[V_Tercero].[NumeroUnicoDocumento] AS [NumeroUnicoDocumento], 
+[V_Tercero].[PrimerNombre] AS [PrimerNombre], 
+[V_Tercero].[SegundoNombre] AS [SegundoNombre], 
+[V_Tercero].[PrimerApellido] AS [PrimerApellido], 
+[V_Tercero].[SegundoApellido] AS [SegundoApellido], 
+[V_Tercero].[Nombre] AS [Nombre], 
+[V_Tercero].[CodDeptoResidencia] AS [CodDeptoResidencia], 
+[V_Tercero].[NomDeptoResidencia] AS [NomDeptoResidencia], 
+[V_Tercero].[CodMpioResidencia] AS [CodMpioResidencia], 
+[V_Tercero].[Zona] AS [Zona], 
+[V_Tercero].[NomMpioResidencia] AS [NomMpioResidencia], 
+[V_Tercero].[BarrioResidencia] AS [BarrioResidencia], 
+[V_Tercero].[DireccionResidencia] AS [DireccionResidencia], 
+[V_Tercero].[TelefonoResidencia] AS [TelefonoResidencia], 
+[V_Tercero].[TelefonoAlterno] AS [TelefonoAlterno], 
+[V_Tercero].[Genero] AS [Genero], 
+[V_Tercero].[Fax] AS [Fax], 
+[V_Tercero].[Movil] AS [Movil], 
+[V_Tercero].[CorreoPersonal] AS [CorreoPersonal], 
+[V_Tercero].[CorreoCorporativo] AS [CorreoCorporativo], 
+[V_Tercero].[CodPaisResidencia] AS [CodPaisResidencia], 
+[V_Tercero].[NomPaisResidencia] AS [NomPaisResidencia], 
+[V_Tercero].[FechaRegistro] AS [FechaRegistro], 
+[V_Tercero].[UsuarioRegistro] AS [UsuarioRegistro], 
+[V_Tercero].[FechaNacimiento] AS [FechaNacimiento]
+FROM [GEN].[V_Tercero] AS [V_Tercero]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_PersonalAsistencial" EntityType="Self.V_PersonalAsistencial" store:Type="Views" store:Schema="HIS">
+            <DefiningQuery>SELECT 
+[V_PersonalAsistencial].[CodPersoAsisten] AS [CodPersoAsisten], 
+[V_PersonalAsistencial].[CargoPersoAsisten] AS [CargoPersoAsisten], 
+[V_PersonalAsistencial].[CLAVE] AS [CLAVE], 
+[V_PersonalAsistencial].[CodEspecialidad] AS [CodEspecialidad], 
+[V_PersonalAsistencial].[CodEspeHistoriaClinica] AS [CodEspeHistoriaClinica], 
+[V_PersonalAsistencial].[TipoIdentificacion] AS [TipoIdentificacion], 
+[V_PersonalAsistencial].[DocumentoIdentidad] AS [DocumentoIdentidad], 
+[V_PersonalAsistencial].[Firma] AS [Firma], 
+[V_PersonalAsistencial].[Foto] AS [Foto], 
+[V_PersonalAsistencial].[Profesion] AS [Profesion], 
+[V_PersonalAsistencial].[GrupoCita] AS [GrupoCita], 
+[V_PersonalAsistencial].[RegistroProfesional] AS [RegistroProfesional], 
+[V_PersonalAsistencial].[NomEspecialidad] AS [NomEspecialidad], 
+[V_PersonalAsistencial].[NumeroUnicoDocumento] AS [NumeroUnicoDocumento], 
+[V_PersonalAsistencial].[NombrePersoAsisten] AS [NombrePersoAsisten], 
+[V_PersonalAsistencial].[EstadoPersoAsisten] AS [EstadoPersoAsisten], 
+[V_PersonalAsistencial].[DiasCitaAutoma] AS [DiasCitaAutoma], 
+[V_PersonalAsistencial].[NomTurno] AS [NomTurno], 
+[V_PersonalAsistencial].[ProgramaCitaCE] AS [ProgramaCitaCE], 
+[V_PersonalAsistencial].[CodBarraPersoAsisten] AS [CodBarraPersoAsisten]
+FROM [HIS].[V_PersonalAsistencial] AS [V_PersonalAsistencial]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_OSC_Tercero" Association="Self.FK_OSC_Tercero">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="OSC" EntitySet="OSC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OSCDet_OSC" Association="Self.FK_OSCDet_OSC">
+            <End Role="OSC" EntitySet="OSC" />
+            <End Role="OSCDet" EntitySet="OSCDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tercero_Municipio" Association="Self.FK_Tercero_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tercero_Pais" Association="Self.FK_Tercero_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tercero_Tercero" Association="Self.FK_Tercero_Tercero">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="Tercero1" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="GEN_Departamento_GEN_Municipio_FK1" Association="Self.GEN_Departamento_GEN_Municipio_FK1">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="GEN_Pais_GEN_Municipio_FK1" Association="Self.GEN_Pais_GEN_Municipio_FK1">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NeuronCloudModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="NeuronCloudBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departamento" EntityType="NeuronCloudModel.Departamento" />
+          <EntitySet Name="Municipio" EntityType="NeuronCloudModel.Municipio" />
+          <EntitySet Name="Pais" EntityType="NeuronCloudModel.Pais" />
+          <EntitySet Name="Tercero" EntityType="NeuronCloudModel.Tercero" />
+          <AssociationSet Name="GEN_Departamento_GEN_Municipio_FK1" Association="NeuronCloudModel.GEN_Departamento_GEN_Municipio_FK1">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tercero_Municipio" Association="NeuronCloudModel.FK_Tercero_Municipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="GEN_Pais_GEN_Municipio_FK1" Association="NeuronCloudModel.GEN_Pais_GEN_Municipio_FK1">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tercero_Pais" Association="NeuronCloudModel.FK_Tercero_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <EntitySet Name="V_Tercero" EntityType="NeuronCloudModel.V_Tercero" />
+          <EntitySet Name="V_PersonalAsistencial" EntityType="NeuronCloudModel.V_PersonalAsistencial" />
+          <EntitySet Name="OSC" EntityType="NeuronCloudModel.OSC" />
+          <EntitySet Name="OSCDet" EntityType="NeuronCloudModel.OSCDet" />
+          <AssociationSet Name="FK_OSC_Tercero" Association="NeuronCloudModel.FK_OSC_Tercero">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="OSC" EntitySet="OSC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OSCDet_OSC" Association="NeuronCloudModel.FK_OSCDet_OSC">
+            <End Role="OSC" EntitySet="OSC" />
+            <End Role="OSCDet" EntitySet="OSCDet" />
+          </AssociationSet>
+          <FunctionImport Name="PRO_OSCAnula">
+            <Parameter Name="DocUnicoOSC" Mode="In" Type="String" />
+            <Parameter Name="UsuarioAnulacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_ConsultaCitaServicio" ReturnType="Collection(NeuronCloudModel.PRO_ConsultaCitaServicio_Result)">
+            <Parameter Name="NomDepartamento" Mode="In" Type="String" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PRO_ConsultaCitaServicioMes">
+            <Parameter Name="NomDepartamento" Mode="In" Type="String" />
+            <Parameter Name="Mes" Mode="In" Type="Int16" />
+            <Parameter Name="Ano" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <EntitySet Name="CentroTomaMuestra" EntityType="NeuronCloudModel.CentroTomaMuestra" />
+          <FunctionImport Name="PRO_TerceroInsertaActualiza">
+            <Parameter Name="TipoIdentificacion" Mode="In" Type="String" />
+            <Parameter Name="DocumentoIdentidad" Mode="In" Type="String" />
+            <Parameter Name="PrimerNombre" Mode="In" Type="String" />
+            <Parameter Name="SegundoNombre" Mode="In" Type="String" />
+            <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+            <Parameter Name="SegundoApellido" Mode="In" Type="String" />
+            <Parameter Name="CodMpioDomicilio" Mode="In" Type="String" />
+            <Parameter Name="BarrioDomicilio" Mode="In" Type="String" />
+            <Parameter Name="DireccionDomicilio" Mode="In" Type="String" />
+            <Parameter Name="TelefonoDomicilio" Mode="In" Type="String" />
+            <Parameter Name="TelefonoAlterno" Mode="In" Type="String" />
+            <Parameter Name="Genero" Mode="In" Type="String" />
+            <Parameter Name="Fax" Mode="In" Type="String" />
+            <Parameter Name="Movil" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="CorreoPersonal" Mode="In" Type="String" />
+            <Parameter Name="CorreoCorporativo" Mode="In" Type="String" />
+            <Parameter Name="CodPaisDomicilio" Mode="In" Type="String" />
+            <Parameter Name="Zona" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="CodDepto" />
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="NomDepto" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CodDepto" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="CodPais" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Municipio" Relationship="NeuronCloudModel.GEN_Departamento_GEN_Municipio_FK1" FromRole="Departamento" ToRole="Municipio" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="CodMpio" />
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="CodMpio" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="NomMpio" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CodDepto" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="CodPais" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Departamento" Relationship="NeuronCloudModel.GEN_Departamento_GEN_Municipio_FK1" FromRole="Municipio" ToRole="Departamento" />
+          <NavigationProperty Name="Tercero" Relationship="NeuronCloudModel.FK_Tercero_Municipio" FromRole="Municipio" ToRole="Tercero" />
+          <NavigationProperty Name="Pais" Relationship="NeuronCloudModel.GEN_Pais_GEN_Municipio_FK1" FromRole="Municipio" ToRole="Pais" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="CodPais" />
+          </Key>
+          <Property Name="CodPais" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="NomPais" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Municipio" Relationship="NeuronCloudModel.GEN_Pais_GEN_Municipio_FK1" FromRole="Pais" ToRole="Municipio" />
+          <NavigationProperty Name="Tercero" Relationship="NeuronCloudModel.FK_Tercero_Pais" FromRole="Pais" ToRole="Tercero" />
+        </EntityType>
+        <EntityType Name="Tercero">
+          <Key>
+            <PropertyRef Name="NumeroUnicoDocumento" />
+          </Key>
+          <Property Name="TipoIdentificacion" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="DocumentoIdentidad" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="NumeroUnicoDocumento" Type="String" Nullable="false" MaxLength="18" Unicode="false" FixedLength="false" />
+          <Property Name="PrimerNombre" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="SegundoNombre" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PrimerApellido" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="SegundoApellido" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CodMpioDomicilio" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="BarrioDomicilio" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DireccionDomicilio" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="TelefonoDomicilio" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="TelefonoAlterno" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Genero" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Fax" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Movil" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CorreoPersonal" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CorreoCorporativo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CodPaisDomicilio" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Zona" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioRegistro" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Municipio" Relationship="NeuronCloudModel.FK_Tercero_Municipio" FromRole="Tercero" ToRole="Municipio" />
+          <NavigationProperty Name="Pais" Relationship="NeuronCloudModel.FK_Tercero_Pais" FromRole="Tercero" ToRole="Pais" />
+          <NavigationProperty Name="OSC" Relationship="NeuronCloudModel.FK_OSC_Tercero" FromRole="Tercero" ToRole="OSC" />
+          </EntityType>
+        <Association Name="GEN_Departamento_GEN_Municipio_FK1">
+          <End Role="Departamento" Type="NeuronCloudModel.Departamento" Multiplicity="1" />
+          <End Role="Municipio" Type="NeuronCloudModel.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="CodDepto" />
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="CodDepto" />
+              <PropertyRef Name="CodPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tercero_Municipio">
+          <End Role="Municipio" Type="NeuronCloudModel.Municipio" Multiplicity="1" />
+          <End Role="Tercero" Type="NeuronCloudModel.Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="CodPais" />
+              <PropertyRef Name="CodMpio" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="CodPaisDomicilio" />
+              <PropertyRef Name="CodMpioDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GEN_Pais_GEN_Municipio_FK1">
+          <End Role="Pais" Type="NeuronCloudModel.Pais" Multiplicity="1" />
+          <End Role="Municipio" Type="NeuronCloudModel.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="CodPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tercero_Pais">
+          <End Role="Pais" Type="NeuronCloudModel.Pais" Multiplicity="1" />
+          <End Role="Tercero" Type="NeuronCloudModel.Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="CodPais" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="CodPaisDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="V_Tercero">
+          <Key>
+            <PropertyRef Name="TipoIdentificacion" />
+            <PropertyRef Name="DocumentoIdentidad" />
+            <PropertyRef Name="NumeroUnicoDocumento" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="CodDeptoResidencia" />
+            <PropertyRef Name="NomDeptoResidencia" />
+            <PropertyRef Name="CodMpioResidencia" />
+            <PropertyRef Name="Zona" />
+            <PropertyRef Name="NomMpioResidencia" />
+            <PropertyRef Name="DireccionResidencia" />
+            <PropertyRef Name="CodPaisResidencia" />
+            <PropertyRef Name="NomPaisResidencia" />
+            <PropertyRef Name="FechaRegistro" />
+            <PropertyRef Name="UsuarioRegistro" />
+          </Key>
+          <Property Type="String" Name="TipoIdentificacion" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocumentoIdentidad" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NumeroUnicoDocumento" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrimerNombre" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SegundoNombre" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrimerApellido" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SegundoApellido" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodDeptoResidencia" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomDeptoResidencia" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodMpioResidencia" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Zona" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomMpioResidencia" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BarrioResidencia" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DireccionResidencia" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TelefonoResidencia" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TelefonoAlterno" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Genero" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Fax" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Movil" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CorreoPersonal" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CorreoCorporativo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodPaisResidencia" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomPaisResidencia" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaRegistro" Nullable="false" Precision="0" />
+          <Property Type="String" Name="UsuarioRegistro" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaNacimiento" Precision="3" />
+        </EntityType>
+        <EntityType Name="V_PersonalAsistencial">
+          <Key>
+            <PropertyRef Name="CodPersoAsisten" />
+            <PropertyRef Name="CargoPersoAsisten" />
+            <PropertyRef Name="CLAVE" />
+            <PropertyRef Name="CodEspecialidad" />
+            <PropertyRef Name="EstadoPersoAsisten" />
+            <PropertyRef Name="ProgramaCitaCE" />
+          </Key>
+          <Property Type="String" Name="CodPersoAsisten" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CargoPersoAsisten" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CLAVE" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodEspecialidad" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodEspeHistoriaClinica" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TipoIdentificacion" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocumentoIdentidad" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="Firma" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Foto" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="Profesion" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GrupoCita" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RegistroProfesional" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomEspecialidad" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NumeroUnicoDocumento" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NombrePersoAsisten" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EstadoPersoAsisten" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="DiasCitaAutoma" />
+          <Property Type="String" Name="NomTurno" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="ProgramaCitaCE" Nullable="false" />
+          <Property Name="CodBarraPersoAsisten" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OSC">
+          <Key>
+            <PropertyRef Name="DocUnicoOSC" />
+          </Key>
+          <Property Type="String" Name="DocUnicoOSC" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrefijoNoOSC" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="NoOSC" Nullable="false" />
+          <Property Type="String" Name="Barrio" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodDiag" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodConvenio" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomConvenio" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodMPio" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodPrestador" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomPrestador" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodPersoAsisten" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomPersoAsisten" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodRemitente" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomRemitente" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DireccionResidencia" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Edad" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="EdadDias" />
+          <Property Type="String" Name="Genero" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EstadoAfiliacion" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nivel" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="FechaAnulacion" Nullable="true" Precision="3" />
+          <Property Type="DateTime" Name="FechaRegistro" Nullable="false" Precision="3" />
+          <Property Type="String" Name="IdSistema" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomDiag" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NumeroAutorizacion" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NumeroUnicoDocumento" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Observaciones" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrimerNombre" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SegundoApellido" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SegundoNombre" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Telefono" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TipoAutorizacion" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TipoUsuario" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UsuarioAnulacion" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UsuarioRegistro" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="VrDcto" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="VrPagar" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="ZonaResidencia" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EstadoOSC" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tercero" Relationship="NeuronCloudModel.FK_OSC_Tercero" FromRole="OSC" ToRole="Tercero" />
+          <NavigationProperty Name="OSCDet" Relationship="NeuronCloudModel.FK_OSCDet_OSC" FromRole="OSC" ToRole="OSCDet" />
+          <Property Type="String" Name="NoOrdenMedica" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ServicioUbicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cama" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EnviarPDF" Type="Boolean" />
+          <Property Name="Token" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OSCDet">
+          <Key>
+            <PropertyRef Name="IdOSCDet" />
+          </Key>
+          <Property Type="Decimal" Name="Cant" Nullable="false" Precision="6" Scale="2" />
+          <Property Type="String" Name="CodCentroCosto" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GrupoPlanBene" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodigoManual" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomManual" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NombrePortafoGrupo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodigoContable" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CodigoFuente" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NombreCodigoFuente" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NomTipoPagoComp" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UsuarioRegistro" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="VrItem" Nullable="false" Precision="8" Scale="0" />
+          <Property Type="DateTime" Name="FechaRegistro" Nullable="false" Precision="3" />
+          <Property Type="String" Name="DocUnicoOSC" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IdOSCDet" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="OSC" Relationship="NeuronCloudModel.FK_OSCDet_OSC" FromRole="OSCDet" ToRole="OSC" />
+          <Property Name="Estado" Type="Int32" />
+          <Property Name="FechaHoraToma" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_OSC_Tercero">
+          <End Type="NeuronCloudModel.Tercero" Role="Tercero" Multiplicity="1" />
+          <End Type="NeuronCloudModel.OSC" Role="OSC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="NumeroUnicoDocumento" />
+            </Principal>
+            <Dependent Role="OSC">
+              <PropertyRef Name="NumeroUnicoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OSCDet_OSC">
+          <End Type="NeuronCloudModel.OSC" Role="OSC" Multiplicity="1" />
+          <End Type="NeuronCloudModel.OSCDet" Role="OSCDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OSC">
+              <PropertyRef Name="DocUnicoOSC" />
+            </Principal>
+            <Dependent Role="OSCDet">
+              <PropertyRef Name="DocUnicoOSC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="PRO_ConsultaCitaServicio_Result">
+          <Property Type="String" Name="Cita" Nullable="true" MaxLength="45" />
+          <Property Type="Int32" Name="IdProgramaAgenda" Nullable="false" />
+          <Property Type="DateTime" Name="FechaHoraInicio" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FechaHoraFin" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="CentroTomaMuestra">
+          <Key>
+            <PropertyRef Name="CodPrestador" />
+            <PropertyRef Name="PrefijoCentroToma" />
+          </Key>
+          <Property Name="CodPrestador" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PrefijoCentroToma" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NomCentroToma" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NeuronCloudModelStoreContainer" CdmEntityContainer="NeuronCloudBaseEntities">
+          <EntitySetMapping Name="Departamento"><EntityTypeMapping TypeName="NeuronCloudModel.Departamento"><MappingFragment StoreEntitySet="Departamento">
+            <ScalarProperty Name="NomDepto" ColumnName="NomDepto" />
+            <ScalarProperty Name="CodDepto" ColumnName="CodDepto" />
+            <ScalarProperty Name="CodPais" ColumnName="CodPais" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Municipio"><EntityTypeMapping TypeName="NeuronCloudModel.Municipio"><MappingFragment StoreEntitySet="Municipio">
+            <ScalarProperty Name="CodMpio" ColumnName="CodMpio" />
+            <ScalarProperty Name="NomMpio" ColumnName="NomMpio" />
+            <ScalarProperty Name="CodDepto" ColumnName="CodDepto" />
+            <ScalarProperty Name="CodPais" ColumnName="CodPais" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Pais"><EntityTypeMapping TypeName="NeuronCloudModel.Pais"><MappingFragment StoreEntitySet="Pais">
+            <ScalarProperty Name="CodPais" ColumnName="CodPais" />
+            <ScalarProperty Name="NomPais" ColumnName="NomPais" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Tercero"><EntityTypeMapping TypeName="NeuronCloudModel.Tercero"><MappingFragment StoreEntitySet="Tercero">
+            <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+            <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+            <ScalarProperty Name="NumeroUnicoDocumento" ColumnName="NumeroUnicoDocumento" />
+            <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+            <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+            <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+            <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+            <ScalarProperty Name="CodMpioDomicilio" ColumnName="CodMpioDomicilio" />
+            <ScalarProperty Name="BarrioDomicilio" ColumnName="BarrioDomicilio" />
+            <ScalarProperty Name="DireccionDomicilio" ColumnName="DireccionDomicilio" />
+            <ScalarProperty Name="TelefonoDomicilio" ColumnName="TelefonoDomicilio" />
+            <ScalarProperty Name="TelefonoAlterno" ColumnName="TelefonoAlterno" />
+            <ScalarProperty Name="Genero" ColumnName="Genero" />
+            <ScalarProperty Name="Fax" ColumnName="Fax" />
+            <ScalarProperty Name="Movil" ColumnName="Movil" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="CorreoPersonal" ColumnName="CorreoPersonal" />
+            <ScalarProperty Name="CorreoCorporativo" ColumnName="CorreoCorporativo" />
+            <ScalarProperty Name="CodPaisDomicilio" ColumnName="CodPaisDomicilio" />
+            <ScalarProperty Name="Foto" ColumnName="Foto" />
+            <ScalarProperty Name="Zona" ColumnName="Zona" />
+            <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+            <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+            <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="V_Tercero">
+            <EntityTypeMapping TypeName="NeuronCloudModel.V_Tercero">
+              <MappingFragment StoreEntitySet="V_Tercero">
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="NomPaisResidencia" ColumnName="NomPaisResidencia" />
+                <ScalarProperty Name="CodPaisResidencia" ColumnName="CodPaisResidencia" />
+                <ScalarProperty Name="CorreoCorporativo" ColumnName="CorreoCorporativo" />
+                <ScalarProperty Name="CorreoPersonal" ColumnName="CorreoPersonal" />
+                <ScalarProperty Name="Movil" ColumnName="Movil" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="TelefonoAlterno" ColumnName="TelefonoAlterno" />
+                <ScalarProperty Name="TelefonoResidencia" ColumnName="TelefonoResidencia" />
+                <ScalarProperty Name="DireccionResidencia" ColumnName="DireccionResidencia" />
+                <ScalarProperty Name="BarrioResidencia" ColumnName="BarrioResidencia" />
+                <ScalarProperty Name="NomMpioResidencia" ColumnName="NomMpioResidencia" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="CodMpioResidencia" ColumnName="CodMpioResidencia" />
+                <ScalarProperty Name="NomDeptoResidencia" ColumnName="NomDeptoResidencia" />
+                <ScalarProperty Name="CodDeptoResidencia" ColumnName="CodDeptoResidencia" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="NumeroUnicoDocumento" ColumnName="NumeroUnicoDocumento" />
+                <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_PersonalAsistencial">
+            <EntityTypeMapping TypeName="NeuronCloudModel.V_PersonalAsistencial">
+              <MappingFragment StoreEntitySet="V_PersonalAsistencial">
+                <ScalarProperty Name="CodBarraPersoAsisten" ColumnName="CodBarraPersoAsisten" />
+                <ScalarProperty Name="ProgramaCitaCE" ColumnName="ProgramaCitaCE" />
+                <ScalarProperty Name="NomTurno" ColumnName="NomTurno" />
+                <ScalarProperty Name="DiasCitaAutoma" ColumnName="DiasCitaAutoma" />
+                <ScalarProperty Name="EstadoPersoAsisten" ColumnName="EstadoPersoAsisten" />
+                <ScalarProperty Name="NombrePersoAsisten" ColumnName="NombrePersoAsisten" />
+                <ScalarProperty Name="NumeroUnicoDocumento" ColumnName="NumeroUnicoDocumento" />
+                <ScalarProperty Name="NomEspecialidad" ColumnName="NomEspecialidad" />
+                <ScalarProperty Name="RegistroProfesional" ColumnName="RegistroProfesional" />
+                <ScalarProperty Name="GrupoCita" ColumnName="GrupoCita" />
+                <ScalarProperty Name="Profesion" ColumnName="Profesion" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Firma" ColumnName="Firma" />
+                <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+                <ScalarProperty Name="CodEspeHistoriaClinica" ColumnName="CodEspeHistoriaClinica" />
+                <ScalarProperty Name="CodEspecialidad" ColumnName="CodEspecialidad" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="CargoPersoAsisten" ColumnName="CargoPersoAsisten" />
+                <ScalarProperty Name="CodPersoAsisten" ColumnName="CodPersoAsisten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OSC">
+            <EntityTypeMapping TypeName="NeuronCloudModel.OSC">
+              <MappingFragment StoreEntitySet="OSC">
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="EnviarPDF" ColumnName="EnviarPDF" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Cama" ColumnName="Cama" />
+                <ScalarProperty Name="ServicioUbicacion" ColumnName="ServicioUbicacion" />
+                <ScalarProperty Name="NoOrdenMedica" ColumnName="NoOrdenMedica" />
+                <ScalarProperty Name="EstadoOSC" ColumnName="EstadoOSC" />
+                <ScalarProperty Name="ZonaResidencia" ColumnName="ZonaResidencia" />
+                <ScalarProperty Name="VrPagar" ColumnName="VrPagar" />
+                <ScalarProperty Name="VrDcto" ColumnName="VrDcto" />
+                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+                <ScalarProperty Name="UsuarioAnulacion" ColumnName="UsuarioAnulacion" />
+                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+                <ScalarProperty Name="TipoAutorizacion" ColumnName="TipoAutorizacion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="NumeroUnicoDocumento" ColumnName="NumeroUnicoDocumento" />
+                <ScalarProperty Name="NumeroAutorizacion" ColumnName="NumeroAutorizacion" />
+                <ScalarProperty Name="NomDiag" ColumnName="NomDiag" />
+                <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaAnulacion" ColumnName="FechaAnulacion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+                <ScalarProperty Name="EstadoAfiliacion" ColumnName="EstadoAfiliacion" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="EdadDias" ColumnName="EdadDias" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="DireccionResidencia" ColumnName="DireccionResidencia" />
+                <ScalarProperty Name="NomRemitente" ColumnName="NomRemitente" />
+                <ScalarProperty Name="CodRemitente" ColumnName="CodRemitente" />
+                <ScalarProperty Name="NomPersoAsisten" ColumnName="NomPersoAsisten" />
+                <ScalarProperty Name="CodPersoAsisten" ColumnName="CodPersoAsisten" />
+                <ScalarProperty Name="NomPrestador" ColumnName="NomPrestador" />
+                <ScalarProperty Name="CodPrestador" ColumnName="CodPrestador" />
+                <ScalarProperty Name="CodMPio" ColumnName="CodMPio" />
+                <ScalarProperty Name="NomConvenio" ColumnName="NomConvenio" />
+                <ScalarProperty Name="CodConvenio" ColumnName="CodConvenio" />
+                <ScalarProperty Name="CodDiag" ColumnName="CodDiag" />
+                <ScalarProperty Name="Barrio" ColumnName="Barrio" />
+                <ScalarProperty Name="NoOSC" ColumnName="NoOSC" />
+                <ScalarProperty Name="PrefijoNoOSC" ColumnName="PrefijoNoOSC" />
+                <ScalarProperty Name="DocUnicoOSC" ColumnName="DocUnicoOSC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OSCDet">
+            <EntityTypeMapping TypeName="NeuronCloudModel.OSCDet">
+              <MappingFragment StoreEntitySet="OSCDet">
+                <ScalarProperty Name="FechaHoraToma" ColumnName="FechaHoraToma" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdOSCDet" ColumnName="IdOSCDet" />
+                <ScalarProperty Name="DocUnicoOSC" ColumnName="DocUnicoOSC" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="VrItem" ColumnName="VrItem" />
+                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+                <ScalarProperty Name="NomTipoPagoComp" ColumnName="NomTipoPagoComp" />
+                <ScalarProperty Name="NombreCodigoFuente" ColumnName="NombreCodigoFuente" />
+                <ScalarProperty Name="CodigoFuente" ColumnName="CodigoFuente" />
+                <ScalarProperty Name="CodigoContable" ColumnName="CodigoContable" />
+                <ScalarProperty Name="NombrePortafoGrupo" ColumnName="NombrePortafoGrupo" />
+                <ScalarProperty Name="NomManual" ColumnName="NomManual" />
+                <ScalarProperty Name="CodigoManual" ColumnName="CodigoManual" />
+                <ScalarProperty Name="GrupoPlanBene" ColumnName="GrupoPlanBene" />
+                <ScalarProperty Name="CodCentroCosto" ColumnName="CodCentroCosto" />
+                <ScalarProperty Name="Cant" ColumnName="Cant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PRO_OSCAnula" FunctionName="NeuronCloudModel.Store.PRO_OSCAnula" />
+          <FunctionImportMapping FunctionImportName="PRO_ConsultaCitaServicio" FunctionName="NeuronCloudModel.Store.PRO_ConsultaCitaServicio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NeuronCloudModel.PRO_ConsultaCitaServicio_Result">
+                <ScalarProperty Name="Cita" ColumnName="Cita" />
+                <ScalarProperty Name="IdProgramaAgenda" ColumnName="IdProgramaAgenda" />
+                <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
+                <ScalarProperty Name="FechaHoraFin" ColumnName="FechaHoraFin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PRO_ConsultaCitaServicioMes" FunctionName="NeuronCloudModel.Store.PRO_ConsultaCitaServicioMes" />
+          <EntitySetMapping Name="CentroTomaMuestra">
+            <EntityTypeMapping TypeName="NeuronCloudModel.CentroTomaMuestra">
+              <MappingFragment StoreEntitySet="CentroTomaMuestra">
+                <ScalarProperty Name="NomCentroToma" ColumnName="NomCentroToma" />
+                <ScalarProperty Name="PrefijoCentroToma" ColumnName="PrefijoCentroToma" />
+                <ScalarProperty Name="CodPrestador" ColumnName="CodPrestador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PRO_TerceroInsertaActualiza" FunctionName="NeuronCloudModel.Store.PRO_TerceroInsertaActualiza" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="NeuronCloudBaseModel">
+        <EntityTypeShape EntityType="NeuronCloudModel.Departamento" Width="1.5" PointX="0.75" PointY="2.625" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuronCloudModel.Municipio" Width="1.5" PointX="3" PointY="5.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuronCloudModel.Pais" Width="1.5" PointX="0.75" PointY="5.625" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeuronCloudModel.Tercero" Width="1.5" PointX="5.25" PointY="3.5" Height="6.4032194010416656" IsExpanded="true" />
+        <AssociationConnector Association="NeuronCloudModel.GEN_Departamento_GEN_Municipio_FK1" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.6439925130208337" />
+          <ConnectorPoint PointX="3.75" PointY="1.6439925130208337" />
+          <ConnectorPoint PointX="3.75" PointY="3.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="NeuronCloudModel.FK_Tercero_Municipio" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.6824446614583337" />
+          <ConnectorPoint PointX="5.25" PointY="4.6824446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="NeuronCloudModel.GEN_Pais_GEN_Municipio_FK1" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.6439925130208337" />
+          <ConnectorPoint PointX="3" PointY="4.6439925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="NeuronCloudModel.FK_Tercero_Pais" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.5379850260416656" />
+          <ConnectorPoint PointX="2.625" PointY="5.9129850260416656" />
+          <ConnectorPoint PointX="2.625" PointY="8.4705208333333335" />
+          <ConnectorPoint PointX="4.876152846153845" PointY="8.4705208333333335" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="8.0955208333333335" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NeuronCloudModel.V_Tercero" Width="1.5" PointX="0.75" PointY="8.75" Height="6.2109179687500005" />
+        <EntityTypeShape EntityType="NeuronCloudModel.V_PersonalAsistencial" Width="1.5" PointX="9.75" PointY="9.75" Height="4.6725065104166674" />
+        <EntityTypeShape EntityType="NeuronCloudModel.OSC" Width="1.5" PointX="7.5" PointY="1.375" Height="9.2877408854166674" />
+        <EntityTypeShape EntityType="NeuronCloudModel.OSCDet" Width="1.5" PointX="9.75" PointY="4.5" Height="4.0956022135416674" />
+        <AssociationConnector Association="NeuronCloudModel.FK_OSC_Tercero" >
+          <ConnectorPoint PointX="6.0318289230769224" PointY="8.0955208333333335" />
+          <ConnectorPoint PointX="6.0318289230769224" PointY="19.615021158854169" />
+          <ConnectorPoint PointX="7.5" PointY="19.615021158854169" />
+        </AssociationConnector>
+        <AssociationConnector Association="NeuronCloudModel.FK_OSCDet_OSC" >
+          <ConnectorPoint PointX="9" PointY="19.422801106770834" />
+          <ConnectorPoint PointX="9.75" PointY="19.422801106770834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NeuronCloudModel.CentroTomaMuestra" Width="1.5" PointX="2.75" PointY="0.75" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

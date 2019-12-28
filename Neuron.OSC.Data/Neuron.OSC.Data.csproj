@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5ACECC8E-7768-453F-92CD-90E060A0DF2B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Neuron.OSC.Data</RootNamespace>
+    <AssemblyName>Neuron.OSC.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\..\Libs\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccionAsincronaGenerica.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AsyncOps\GeneralOps.cs" />
+    <Compile Include="AsyncOps\StoreProceduresAsync.cs" />
+    <Compile Include="Model\ItemPago.cs" />
+    <Compile Include="Model\OscClaims.cs" />
+    <Compile Include="Model\PaymentDetails.cs" />
+    <Compile Include="Model\LiquidationParameters.cs" />
+    <Compile Include="Model\OscDataModel.cs">
+      <DependentUpon>OscDataModel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OscDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OscDataModel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Antecedente.cs" />
+    <Compile Include="Model\OscGlobalConfig.cs" />
+    <Compile Include="Model\OscInsertaResult.cs" />
+    <Compile Include="Model\ProxyConverters.cs" />
+    <Compile Include="Model\ProxyDBtoModelo.cs" />
+    <Compile Include="Model\SaveOSCParameters.cs" />
+    <Compile Include="Model\SearchServiceParameters.cs" />
+    <Compile Include="Model\ServiceUnitParameters.cs" />
+    <Compile Include="Model\ValidationParameters.cs" />
+    <Compile Include="NeuronOsc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NeuronOsc.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="NeuronOSCStorage.cs" />
+    <Compile Include="OperacionAsincronaEventHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="NeuronOsc.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NeuronOsc.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Model\OscDataModel.xsc">
+      <DependentUpon>OscDataModel.xsd</DependentUpon>
+    </None>
+    <None Include="Model\OscDataModel.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OscDataModel.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\OscDataModel.xss">
+      <DependentUpon>OscDataModel.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\NeuronOscEntitites.datasource" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="PRO_ConvenioPrestPortafoSeleccAutoComplete_Result.Partial.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atpc.Common\Atpc.Common.csproj">
+      <Project>{d99f689b-137d-4131-aa2b-9b9bfb9499f9}</Project>
+      <Name>Atpc.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Neuron.HIS.Models.Common\Neuron.HIS.Models.Common.csproj">
+      <Project>{bbc35358-db5e-453a-9ac1-ccdb2a553a21}</Project>
+      <Name>Neuron.HIS.Models.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Neuron.UI.Controls\Neuron.UI.Controls.csproj">
+      <Project>{f9fe2876-6eb3-4059-bb95-caaefaae1c9d}</Project>
+      <Name>Neuron.UI.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.Modelos.Helpers\NeuronCloud.Atpc.Co.Modelos.Helpers.csproj">
+      <Project>{74e220e4-d1e9-4e93-b5dc-cb4404fdbfcb}</Project>
+      <Name>NeuronCloud.Atpc.Co.Modelos.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuronCloud.Atpc.Co.Modelos\NeuronCloud.Atpc.Co.Modelos.csproj">
+      <Project>{ed095928-c3ff-4676-9077-66434c3fdaf9}</Project>
+      <Name>NeuronCloud.Atpc.Co.Modelos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

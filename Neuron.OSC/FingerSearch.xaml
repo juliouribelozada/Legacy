@@ -1,0 +1,18 @@
+﻿<Window x:Class="Neuron.OSC.FingerSearch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Neuron.OSC"
+        mc:Ignorable="d"
+        Title="Valida Huella" Height="314.123" Width="275.487"
+    Loaded="FingerSearch_load" Closed="Window_Closed">
+    <Grid Margin="0,0,420.6,101">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220*"/>
+            <ColumnDefinition Width="389*"/>
+            <ColumnDefinition Width="185*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="ImageHuella" Margin="28,22,-246,-58.2" OpacityMask="Black" Grid.ColumnSpan="3"/>
+    </Grid>
+</Window>

@@ -1,0 +1,138 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DrawingImage x:Key="AllIcon">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Geometry="F1 M 245.004,980L 261.004,980L 261.004,996L 245.004,996L 245.004,980 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="0.25" MiterLimit="2.75" Brush="#00FF0000"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF9DC4F1" Geometry="F1 M 253.504,980.5L 260.504,980.5L 260.504,995.5L 253.504,995.5L 253.504,980.5 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="F1 M 251.505,982.5L 251.504,987.5L 253.504,987.5">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="F1 M 249.75,982.5L 252,982.5">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Brush>
+                            <LinearGradientBrush StartPoint="-0.00567627,0.5" EndPoint="2.15953,0.5">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Color="#FFAECAF4" Offset="0"/>
+                                    <GradientStop Color="#FFA8C6F4" Offset="0.103419"/>
+                                    <GradientStop Color="#FFA3C2F5" Offset="0.344727"/>
+                                    <GradientStop Color="#FFAFCAF5" Offset="0.638964"/>
+                                    <GradientStop Color="#FFBBD3F6" Offset="0.984375"/>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF5B9CD9" Geometry="F1 M 255.504,991.5L 258.504,991.5L 258.504,994.5L 255.504,994.5L 255.504,991.5 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF5B9CD9" Geometry="F1 M 255.504,986.5L 258.504,986.5L 258.504,989.5L 255.504,989.5L 255.504,986.5 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF5B9CD9" Geometry="F1 M 255.504,981.5L 258.504,981.5L 258.504,984.5L 255.504,984.5L 255.504,981.5 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF5B9CD9" Geometry="F1 M 246.504,981.5L 249.504,981.5L 249.504,984.5L 246.504,984.5L 246.504,981.5 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen LineJoin="Round" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="ChoiceIcon">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Geometry="F1 M 245.004,940L 261.004,940L 261.004,956L 245.004,956L 245.004,940 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="0.25" MiterLimit="2.75" Brush="#00FF0000"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M 253.5,940.5L 260.5,940.5L 260.5,955.5L 253.5,955.5L 253.5,940.5 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF22BAFD"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="F1 M 251.505,942.5L 251.504,947.5L 256.504,947.5">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="F1 M 249.754,942.508L 252.004,942.508">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Brush>
+                            <LinearGradientBrush StartPoint="-0.00567627,0.5" EndPoint="2.15953,0.5">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Color="#FFAECAF4" Offset="0"/>
+                                    <GradientStop Color="#FFA8C6F4" Offset="0.103419"/>
+                                    <GradientStop Color="#FFA3C2F5" Offset="0.344727"/>
+                                    <GradientStop Color="#FFAFCAF5" Offset="0.638964"/>
+                                    <GradientStop Color="#FFBBD3F6" Offset="0.984375"/>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FFE2ECF8" Geometry="F1 M 255.504,951.508L 258.504,951.508L 258.504,954.508L 255.504,954.508L 255.504,951.508 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF22BAFD"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF5B9CD9" Geometry="F1 M 255.504,946.508L 258.504,946.508L 258.504,949.508L 255.504,949.508L 255.504,946.508 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FFE2ECF8" Geometry="F1 M 255.504,941.508L 258.504,941.508L 258.504,944.508L 255.504,944.508L 255.504,941.508 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen MiterLimit="2.75" Brush="#FF22BAFD"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF5B9CD9" Geometry="F1 M 246.504,941.5L 249.504,941.5L 249.504,944.5L 246.504,944.5L 246.504,941.5 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen LineJoin="Round" Brush="#FF3278C8"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    
+    <Style x:Key="IconoInformeStyle" TargetType="{x:Type ContentControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate >
+                    <Viewbox>
+                        <Grid>
+                            <Grid Name="backgroundGrid" Width="48" Height="48" Visibility="Collapsed" />
+                            <Path Data="M8.7139998,35.064L27.108,35.064 27.108,37.726998 8.7139998,37.726998z M8.7139998,28.418999L20.903999,28.418999 20.903999,31.077 8.7139998,31.077z M20.437819,13.65L25.973,18.895532 18.167,21.591z M29.105799,3.574L35.007,9.0182717 27.724232,16.911999 27.601828,15.664531 25.656441,15.001693 25.599159,13.67742 23.664192,13.165692 23.428524,11.672108 21.823,11.466397z M14.322772,3.4320003L26.465963,3.4320003 23.150892,6.9789109 15.700359,6.9789109 15.700359,12.916528C15.700359,12.916528,15.549361,18.036388,9.8462821,17.591081L3.5442484,17.617083 3.5442484,41.038552C3.5442484,41.528855,3.9413749,41.92466,4.4296509,41.92466L29.247139,41.92466C29.736734,41.92466,30.13253,41.528855,30.13253,41.038552L30.13253,17.038276 33.681999,13.460835 33.681999,41.038552C33.681999,43.486577,31.700216,45.469002,29.247139,45.469002L4.4296509,45.469002C1.9817624,45.469002,8.71878E-08,43.486577,0,41.038552L0,18.544193 3.5442484,14.80455 3.5442484,14.833151 10.984302,6.9789109 10.962102,6.9789109z M33.154091,0.0010778904C33.416405,0.011748075,33.661049,0.10176969,33.851479,0.27656603L38.027401,4.1333629C38.539116,4.599481,38.470112,5.4991968,37.881497,6.1359136L37.080772,7.0070002 31.061001,1.453685 31.864424,0.58387709C32.230621,0.18592978,32.7169,-0.016706228,33.154091,0.0010778904z" Stretch="Uniform" Fill="{TemplateBinding Foreground}" Width="48" Height="48" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                        </Grid>
+                    </Viewbox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

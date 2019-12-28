@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2B7EF051-AE8F-4663-B0A6-C54F3EA6DD6F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Neuron.Satelite.CapturaManual.Data</RootNamespace>
+    <AssemblyName>Neuron.CapturaManual.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccionAsincronaGenerica.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Annotations.cs" />
+    <Compile Include="AsyncOps\ValorNormalAsynOps.cs" />
+    <Compile Include="AsyncOps\StoreProceduresOps.cs" />
+    <Compile Include="AsyncOps\SampleTakingCenterOps.cs" />
+    <Compile Include="AtpcBindableCommand.cs" />
+    <Compile Include="CapturaGlobal.cs" />
+    <Compile Include="DatosEnColumnas.cs" />
+    <Compile Include="EstudioValorNormal.cs" />
+    <Compile Include="Model\AnalyteAbnormalFlags.cs" />
+    <Compile Include="Model\CapturaManualClaims.cs" />
+    <Compile Include="Model\CapturaManualFormulaParameters.cs" />
+    <Compile Include="Model\CapturaManualFunctions.cs" />
+    <Compile Include="Model\ConsultaValorNormalParameters.cs" />
+    <Compile Include="Model\CapturaManualAnulaParameters.cs" />
+    <Compile Include="Model\DataCaptureType.cs" />
+    <Compile Include="Model\ModelConverters.cs" />
+    <Compile Include="Model\Panel.cs" />
+    <Compile Include="Model\RangeType.cs" />
+    <Compile Include="Model\SugerenciasAutoTexto.cs" />
+    <Compile Include="Model\TestToCapture.cs" />
+    <Compile Include="Model\TrackingItem.cs" />
+    <Compile Include="Model\ValorGraficaFecha.cs" />
+    <Compile Include="OperacionAsincronaEventHandler.cs" />
+    <Compile Include="PRO_CargaCapturaCuatroCamposDosBloques_Result.cs" />
+    <Compile Include="PRO_ConsultaEstudioIdenMuestra_Result.cs" />
+    <Compile Include="Model\GeneralDispatcher.cs" />
+    <Compile Include="Model\TipoRotulo.cs" />
+    <Compile Include="PRO_CargaCapturaCuatroCampos_Result.cs" />
+    <Compile Include="Model\CapturaManualAnalitoParameters.cs" />
+    <Compile Include="Model\CapturaManualHistoricoParameters.cs" />
+    <Compile Include="Model\CapturaManualValidacionParameters.cs" />
+    <Compile Include="Model\IdentificadorMuestra.cs" />
+    <Compile Include="Model\NotifiableObject.cs" />
+    <Compile Include="Model\SampleTakingCenter.cs" />
+    <Compile Include="Model\Seccion.cs" />
+    <Compile Include="Model\TipoCaptura.cs" />
+    <Compile Include="Model\ValidationParameters.cs" />
+    <Compile Include="Model\ValidationResult.cs" />
+    <Compile Include="NeuronStorage.cs" />
+    <Compile Include="NeuronCapturaManualModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NeuronCapturaManualModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="StringEventHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PRO_CargaCapturaCampoLargo_Result.cs" />
+    <Compile Include="PRO_CargaCapturaSeccion_Result.cs" />
+    <Compile Include="ViewModels\AlertasViewModel.cs" />
+    <Compile Include="ViewModels\BrandingViewModel.cs" />
+    <Compile Include="ViewModels\CapturaManualFunctionsViewModel.cs" />
+    <Compile Include="ViewModels\HistoricoViewModel.cs" />
+    <Compile Include="ViewModels\ExamenesPendientesViewModel.cs" />
+    <Compile Include="ViewModels\ExamenesViewModel.cs" />
+    <Compile Include="ViewModels\InfoPersonaViewModel.cs" />
+    <Compile Include="ViewModels\OptionalAnalitesViewModel.cs" />
+    <Compile Include="ViewModels\ProfesionalViewModel.cs" />
+    <Compile Include="ViewModels\TechnicianObsViewModel.cs" />
+    <Compile Include="ViewModels\TrackingInfoViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="NeuronCapturaManualModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NeuronCapturaManualModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\NeuronCapturaManualEntities.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

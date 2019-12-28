@@ -1,0 +1,14 @@
+<Neuron_UI_Controls_Models:CRUDCommands xmlns:Neuron_UI_Controls_Models="clr-namespace:Neuron.UI.Controls.Models;assembly=Neuron.UI.Controls" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<Neuron_UI_Controls_Models:CRUDCommands.AddCommand>
+		<RoutedCommand/>
+	</Neuron_UI_Controls_Models:CRUDCommands.AddCommand>
+	<Neuron_UI_Controls_Models:CRUDCommands.EditCommand>
+		<RoutedCommand/>
+	</Neuron_UI_Controls_Models:CRUDCommands.EditCommand>
+	<Neuron_UI_Controls_Models:CRUDCommands.NewCommand>
+		<RoutedCommand/>
+	</Neuron_UI_Controls_Models:CRUDCommands.NewCommand>
+	<Neuron_UI_Controls_Models:CRUDCommands.RemoveCommand>
+		<RoutedCommand/>
+	</Neuron_UI_Controls_Models:CRUDCommands.RemoveCommand>
+</Neuron_UI_Controls_Models:CRUDCommands>

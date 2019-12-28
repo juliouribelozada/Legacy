@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Neuron.HIS.Models.Common.PatientInfo">
+    <Position X="0.5" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>BAAAAEAAAIBBAYCADQCQgAQBEGAIAQAgBAABSAAAAAg=</HashCode>
+      <FileName>PatientInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Neuron.HIS.Models.Common.UniqueEntity">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>UniqueEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Neuron.HIS.Models.Common.Service" Collapsed="true">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAgAAAAAgAAQAIgEEQACBAEEAgAABAAA=</HashCode>
+      <FileName>Service.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Neuron.HIS.Models.Common.ServiceAgreement" Collapsed="true">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceAgreement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Neuron.HIS.Models.Common.ServiceProvider" Collapsed="true">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Neuron.HIS.Models.Common.ServiceRequester" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceRequester.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Neuron.HIS.Models.Common.ServiceUnit" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

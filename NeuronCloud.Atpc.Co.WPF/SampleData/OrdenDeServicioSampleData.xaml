@@ -1,0 +1,18 @@
+﻿<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio 
+xmlns:NeuronCloud_Atpc_Co_Modelos_Data_SqlServer="clr-namespace:NeuronCloud.Atpc.Co.Modelos.Data.SqlServer;assembly=NeuronCloud.Atpc.Co.Modelos.Data"
+ xmlns:NeuronCloud_Atpc_Co_Modelos="clr-namespace:NeuronCloud.Atpc.Co.Modelos;assembly=NeuronCloud.Atpc.Co.Modelos"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ DocUnicoOsc="Arcu auctor facilisis habitant" FechaAnulacion="5/5/2015" Observaciones="jijijijiji">
+	<NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+		<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Aenean aliquam cras" Nombre="Vivamus facilisi etiam auctor faucibus fusce eget" Codigo="Aaberg, Jesper" Cantidad="5"/>
+		<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Maecenas vestibulum praesent integer" Nombre="Elit congue mus aliquam aliquet lorem" Codigo="Adams, Ellen"/>
+		<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Nam class" Nombre="Blandit cursus commodo enim morbi" Codigo="Adams, Terry"/>
+		<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Accumsan bibendum dictumst curabitur" Nombre="Dictum nulla erat eros lectus conubia libero ligula proin augue litora" Codigo="Adams, Terry"/>
+		<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Phasellus sed curae adipiscing mauris" Nombre="Luctus habitant dolor fames nibh magnis nec non cubilia per mattis" Codigo="Penor, Lori"/>
+		<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Consequat nullam parturient duis" Nombre="Mauris inceptos sed sem nisi" Codigo="Pfeiffer, Michael"/>
+		<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Vestibulum nunc eleifend facilisi" Nombre="Interdum mollis felis dapibus sit egestas lobortis euismod ipsum" Codigo="Philips, Carol"/>
+		<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Amet vestibulum" Nombre="Feugiat justo lacus montes nascetur" Codigo="Poe, Toni"/>
+		<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Aptent convallis adipiscing" Nombre="Nisl pharetra placerat nostra vel" Codigo="Hicks, Cassie"/>
+		<NeuronCloud_Atpc_Co_Modelos:DetalleOrdenDeServicio DocUnicoOsc="Ante dignissim elementum faucibus" Nombre="Nam lorem nunc sed odio ornare gravida platea orci" Codigo="Argentiero, Luca"/>
+	</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio.Detalle>
+</NeuronCloud_Atpc_Co_Modelos_Data_SqlServer:OrdenDeServicio>
