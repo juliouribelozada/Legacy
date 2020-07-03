@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Configuration;
 using DPFP;
 using DPFP.Capture;
 
@@ -25,10 +26,11 @@ namespace Neuron.OSC
         private DPFP.Template template;
         private DPFP.Capture.Capture Captura;
         private DPFP.Verification.Verification verificador;
-        public SqlConnection cn = new SqlConnection("Data Source= Lysis1.eastus2.cloudapp.azure.com;Initial Catalog=LYSISMD;Password =Saneuron1.; Persist Security Info = True; User ID =sa");
+       
         public FingerSearch()
         {
-            InitializeComponent();
+                InitializeComponent();
+
         }
             protected virtual void Init()
             {
@@ -100,11 +102,11 @@ namespace Neuron.OSC
             if (caracteristicas != null)
             {
                 DPFP.Verification.Verification.Result result = new DPFP.Verification.Verification.Result();
+                var connectionString = Properties.Settings.Default.DBConnectionString;
+                var cn = new SqlConnection(connectionString);
+        //public SqlConnection cn = new SqlConnection("Data Source= Lysis1.eastus2.cloudapp.azure.com;Initial Catalog=LYSISMD;Password =Saneuron1.; Persist Security Info = True; User ID =sa");
 
-                //string StrConn = "Password = Saneuron1.; Persist Security Info = True; User ID = sa; Initial Catalog = LYSISMD; Data Source = Lysis1.eastus2.cloudapp.azure.com";
-                
-        //string sql2 = "Select * From CITA.Turno where huella is not null";
-                SqlCommand cm = new SqlCommand("Select * From CITA.Turno where huella is not null", cn);
+        SqlCommand cm = new SqlCommand("Select bb.Nombre, aa.FingerPrint From GEN.TerceroImage aa inner join GEN.Tercero bb on aa.NumeroUnicoDocumento = bb.NumeroUnicoDocumento Where aa.FingerPrint is not null", cn);
         //se abre la coneccion
                 cn.Open();
                 SqlDataReader read = cm.ExecuteReader();
@@ -122,7 +124,7 @@ namespace Neuron.OSC
                     {
                         nombre = read.GetString(0);
                         //var memoria = new MemoryStream(Convert.ToByte(read.GetByte(5)));
-                        byte[] buffer = (byte[])read["huella"];
+                        byte[] buffer = (byte[])read["FingerPrint"];
                         MemoryStream memoria = new MemoryStream(buffer);
                         template.DeSerialize(memoria.ToArray());
                         verificador.Verify(caracteristicas, template, ref result);
@@ -135,9 +137,18 @@ namespace Neuron.OSC
                     }
                     if (verificado)
                     {
-                        MessageBox.Show(nombre);
+                        //MessageBox.Show(nombre);
+                        this.Dispatcher.BeginInvoke((Action)(() => { lblNom.Content = nombre; }));
+                        this.Dispatcher.BeginInvoke((Action)(() => { lblNom.Foreground = new SolidColorBrush(Colors.Black); }));
+                        //this.lblNom.Content = nombre;
                     }
-                  
+                    else
+                    {
+                        //MessageBox.Show("Huella no registrada");
+                        this.Dispatcher.BeginInvoke((Action)(() => { lblNom.Content = "Huella no registrada"; }));
+                        this.Dispatcher.BeginInvoke((Action)(() => { lblNom.Foreground = new SolidColorBrush(Colors.Red); }));
+                    }
+
                 }
                 else
                 {

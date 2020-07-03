@@ -77,7 +77,7 @@
                                                     <RowDefinition/>
                                                 </Grid.RowDefinitions>
                                                 <TextBlock Text="Tipo Doc." Style="{DynamicResource LabelTextBlockStyle}" ToolTip="Tipo de Documento del Paciente." d:LayoutOverrides="HorizontalAlignment"/>
-                                                <ComboBox TextSearch.TextPath="TipoIdentificacionId" ItemsSource="{Binding TipoIdentificacionList}" VerticalAlignment="Top" Grid.Row="1" Width="60" HorizontalAlignment="Left" IsEditable="True" IsReadOnly="True" SelectedItem="{Binding TypeDocIdSearch}" />
+                                                <ComboBox Name ="TipoIdent" TextSearch.TextPath="TipoIdentificacionId" ItemsSource="{Binding TipoIdentificacionList}" VerticalAlignment="Top" Grid.Row="1" Width="60" HorizontalAlignment="Left" IsEditable="True" IsReadOnly="True" SelectedItem="{Binding TypeDocIdSearch}" />
                                             </Grid>
                                             <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Bottom">
                                                 <Grid.RowDefinitions>
@@ -591,7 +591,7 @@
                                 <GradientStop Color="#FF00907A" Offset="1"/>
                             </RadialGradientBrush>
                         </Border.BorderBrush>
-                        <Image x:Name="imgVideo" Stretch="Fill"   />
+                        <Image x:Name="imgVideo" Stretch="Fill" Margin="1.8,-0.2,-2.2,-0.2"   />
                     </Border>
                     <Border  Grid.Column="3" Grid.Row="1" BorderThickness="3" CornerRadius="3">
                         <Border.BorderBrush>
@@ -606,10 +606,7 @@
                         <Button x:Name="bntCapture" Content="Capturar Imagen" Click="bntCapture_Click" />
                         <Button x:Name="bntSaveImage" Content="Grabar" Margin="8,0,0,0" Click="bntSaveImage_Click" />
                     </StackPanel>
-                    <StackPanel Grid.Column="4" Grid.Row="1" VerticalAlignment="Center">
-                        <Button x:Name="bntResolution" Content="Video Format" Width="120" Click="bntResolution_Click" />
-                        <Button x:Name="bntSetting" Content="Video Source" Width="120" Margin="0,10,0,0" Click="bntSetting_Click" />
-                    </StackPanel>
+                    <StackPanel Grid.Column="4" Grid.Row="1" VerticalAlignment="Center"/>
                     <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button x:Name="bntStart" Content="Iniciar" Click="bntStart_Click" />
                         <Button x:Name="bntStop" Content="Parar" Margin="10,0,0,0" Click="bntStop_Click" />
@@ -624,21 +621,20 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="118*"/>
-                        <ColumnDefinition Width="241*"/>
-                        <ColumnDefinition Width="179*"/>
+                        <ColumnDefinition/>
                         <ColumnDefinition Width="250"/>
                     </Grid.ColumnDefinitions>
-                    <Border HorizontalAlignment="Left" Height="250"  Grid.Row="0" VerticalAlignment="Top" Width="250" Grid.Column="3" Margin="3.6,1,-4,0" >
+                    <Border HorizontalAlignment="Left" Height="250"  Grid.Row="0" VerticalAlignment="Top" Width="250" Grid.Column="1" Margin="3.6,1,-4,0" >
                         <Border Margin="0,17,9.6,10.4" BorderBrush="#FF121112" BorderThickness="1">
                             <Image x:Name="ImageHuella" Margin="10.2,9.2,9.2,16.6" OpacityMask="Black"/>
                         </Border>
                     </Border>
-                    <Label x:Name="vecesdedo" Content="" HorizontalAlignment="Left" Margin="9.6,20.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="240" Height="45" FontSize="14" Grid.Column="3"/>
+                    <Label x:Name="vecesdedo" Content="" HorizontalAlignment="Left" Margin="9.6,20.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="240" Height="45" FontSize="14" Grid.Column="1"/>
                     <!--<Button x:Name="btonguardar" Content="Guardar " Padding="5"   VerticalAlignment="Bottom"  ContentTemplate="{DynamicResource ContenidoBotonGuardar}" Margin="164.6,0,10,379.6" RenderTransformOrigin="4.874,6.847" Grid.Column="3" Grid.Row="1" Height="42" Click="Btonguardar_Click" />-->
-                    <Button x:Name="btonguardar"  Grid.Column="3" HorizontalAlignment="Left" Margin="164.6,256,0,0" VerticalAlignment="Top" Width="75" ContentTemplate="{DynamicResource ContenidoBotonGuardar}" Click="Btonguardar_Click" Height="43" Grid.RowSpan="2" IsEnabled="False" Visibility="Hidden"/>
-                    <cf:CapturaFirmaCtrl Loaded="CapturaFirmaCtrl_Loaded" Unloaded="CapturaFirmaCtrl_Unloaded" Margin="0,43,0.4,38.2" Grid.ColumnSpan="3"/>
-                    <Button x:Name="button" Content="Validar" Grid.Column="3" HorizontalAlignment="Left" Margin="164.6,70.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click_1" Height="23"/>
+                    <Button x:Name="btonguardar"  Grid.Column="1" HorizontalAlignment="Left" Margin="164.6,256,0,0" VerticalAlignment="Top" Width="75" ContentTemplate="{DynamicResource ContenidoBotonGuardar}" Click="Btonguardar_Click" Height="43" Visibility ="Hidden" Grid.RowSpan="2" />
+                    <cf:CapturaFirmaCtrl Loaded="CapturaFirmaCtrl_Loaded" Unloaded="CapturaFirmaCtrl_Unloaded" Margin="0,10,0.4,22.2"/>
+                    <Button x:Name="button" Content="Validar" Grid.Column="1" HorizontalAlignment="Left" Margin="164.6,70.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click_1" Height="23"/>
+                    <Button x:Name="btnReview" Content="Reiniciar" Grid.Column="1" HorizontalAlignment="Left" Margin="21.6,70.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="BtnReview" Height="23"/>
                 </Grid>
             </TabItem>
             <TabItem>

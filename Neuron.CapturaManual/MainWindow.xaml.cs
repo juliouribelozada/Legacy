@@ -846,7 +846,7 @@ namespace Neuron.Satellite.CapturaManual
             {
                 this.AutorizacionBusyIndicator.ProgressBarVisibility = Visibility.Visible;
                 StoreProceduresOps.PRO_AutorizaPersonalAsistencialAsync(
-                    new ValidationParameters { UserName = this.user, Password = this.pass, SpecialityCode = "353", State = "ACTIVO" },
+                    new ValidationParameters { UserName = this.user, Password = this.pass, SpecialityCode = "35%", State = "ACTIVO" },
                     (s, e) =>
                     {
                         this.AutorizacionBusyIndicator.ProgressBarVisibility = Visibility.Hidden;

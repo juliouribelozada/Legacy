@@ -75,9 +75,8 @@
       <HintPath>..\..\Libs\Atpc.Controls.WPF.dll</HintPath>
     </Reference>
     <Reference Include="ctrlCapturaFirma, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\..\..\Users\JULIO\Source\Repos\WpfApp1\bin\Debug\ctrlCapturaFirma.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\Desktop\ctrlCapturaFirma\bin\Debug\ctrlCapturaFirma.dll</HintPath>
     </Reference>
     <Reference Include="DPFPCtlXTypeLibNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=c0c98f712d5392a7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -87,22 +86,27 @@
     <Reference Include="DPFPCtlXWrapperNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=c0c98f712d5392a7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPCtlXWrapperNET.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DPFPDevNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=696774c42ee28c57, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPDevNET.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DPFPEngNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=7fe76e7adf19964b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPEngNET.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DPFPGuiNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d4f4a0bd9c559145, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPGuiNET.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DPFPShrNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d902fe275a8d6cf2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPShrNET.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DPFPShrXTypeLibNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=c0c98f712d5392a7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -112,6 +116,7 @@
     <Reference Include="DPFPVerNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4de0a9c4dcc83984, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPVerNET.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Interop.wgssSTU">
       <HintPath>..\..\..\Users\JULIO\Source\Repos\WpfApp1\bin\Debug\Interop.wgssSTU.dll</HintPath>
@@ -257,13 +262,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Reporte\Rp_Factura.rdlc">
+    <None Include="Reporte\Rp_FacturaPlatinum.rdlc">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Reporte\Rp_OSC.rdlc">
+    <None Include="Reporte\Rp_OSCPlatinum.rdlc">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="NeuronDataSet.xsc">
       <DependentUpon>NeuronDataSet.xsd</DependentUpon>

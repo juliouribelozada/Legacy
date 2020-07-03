@@ -76,6 +76,7 @@ namespace Neuron.OSC
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            
             Atpc.Common.Settings.Provider.SetDefaultProvider(typeof(LocalFileSettingsProvider));
 			Hl7Enabled = Neuron.OSC.Properties.Settings.Default.HL7Enable;
 			//Hl7Url = new Uri(Neuron.OSC.Properties.Settings.Default.HL7Url, UriKind.RelativeOrAbsolute);
@@ -139,6 +140,11 @@ namespace Neuron.OSC
             }
 
             base.OnExit(e);
+        }
+
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show(e.Exception.Message,"Error");
         }
     }
 }

@@ -4,7 +4,7 @@
              xmlns:Converters="clr-namespace:Neuron.UI.Controls.Converters;assembly=Neuron.UI.Controls"
              xmlns:ConvertersNeuron="clr-namespace:NeuronCloud.Atpc.Co.WPF.Converters;assembly=NeuronCloud.Atpc.Co.WPF"
              StartupUri="MainWindow.xaml" ShutdownMode="OnMainWindowClose" xmlns:my="clr-namespace:Atpc.Common.Converters;assembly=Atpc.Common"
-             xmlns:controls="clr-namespace:Neuron.OSC.Controls">
+             xmlns:controls="clr-namespace:Neuron.OSC.Controls" DispatcherUnhandledException="Application_DispatcherUnhandledException">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

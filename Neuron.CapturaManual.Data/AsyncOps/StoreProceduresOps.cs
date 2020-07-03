@@ -757,8 +757,8 @@ namespace Neuron.Satelite.CapturaManual.Data.AsyncOps
                     List<SugerenciasAutoTexto> resultado =
                         contexto.EstudioAnalitoPlantilla.Where(
                             analitoDato =>
-                            analitoDato.CodigoFuente == parametro.CodigoFuente
-                            && analitoDato.Analito.ToUpper() == "OBSERVACION").Select(a => new SugerenciasAutoTexto { Etiqueta = a.Plantilla, Texto = a.PlantillaTexto }).ToList();
+                            analitoDato.CodigoFuente == parametro.CodigoFuente || analitoDato.CodigoFuente == "GENERAL"
+                            && analitoDato.Analito.ToUpper() == "OBSERVACION"  ).Select(a => new SugerenciasAutoTexto { Etiqueta = a.Plantilla, Texto = a.PlantillaTexto }).ToList();
 #if DEBUG
                     Trace.WriteLineIf(resultado.Count > 0, "SugerenciasDatoLargo: " + parametro.CodigoFuente + " TieneDatos");
 #endif

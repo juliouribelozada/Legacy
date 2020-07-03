@@ -47,6 +47,7 @@ namespace Neuron.OSC
     using NeuronCloud.Atpc.Co.Modelos.Auxiliares;
     using NeuronCloud.Atpc.Co.WPF;
     using System.Drawing;
+    using System.Data;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -64,6 +65,7 @@ namespace Neuron.OSC
 
         public MainWindow()
         {
+ 
             this.InitializeComponent();
             this.controller = new MainWindowControler(this, this.ViewModel);
             this.ViewModel.CargarPrefijosOSC<string>(OrigenDatos.DesdeCSV, true, Properties.Settings.Default.PrefijosOsc, valorPorDefecto: Properties.Settings.Default.PrefijoOSCDefault);
@@ -101,8 +103,7 @@ namespace Neuron.OSC
 
         }
         WebCam webcam;
-
-        
+      
         private void AutoCompleteBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var autoCompleteBox = sender as AutoCompleteBox;
@@ -349,10 +350,6 @@ namespace Neuron.OSC
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         protected virtual void Init()
         {
             try
@@ -460,20 +457,18 @@ namespace Neuron.OSC
             this.Dispatcher.BeginInvoke((Action)(() =>
             {
                 ImageHuella.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-      bmp.GetHbitmap(),
-      IntPtr.Zero,
-      System.Windows.Int32Rect.Empty,
-      BitmapSizeOptions.FromWidthAndHeight(bmp.Width, bmp.Height));
+                  bmp.GetHbitmap(),
+                  IntPtr.Zero, System.Windows.Int32Rect.Empty,
+                  BitmapSizeOptions.FromWidthAndHeight(bmp.Width, bmp.Height));
                 if (this.ViewModel != null)
                 {
                     this.ViewModel.HuellaActual = (byte[])(new ImageConverter()).ConvertTo(bmp, typeof(byte[]));
+                    //Helper.SaveImageCapture((BitmapSource)ImageHuella.Source, DocIdent.Text);
                 }
             }));
 
 
         }
-
-
         protected DPFP.FeatureSet extraercaracteristicas(DPFP.Sample Sample, DPFP.Processing.DataPurpose Porpuse)
         {
             DPFP.Processing.FeatureExtraction extractor = new DPFP.Processing.FeatureExtraction();
@@ -493,7 +488,6 @@ namespace Neuron.OSC
         private void mostrarveces(string texto)
         {
             this.Dispatcher.BeginInvoke((Action)(() => { vecesdedo.Content = texto; }));
-
         }
         protected void Procesar(DPFP.Sample Sample)
         {
@@ -533,8 +527,12 @@ namespace Neuron.OSC
             }
         }
 
-
         private void CapturaFirmaCtrl_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void CapturaFirmabtnOk_Click(object sender, RoutedEventArgs e)
         {
         }
 
@@ -543,27 +541,86 @@ namespace Neuron.OSC
         }
         private void Btonguardar_Click(object sender, RoutedEventArgs e)
         {
-            
-            string StrConn = "Password = Saneuron1.; Persist Security Info = True; User ID = sa; Initial Catalog = LYSISMD; Data Source = Lysis1.eastus2.cloudapp.azure.com";
-            Int16 Num = 1;
-            string sql2 = "INSERT CITA.TURNO (NomTurno,DuracionMinuto,Huella) Values( @Date," + Num + ",@Firm)";
-            SqlCommand cmd2 = new SqlCommand(sql2);
-            cmd2.Connection = new SqlConnection(StrConn);
-            cmd2.Parameters.AddWithValue("@DATE", DocIdent.Text);
-            using (MemoryStream fm = new MemoryStream(template.Bytes))
+            string fileName = System.Environment.CurrentDirectory + "\\" + "signature_output.jpg";
+            string filenamepicture = Neuron.OSC.Properties.Settings.Default.FileRoute + DocIdent.Text +".Jpg";
+            byte[] Sign_arr1= null;
+            byte[] Picture_arr1 = null;
+            try
             {
-                cmd2.Parameters.AddWithValue("@Firm", fm.ToArray());
+                Sign_arr1 = System.IO.File.ReadAllBytes(fileName);
             }
-            cmd2.Connection.Open();
-            cmd2.ExecuteNonQuery();
-            cmd2.Connection.Close();
-        }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Falta Capturar Firma");
 
+            }
+            try
+            {
+                Picture_arr1 = System.IO.File.ReadAllBytes(filenamepicture);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Falta Capturar la Foto");
+
+            }
+            if (Sign_arr1 != null && Picture_arr1 != null)
+            {
+                var imageBuffer = BitmapSourceToByteArray((BitmapSource)ImageHuella.Source);
+
+                //Helper.SaveImageCapture((BitmapSource)ImageHuella.Source, DocIdent.Text);
+                var StrConn = Properties.Settings.Default.DBConnectionString;
+                string sql2 = "GEN.PRO_TerceroImagenInsertUpdate";
+                //string sql2 = "Update GEN.TerceroImage  Set FingerPrint= @Firm, Sign = @Sign_arr1,ImageFinger =@ImageFinger, Picture=@Picture_arr Where NumeroUnicoDocumento = @NumeroUnicoDoc";
+                SqlCommand cmd2 = new SqlCommand(sql2);
+                
+                cmd2.Connection = new SqlConnection(StrConn);
+                cmd2.CommandType = CommandType.StoredProcedure;
+                cmd2.Parameters.AddWithValue("@NumeroUnicoDoc", DocIdent.Text + TipoIdent.Text);
+                using (MemoryStream fm = new MemoryStream(template.Bytes))
+                {
+                    cmd2.Parameters.AddWithValue("@PrintFinger", fm.ToArray());
+                }
+                using (MemoryStream sign = new MemoryStream(Sign_arr1))
+                {
+                    cmd2.Parameters.AddWithValue("@Sign_arr1", sign.ToArray());
+                }
+                using (MemoryStream picture = new MemoryStream(Picture_arr1))
+                {
+                    cmd2.Parameters.AddWithValue("@Picture_arr", picture.ToArray());
+                }
+                cmd2.Parameters.AddWithValue("@ImageFinger", imageBuffer);
+
+                cmd2.Connection.Open();
+                cmd2.ExecuteNonQuery();
+                cmd2.Connection.Close();
+                btonguardar.Visibility = Visibility.Hidden;
+            }
+        }
+        private byte[] BitmapSourceToByteArray(BitmapSource image)
+        {
+            using (var stream = new MemoryStream())
+            {
+                var encoder = new PngBitmapEncoder(); // or some other encoder
+                encoder.Frames.Add(BitmapFrame.Create(image));
+                encoder.Save(stream);
+                return stream.ToArray();
+            }
+        }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             PararCpatura();
             var ventana = new FingerSearch();
             ventana.ShowDialog();
+        }
+        private void BtnReview(object sender, RoutedEventArgs e)
+        {
+            Enroller.Clear();
+            PararCpatura();
+            IniciarCaptura();
+            StringBuilder text = new StringBuilder();
+            text.AppendFormat("Necesitas pasar el dedo {0} veces", Enroller.FeaturesNeeded);
+            mostrarveces(text.ToString());
+
         }
     }
 }

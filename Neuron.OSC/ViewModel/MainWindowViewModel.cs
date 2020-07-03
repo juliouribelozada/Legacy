@@ -3145,7 +3145,19 @@ namespace Neuron.OSC.ViewModel
                                     label.Add("A40,195,0,2,1,1,N,\"" + result.TipoMuestra + ":" + result.Abreviatura + "\"");
                                     label.Add("P1");
 
-                                    Task<Task> resultTask =
+                                    //if (App.F = "true")
+                                        //{
+                                        //    label.Add("");
+                                        //    label.Add("N");
+                                        //    label.Add("q480");
+                                        //    label.Add("A45,50,0,3,1,1,N,\"" + " " + SitioWEB + "\"");
+                                        //    label.Add("A45,84,0,3,1,1,N,\"" + "Tipo Doc:" + TipoIdentificacion + " No Doc:" + DocumentoIdentidad + "\"");
+                                        //    label.Add("A45,115,0,3,1,1,N,\"" + "Token:" + Token + "\"");
+                                        //    label.Add("P1");
+
+                                        //}
+
+                                        Task<Task> resultTask =
                                         Utils.PrintLabelAsync(label, App.NombreImpresoraCodigoDeBarras, "Test Lysis: " + DateTime.Now)
                                         .ContinueWith(
                                         except => Task.Factory.StartNew(

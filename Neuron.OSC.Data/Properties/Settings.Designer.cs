@@ -12,7 +12,7 @@ namespace Neuron.OSC.Data.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,8 +26,8 @@ namespace Neuron.OSC.Data.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=vm-blancodev.cloudapp.net;Initial Catalog=LYSISDev;Persist Security I" +
-            "nfo=True;User ID=sa;Password=Saneuron1.")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=161.18.235.250\\sqlexpress;Initial Catalog=LYSIS;Persist Security Info" +
+            "=True;User ID=sa;Password=Saneuron1.")]
         public string LYSIS1ConnectionString {
             get {
                 return ((string)(this["LYSIS1ConnectionString"]));

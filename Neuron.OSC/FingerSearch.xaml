@@ -14,5 +14,6 @@
             <ColumnDefinition Width="185*"/>
         </Grid.ColumnDefinitions>
         <Image x:Name="ImageHuella" Margin="28,22,-246,-58.2" OpacityMask="Black" Grid.ColumnSpan="3"/>
+        <Label x:Name="lblNom" Grid.ColumnSpan="3" Content="" HorizontalAlignment="Left" Height="28" Margin="28,253,-246,-97.2" VerticalAlignment="Top" Width="218" FontWeight="Bold" FontSize="14" Background="White"/>
     </Grid>
 </Window>

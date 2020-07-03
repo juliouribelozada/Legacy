@@ -182,15 +182,7 @@ namespace Neuron.OSC.Properties {
                 return ((bool)(this["CambiarValorItem"]));
             }
         }
-
-        public bool CanChangeValueItem
-        {
-            get
-            {
-                return ((bool)(this["CanChangeValueItem"]));
-            }
-        }
-
+        
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -293,12 +285,30 @@ namespace Neuron.OSC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=vm-lysissql2.cloudapp.net;Initial Catalog=LYSISPrueba;Persist Securit" +
-            "y Info=True;User ID=sa;Password=Saneuron1.;MultipleActiveResultSets=True;Applica" +
-            "tion Name=NuevaOsctest")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=Lysis1.eastus2.cloudapp.azure.com;Initial Catalog=LYSISMD;Persist Sec" +
+            "urity Info=True;User ID=sa;Password=Saneuron1.;MultipleActiveResultSets=True;App" +
+            "lication Name=DeskLysisMD")]
         public string DBConnectionString {
             get {
                 return ((string)(this["DBConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public string PrintToken {
+            get {
+                return ((string)(this["PrintToken"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("www.google.com")]
+        public string WebSite {
+            get {
+                return ((string)(this["WebSite"]));
             }
         }
     }
